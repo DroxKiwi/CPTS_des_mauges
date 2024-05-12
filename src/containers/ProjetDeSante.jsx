@@ -26,7 +26,7 @@ function ProjetDeSante () {
             <Accordion>
             {
                     data.accordion.map((ia) => (
-                        <AccordionTab header={ia.content}>
+                        <AccordionTab header={ia.content} style={{backgroundColor: ia.color}}>
                             <Accordion>
                             {
                                 ia.items.map((ib) => (

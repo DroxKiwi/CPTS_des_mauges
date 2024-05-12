@@ -9,3 +9,7 @@
     font-weight: 400;
     line-height: normal;
 }
+
+a {
+    background: none;
+}

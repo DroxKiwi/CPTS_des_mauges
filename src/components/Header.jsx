@@ -9,8 +9,13 @@ import logo from '../assets/Images/logoDetoure.png';
 
 function Header (props) {
 
+    useEffect(() => {
+        var headerDiv = document.getElementById('headerDiv');
+        props.setHeaderHeight(headerDiv.offsetHeight)
+    }, []);
+
     return (
-        <div id="">
+        <div id="headerDiv">
             <div id="" className='socialMediaHeader grid grid-cols-12'>
                 <div className='iconMediaHeader'>
 
@@ -20,7 +25,7 @@ function Header (props) {
                 </div>
             </div>
             <div className='w-screen header  p-5 grid grid-cols-8'>
-                <img src={logo} height={50} width={50} className='cursor-pointer' onClick={() => props.setChildW('homepage')}/>
+                <img src={logo} height={50} width={50} className='cursor-pointer' onClick={() => props.setChildW(null)}/>
                 <Button className='headerButton' label='Présentation' onClick={() => props.setChildW('presentation')}></Button>
                 <Button className='headerButton' label='Bureau et conseil d’administration' onClick={() => props.setChildW('bureauetconseil')}></Button>
                 <Button className='headerButton' label='Le Projet de santé' onClick={() => props.setChildW('projetdesante')}></Button>

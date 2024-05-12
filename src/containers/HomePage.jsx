@@ -14,6 +14,7 @@ import RecapCards from '../components/homepage/RecapCards';
 import NumberBand from '../components/homepage/NumberBand';
 import CoAssoc from '../components/homepage/CoAssoc';
 import InfoBand from '../components/homepage/InfoBand';
+import { Button } from 'primereact/button';
 
 function HomePage(props) {
 
@@ -29,9 +30,7 @@ function HomePage(props) {
 
       var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
       setDocHeight(height);
-      console.log(height);
   }, [window.innerHeight]);
-
 
   return (
       <div id='homepage' className="homepagebackgroundmain" style={{width: docWidth, height: docHeight}}>
@@ -51,13 +50,13 @@ function HomePage(props) {
               <HomePageSubtitle001 />
             </div>
             <div className=' absolute cursor-pointer'>
-              <ButtonAbs selected={'notreprojet'}/>
+              <ButtonAbs selected={'notreprojet'} setChildW={props.setChildW}/>
             </div>
             <div className='my-10 row-start-3 row-end-4'>
               <CardProject/>
             </div>
-            <div className=' absolute cursor-pointer'>
-              <ButtonAbs selected={'recapcards'}/>
+            <div className='absolute cursor-pointer'>
+              <ButtonAbs selected={'actualites'} setChildW={props.setChildW}/>
             </div>
             <div className='row-start-4 row-end-5'>
               <RecapCards />
@@ -69,7 +68,7 @@ function HomePage(props) {
               <CoAssoc />
             </div>
             <div className='absolute cursor-pointer'>
-              <ButtonAbs selected={'contact'}/>
+              <ButtonAbs selected={'contact'} setChildW={props.setChildW}/>
             </div>
             <div>
               <InfoBand />

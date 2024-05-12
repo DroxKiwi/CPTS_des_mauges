@@ -95,7 +95,9 @@ function FooterMedia (props) {
                     CPTS des Mauges © 2024
                     Réalisé par KDDS avec ReactJS
                     <p>
-                        <a href='#' target='_blank'>Corentin Fredj</a>
+                        <span>Développé par </span>
+                        <a href='#' target='_blank'>Corentin Fredj. </a>
+                        <span>Avec la participation de Alban W, <a href="mailto:alban45190@gmail.com">alban45190@gmail.com</a></span>
                     </p>
                 </p>
             </div>

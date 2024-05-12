@@ -2,13 +2,29 @@
 
 
 .containerorga {
-  z-index: 10;
+  z-index: 10 !important;
   box-sizing: border-box;
 }
 
+.containerorga:hover{
+  z-index: 100;
+}
+
+.nameoutbox{
+  width: 200px;
+  padding-top: 20px;
+  padding-left: 20px;
+  transition: 200ms;
+  color: #00000000;
+  font-family: "Comic Sans MS";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .boxorgab {
-  position: absolute;
-  z-index: 10;
+  z-index: 10 !important;
   cursor: pointer;
   border-radius: 20px;
   width: 60px;
@@ -21,13 +37,15 @@
   transition-duration: 1500ms;
 }
 .boxorgab:hover{
-  position: absolute;
-  z-index: 100;
+  .nameoutbox{
+    color: black;
+  }
+  z-index: 100 !important;
   background: #f0f0f0;
   width: 480px;
   height: 240px;
   background: #fafafa;
-  box-shadow:  40px 40px 40px #FFEA2F,
+  box-shadow:  40px 40px 40px #757575,
                 0 0 0 #ffffff,
                 0 0 0 #cccccc inset,
                 2px 2px 2px #ffffff inset;
@@ -35,8 +53,7 @@
 }
 
 .boxorgaca {
-  position: absolute;
-  z-index: 10;
+  z-index: 10 !important;
   cursor: pointer;
   border-radius: 20px;
   width: 60px;
@@ -49,13 +66,15 @@
   transition-duration: 1500ms;
 }
 .boxorgaca:hover{
-  position: absolute;
-  z-index: 100;
+  .nameoutbox{
+    color: black;
+  }
+  z-index: 100 !important;
   background: #f0f0f0;
   width: 480px;
   height: 240px;
   background: #fafafa;
-  box-shadow:  40px 40px 40px #FFB82F,
+  box-shadow:  40px 40px 40px #757575,
                 0 0 0 #ffffff,
                 0 0 0 #cccccc inset,
                 2px 2px 2px #ffffff inset;
@@ -63,8 +82,7 @@
 }
 
 .boxorgacab {
-  position: absolute;
-  z-index: 10;
+  z-index: 10 !important;
   cursor: pointer;
   border-radius: 20px;
   width: 60px;
@@ -77,8 +95,10 @@
   transition-duration: 1500ms;
 }
 .boxorgacab:hover{
-  position: absolute;
-  z-index: 100;
+  .nameoutbox{
+    color: black;
+  }
+  z-index: 100 !important;
   background: #f0f0f0;
   width: 480px;
   height: 240px;
@@ -88,14 +108,4 @@
                 0 0 0 #cccccc inset,
                 2px 2px 2px #ffffff inset;
   transition-duration: 1500ms;
-}
-
-.nameoutbox{
-  transition: 200ms;
-  color: #000;
-  font-family: "Comic Sans MS";
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
 }

@@ -22,16 +22,16 @@ function ButtonAbs(props) {
                     <img className='notreprojetimg' src={cliquezSur1} width='70px'/>
                 </div>
             );
-        case 'recapcards':
+        case 'actualites':
             return (
-                <div className="btntrns recapcardsbtnabs cursor-pointer z-10">
-                    <p className='recapcardstextbtnabs'>Découvrir nos actualités !</p>
-                    <img className='recapcardsimgbtnabs' src={cliquezSur2} width='70px'/>
+                <div className="btntrns actualitessbtnabs cursor-pointer z-10" onClick={() => props.setChildW('nosactualites')}>
+                    <p className='actualitesstextbtnabs'>Découvrir nos actualités !</p>
+                    <img className='actualitessimgbtnabs' src={cliquezSur2} width='70px'/>
                 </div>
             );
         case 'contact':
             return (
-                <div className="btntrns contactbtnabs cursor-pointer z-10">
+                <div className="btntrns contactbtnabs cursor-pointer z-10" onClick={() => props.setChildW('contact')}>
                     <p className='contacttextbtnabs'>Contactez nous !</p>
                     <img className='contactimgbtnabs' src={cliquezSur3} width='70px'/>
                 </div>

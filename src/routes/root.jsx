@@ -23,7 +23,8 @@ function Root () {
     const [childW, setChildW] = useState(null);
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
-  
+    const [headerHeight, setHeaderHeight] = useState(null);
+
     useEffect(() => {
         setDocHeight(window.innerHeight);
         setDocWidth(window.innerWidth - 10);
@@ -31,12 +32,10 @@ function Root () {
 
     function ChildWindow () {
         switch (childW) {
-            case 'homepage':
-                return <HomePage setChildW={setChildW} />;
             case 'presentation':
                 return <Presentation />;
             case 'bureauetconseil':
-                return <BureauEtConseil />;
+                return <BureauEtConseil headerHeight={headerHeight} />;
             case 'projetdesante':
                 return <ProjetDeSante />
             case 'nosactualites':
@@ -46,13 +45,13 @@ function Root () {
             case 'contact':
                 return <Contact />;
             default:
-                return <HomePage />;
+                return <HomePage setChildW={setChildW} />;
         }
     }
 
     return (
         <div className="overflow-x-hidden wrapper">
-            <Header setChildW={setChildW} />
+            <Header setChildW={setChildW} setHeaderHeight={setHeaderHeight} />
             <ChildWindow />
             <Footer docWidth={docWidth} />
         </div>

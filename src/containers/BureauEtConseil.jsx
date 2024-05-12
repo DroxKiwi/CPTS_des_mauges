@@ -5,11 +5,36 @@ import './bureauetconseil.css';
 import Organigrame from "../components/Organigrame";
 import userProfil from '../assets/Images/User-Profile.png';
 import orgServ from '../services/organigrame.json';
+import { SpeedDial } from 'primereact/speeddial';
+import { getElementError } from "@testing-library/react";
+import { getActiveElement } from "@testing-library/user-event/dist/utils";
 
-function BureauEtConseil() {
+
+function BureauEtConseil(props) {
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
+    const [items, setItems] = useState([]);
+    const [usersProfil, setUsersProfil] = useState([]);
+
+    const refSpeedDial = useRef(null);
+
+    useEffect(() => {
+        var temp = orgServ.items;
+        for (let i = 0; i < temp.length; i++) {
+            temp[i].template = <Organigrame imgSrc={userProfil} src={temp[i]} />
+        }
+        setItems(temp);
+    }, []);
+
+    useEffect(() => {
+        var tabTemp = [];
+        for (let i = 0; i < orgServ.items.length; i++){
+            tabTemp.push(orgServ.items[i]);
+        }
+        setUsersProfil(tabTemp);
+        refSpeedDial.current.show();
+    }, [items])
   
     useEffect(() => {
         setDocHeight(window.innerHeight);
@@ -18,37 +43,11 @@ function BureauEtConseil() {
 
     // ----
 
-    const [usersProfil, setUsersProfil] = useState([]);
-
-    useEffect(() => {
-        var tabTemp = [];
-        for (let i = 0; i < orgServ.data.length; i++){
-            tabTemp.push(orgServ.data[i]);
-        }
-        console.log(tabTemp)
-        setUsersProfil(tabTemp);
-    }, [])
-
     return (
-        <div className="backgroundbureauetconseil overflow-hidden h-screen" style={{width: docWidth + 10}}>
-            <div className="grid grid-cols-12 m-10">
-                {
-                    usersProfil.map((up) => (
-                        <div className="grid grid-rows-2">
-                            {
-                                usersProfil.length > 0 ? (
-                                    <div>
-                                        <Organigrame imgSrc={userProfil} src={up} />
-                                    </div>
-                                ) :
-                                (
-                                    null
-                                )
-                            }
-                        </div>
-                    ))
-                }
-            </div>
+        <div className="backgroundbureauetconseil overflow-hidden h-screen" style={{width: docWidth + 10, height: docHeight - props.headerHeight}}>
+            <div className={"grid place-items-center h-[600px]"}>
+                <SpeedDial ref={refSpeedDial} visible={true} buttonStyle={{display: 'none'}} disabled={false} hideOnClickOutside={false} model={items} radius={(300)} type="circle" rotateAnimation={true} />
+            </div> 
         </div>
     )
 }
