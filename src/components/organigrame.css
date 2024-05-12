@@ -1,0 +1,101 @@
+
+
+
+.containerorga {
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.boxorgab {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  background: #f0f0f0;
+  box-shadow:  0 0 0 #cccccc,
+               0 0 0 #ffffff,
+                10px 10px 10px #FFEA2F inset,
+                -10px -10px 10px #FFEA2F inset;
+  transition-duration: 1500ms;
+}
+.boxorgab:hover{
+  position: absolute;
+  z-index: 100;
+  background: #f0f0f0;
+  width: 480px;
+  height: 240px;
+  background: #fafafa;
+  box-shadow:  40px 40px 40px #FFEA2F,
+                0 0 0 #ffffff,
+                0 0 0 #cccccc inset,
+                2px 2px 2px #ffffff inset;
+  transition-duration: 1500ms;
+}
+
+.boxorgaca {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  background: #f0f0f0;
+  box-shadow:  0 0 0 #cccccc,
+               0 0 0 #ffffff,
+                10px 10px 10px #FFB82F inset,
+                -10px -10px 10px #FFB82F inset;
+  transition-duration: 1500ms;
+}
+.boxorgaca:hover{
+  position: absolute;
+  z-index: 100;
+  background: #f0f0f0;
+  width: 480px;
+  height: 240px;
+  background: #fafafa;
+  box-shadow:  40px 40px 40px #FFB82F,
+                0 0 0 #ffffff,
+                0 0 0 #cccccc inset,
+                2px 2px 2px #ffffff inset;
+  transition-duration: 1500ms;
+}
+
+.boxorgacab {
+  position: absolute;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  background: #f0f0f0;
+  box-shadow:  0 0 0 #cccccc,
+               0 0 0 #ffffff,
+                10px 10px 10px #FFB82F inset,
+                -10px -10px 10px #FFEA2F inset;
+  transition-duration: 1500ms;
+}
+.boxorgacab:hover{
+  position: absolute;
+  z-index: 100;
+  background: #f0f0f0;
+  width: 480px;
+  height: 240px;
+  background: #fafafa;
+  box-shadow:  40px 40px 40px #757575,
+                0 0 0 #ffffff,
+                0 0 0 #cccccc inset,
+                2px 2px 2px #ffffff inset;
+  transition-duration: 1500ms;
+}
+
+.nameoutbox{
+  transition: 200ms;
+  color: #000;
+  font-family: "Comic Sans MS";
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

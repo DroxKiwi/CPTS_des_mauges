@@ -1,0 +1,79 @@
+
+
+.recapcards{
+    position: relative;
+    width: 600px;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.recapcardstitle{
+    color: #0A727B;
+    text-align: center;
+    font-family: "Cooper Black";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.recapcardsbtn{
+    margin-top: 100px;
+    width: 100px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.recapcardsbtntext{
+    color: #FFF;
+    text-align: center;
+    font-family: "Comic Sans MS";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.rc1{
+    top: 00px;
+    left: 50px;
+    background: #F5D8E9;
+}
+
+.rcb1{
+    background: #9A015B;
+}
+
+.rc2{
+    top: 0px;
+    left: 50%;
+    background: #A5CBE0;
+}
+
+.rcb2{
+    background: #005789;
+}
+
+.rc3{
+    top: 0px;
+    left: 100px;
+    background: #FFC4B8;
+}
+
+.rcb3{
+    background: #F74924;
+}
+
+.rc4{
+    top: 0px;
+    left: 50%;
+    background: #C3E4E7;
+}
+
+.rcb4{
+    background: #0A727B;
+}

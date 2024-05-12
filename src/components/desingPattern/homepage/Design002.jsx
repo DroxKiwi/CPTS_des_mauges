@@ -12,7 +12,7 @@ function Design002(props) {
     }, [props.docHeight])
 
     return (
-        <div className='homepagedesign002'  style={{paddingTop: design002Top}}>
+        <div className='homepagedesign002 overflow-hidden'  style={{paddingTop: design002Top}}>
             <svg xmlns="http://www.w3.org/2000/svg" width={design002W} height="2067" viewBox="0 0 1920 2067" fill="none">
             <g filter="url(#filter0_i_1_4059)">
                 <path d="M1973.2 1709.92C1629.2 2347.92 -81.2969 1227.42 -391.297 2066.92C-655.297 1673.92 -111.633 193.948 -26.2195 47.6114C-7.23749 -233.022 -157.296 795.921 495.704 1330.92C1059.2 1619.92 2286.96 1128.02 1973.2 1709.92Z" fill="#0E6DB8" fill-opacity="0.33"/>

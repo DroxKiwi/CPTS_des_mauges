@@ -30,7 +30,7 @@ function useWindowSize() {
         height: window.innerHeight,
       });
       ss.setFormated('isResized', false);
-      if (ls.getFormated('winW') !== window.innerWidth && ss.getFormated('isLoaded') && !ss.getFormated('isResized')){
+      if (ss.getFormated('winW') !== window.innerWidth && ss.getFormated('isLoaded') && !ss.getFormated('isResized')){
         window.location.reload();
         ss.setFormated('isResized', true);
       }

@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import { PrimeReactProvider } from 'primereact/api';
 import './indexLight.css';
 
-import Homepage from "./routes/homepage"
+import Root from "./routes/root";
 import ErrorPage from "./utils/error-page";
 
 import {
@@ -25,7 +25,7 @@ import {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Homepage />,
+    element: <Root />,
     errorElement: <ErrorPage />,
   },
 ]);
