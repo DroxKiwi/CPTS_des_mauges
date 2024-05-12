@@ -1,8 +1,5 @@
 
 import { useState, useEffect, useRef } from 'react';
-import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
-import useWindowSize from "../hooks/useWindowResize";
 import jspServ from '../services/jesuispatient.json';
 import pdftest1 from '../services/jesuispatientpdf1.pdf';
 import pdftest2 from '../services/jesuispatientpdf2.pdf';
@@ -16,7 +13,6 @@ import { Button } from 'primereact/button';
 function JeSuisPatient () {
 
 
-    const winW = useWindowSize();
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -52,7 +48,6 @@ function JeSuisPatient () {
 
     return (
         <div className='overflow-x-hidden'> 
-            <Header/>
             <div className='grid place-items-center card'>
                 <h2 className='titlejsp'>
                     Je suis Patient
@@ -94,9 +89,6 @@ function JeSuisPatient () {
                     )
                 }
             </Dialog>
-            <div className='h-[100px]'>
-                <Footer docWidth={docWidth} />
-            </div>
         </div>
     )
 }

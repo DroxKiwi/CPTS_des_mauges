@@ -3,17 +3,15 @@ import './design004.css';
 
 function Design004(props) {
 
-    const [Design004Top, setDesing004Top] = useState(null);
     const [Design004W, setDesign004W] = useState(null);
 
     useEffect(() => {
-        setDesing004Top(props.docHeight + 2720 );
         setDesign004W(window.innerWidth - 10);
-    }, [props.docHeight])
+    }, [])
 
     return (
-        <div className='homepagedesign004 overflow-hidden'  style={{paddingTop: Design004Top}}>
-            <svg xmlns="http://www.w3.org/2000/svg" width={Design004W} height="1367" viewBox="0 0 1920 1367" fill="none">
+        <div className='homepagedesign004 overflow-hidden'>
+            <svg xmlns="http://www.w3.org/2000/svg" width={Design004W} style={{marginTop: '1900px'}} height="1367" viewBox="0 0 1920 1367" fill="none">
             <g filter="url(#filter0_di_1_4071)">
                 <path d="M1413.5 351.749C910 2520.75 1205 568.245 -264 171.748C169.268 171.748 2378.5 -180.75 2162 124.25C2206 164.25 2092.29 206.166 2055 320.75C2000 489.75 1476.26 81.373 1413.5 351.749Z" fill="#F2EE2C" fill-opacity="0.33" shape-rendering="crispEdges"/>
             </g>

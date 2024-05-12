@@ -3,13 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import carteCouleur from '../assets/Images/carteCouleur.png';
 import './presentation.css';
-import Header from '../components/Header';
-import Footer from '../components/footer/Footer';
-import useWindowSize from "../hooks/useWindowResize";
 
 function Presentation () {
-
-    const winW = useWindowSize();
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -21,7 +16,6 @@ function Presentation () {
 
     return( 
         <div className='overflow-hidden presentation' style={{width: docWidth}}>
-            <Header />
             <div className='grid grid-cols-2 my-10'>
                 <div className='h-[420px] px-5 grid place-items-center'>
                     <span className='titlepresentation'>
@@ -61,9 +55,6 @@ function Presentation () {
                         *** Professionnels
                     </div>
                 </div>
-            </div>
-            <div className='h-[100px]'>
-                <Footer docWidth={docWidth} />
             </div>
         </div>
     )

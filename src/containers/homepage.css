@@ -1,16 +1,5 @@
 
 .homepagebackgroundmain{
     position: absolute;
-    height: 4000px;
     background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
-}
-
-.fulldocH{
-    height: 4000px;
-}
-
-@media screen and (min-width: 1556px){
-    .homepagebackgroundmain{
-        height: 2680px;
-    }
 }

@@ -1,7 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
-import useWindowSize from "../hooks/useWindowResize";
 import { Accordion, AccordionTab } from 'primereact/accordion';
 import pdsServ from "../services/projetdesante.json";
 import "./projetdesante.css";
@@ -9,7 +6,6 @@ import "./projetdesante.css";
 
 function ProjetDeSante () {
 
-    const winW = useWindowSize();
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -55,7 +51,6 @@ function ProjetDeSante () {
 
     return (
         <div className='overflow-x-hidden'>
-            <Header/>
             <div>
                 {
                     data !== null ? (
@@ -74,9 +69,6 @@ function ProjetDeSante () {
                         null
                     )
                 }
-            </div>
-            <div className='h-[100px]'>
-                <Footer docWidth={docWidth} />
             </div>
         </div>
     )

@@ -1,16 +1,10 @@
 
 import { useState, useEffect, useRef } from 'react';
-import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
-import useWindowSize from "../hooks/useWindowResize";
 import nactusServ from '../services/nosactualites.json';
 import "./nosactualites.css";
 import { Card } from 'primereact/card';
 
 function NosActualite () {
-
-
-    const winW = useWindowSize();
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -32,7 +26,6 @@ function NosActualite () {
 
     return (
         <div className='overflow-x-hidden'>
-            <Header/>
             <div className='grid place-items-center card'>
                 <h2 className='titleactu'>
                     L'actualité de la CPTS
@@ -59,9 +52,6 @@ function NosActualite () {
                         null
                     )
                 }
-            </div>
-            <div className='h-[100px]'>
-                <Footer docWidth={docWidth} />
             </div>
         </div>
     )

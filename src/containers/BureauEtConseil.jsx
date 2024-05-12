@@ -1,17 +1,12 @@
 
 
 import { useState, useEffect, useRef } from "react";
-import Header from "../components/Header";
-import Footer from "../components/footer/Footer";
-import useWindowSize from "../hooks/useWindowResize";
 import './bureauetconseil.css';
 import Organigrame from "../components/Organigrame";
 import userProfil from '../assets/Images/User-Profile.png';
 import orgServ from '../services/organigrame.json';
 
 function BureauEtConseil() {
-
-    const winW = useWindowSize();
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -36,7 +31,6 @@ function BureauEtConseil() {
 
     return (
         <div className="backgroundbureauetconseil overflow-hidden h-screen" style={{width: docWidth + 10}}>
-            <Header/>
             <div className="grid grid-cols-12 m-10">
                 {
                     usersProfil.map((up) => (
@@ -54,9 +48,6 @@ function BureauEtConseil() {
                         </div>
                     ))
                 }
-            </div>
-            <div className='h-[100px]'>
-                <Footer docWidth={docWidth} />
             </div>
         </div>
     )

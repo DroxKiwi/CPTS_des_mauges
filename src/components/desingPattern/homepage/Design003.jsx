@@ -3,17 +3,15 @@ import './design003.css';
 
 function Design003(props) {
 
-    const [design003Top, setDesing003Top] = useState(null);
     const [design003W, setDesign003W] = useState(null);
 
     useEffect(() => {
-        setDesing003Top(props.docHeight + 1600 );
         setDesign003W(window.innerWidth - 10);
-    }, [props.docHeight])
+    }, [])
 
     return (
-        <div className='homepagedesign003 overflow-hidden'  style={{paddingTop: design003Top}}>
-            <svg xmlns="http://www.w3.org/2000/svg" width={design003W} height="1359" viewBox="0 0 1920 1359" fill="none">
+        <div className='homepagedesign003 overflow-hidden'>
+            <svg xmlns="http://www.w3.org/2000/svg" width={design003W} style={{marginTop: '1000px'}} height="1359" viewBox="0 0 1920 1359" fill="none">
             <g filter="url(#filter0_i_1_4070)">
                 <path d="M495 1007C998.5 -1162 703.5 790.503 2172.5 1187C1739.23 1187 -470 1539.5 -253.5 1234.5C-297.5 1194.5 -183.791 1152.58 -146.5 1038C-91.4996 868.998 432.237 1277.38 495 1007Z" fill="#F2EE2C" fill-opacity="0.33"/>
             </g>

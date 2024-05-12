@@ -19,7 +19,7 @@ function HomePageSubtitle001 (props) {
 
     return (
         <div id="" className='grid place-items-center overflow-y-hidden'>
-            <h2 className="homepagesubtitle001" style={{marginTop: elDistanceTop}}>
+            <h2 className="homepagesubtitle001">
                 Notre projet de santé
             </h2>
             <p className='homepagesubtitle001secondary'>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise 

@@ -1,14 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { ls, ss } from '../utils/store';
-import useWindowSize from "../hooks/useWindowResize";
-import Cookies from 'universal-cookie';
 
 import './homepage.css';
 import Design001 from '../components/desingPattern/homepage/Design001';
 import Design002 from '../components/desingPattern/homepage/Design002';
 import Design003 from '../components/desingPattern/homepage/Design003';
 import Design004 from '../components/desingPattern/homepage/Design004';
-import Header from '../components/Header';
 import HomePageTitle from '../components/homepage/HomePageTitle';
 import HomePageSubtitle001 from '../components/homepage/HomePageSubtitle001';
 import ButtonAbs from '../components/homepage/ButtonAbs';
@@ -17,13 +14,8 @@ import RecapCards from '../components/homepage/RecapCards';
 import NumberBand from '../components/homepage/NumberBand';
 import CoAssoc from '../components/homepage/CoAssoc';
 import InfoBand from '../components/homepage/InfoBand';
-import Footer from '../components/footer/Footer';
 
-function HomePage() {
-
-  const winW = useWindowSize();
-
-  const cookies = new Cookies(null ,{ path: '/' });
+function HomePage(props) {
 
   const [docHeight, setDocHeight] = useState(null);
   const [docWidth, setDocWidth] = useState(null);
@@ -31,28 +23,32 @@ function HomePage() {
   useEffect(() => {
       setDocHeight(window.innerHeight);
       setDocWidth(window.innerWidth - 10);
+
+      var body = document.body,
+      html = document.documentElement;
+
+      var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+      setDocHeight(height);
+      console.log(height);
   }, [window.innerHeight]);
 
 
   return (
-      <div id='homepage' className="homepagebackgroundmain overflow-hidden" style={{width: docWidth}}>
+      <div id='homepage' className="homepagebackgroundmain" style={{width: docWidth, height: docHeight}}>
         <div className='grid grid-rows-12'>
-          <Design001 className='section static' docHeight={docHeight}/>
-          <Design002 docHeight={docHeight}/>
-          <Design003 docHeight={docHeight}/>
-          <Design004 docHeight={docHeight}/>
-          <div className='fulldocH absolute overflow-hidden' style={{width: window.innerWidth - 10}}>
-            <div className='row-start-0 row-end-1'>
-              <Header/>
-            </div>
+          <Design001 />
+          <Design002 />
+          <Design003 />
+          <Design004 />
+          <div className='absolute overflow-hidden' style={{width: window.innerWidth - 10, height: docHeight}}>
             <div className=' absolute cursor-pointer'>
-              <ButtonAbs selected={'decouvrir'}/>
+              <ButtonAbs selected={'decouvrir'} setChildW={props.setChildW}/>
             </div>
             <div className='row-start-1 row-end-2'>
-              <HomePageTitle docHeight={docHeight}/>
+              <HomePageTitle />
             </div>
             <div id="" className='grid place-content-center row-start-2 row-end-3'>
-              <HomePageSubtitle001 docHeight={docHeight}/>
+              <HomePageSubtitle001 />
             </div>
             <div className=' absolute cursor-pointer'>
               <ButtonAbs selected={'notreprojet'}/>
@@ -72,14 +68,11 @@ function HomePage() {
             <div>
               <CoAssoc />
             </div>
-            <div className=' absolute cursor-pointer'>
+            <div className='absolute cursor-pointer'>
               <ButtonAbs selected={'contact'}/>
             </div>
             <div>
               <InfoBand />
-            </div>
-            <div>
-              <Footer docWidth={docWidth} />
             </div>
           </div>
         </div>

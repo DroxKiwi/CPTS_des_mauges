@@ -10,14 +10,14 @@ function ButtonAbs(props) {
     switch (props.selected){
         case 'decouvrir':
             return (
-                <div className="btntrns decouvrirquinoussomme cursor-pointer z-10">
+                <div className="btntrns decouvrirquinoussomme cursor-pointer z-10" onClick={() => props.setChildW('presentation')}>
                     <p className='decouvrirquinoussommetext'>Découvrir qui nous somme !</p>
                     <img className='decouvrirquinoussommeimg' src={cliquezSur} width='70px'/>
                 </div>
             );
         case 'notreprojet':
             return (
-                <div className="btntrns notreprojet cursor-pointer z-10">
+                <div className="btntrns notreprojet cursor-pointer z-10" onClick={() => props.setChildW('projetdesante')}>
                     <p className='notreprojettext'>Notre projet de santé en détail !</p>
                     <img className='notreprojetimg' src={cliquezSur1} width='70px'/>
                 </div>

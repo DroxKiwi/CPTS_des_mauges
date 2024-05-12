@@ -8,6 +8,7 @@
 .btntrns:hover{
     transform: scale(1.03);
     transition-duration: 500ms;
+    background: rgb(255, 255, 255);
 }
 
 .decouvrirquinoussomme{
@@ -18,12 +19,18 @@
     height: 54px;
     flex-shrink: 0;
     border-radius: 20px;
-    background: rgba(10, 114, 123, 0.40);
+    background: rgb(10, 113, 123);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.decouvrirquinoussomme:hover{
+    .decouvrirquinoussommetext{
+        color: rgb(10, 113, 123);
+    }
+}
+
 .decouvrirquinoussommetext{
-    color: #0A727B;
+    color: #ffffff;
     margin-top: 5%;
     margin-left: 10%;
     font-family: "Comic Sans MS";
@@ -45,12 +52,18 @@
     height: 61px;
     flex-shrink: 0;
     border-radius: 20px;
-    background: rgba(154, 1, 91, 0.40);
+    background: rgb(154, 1, 90);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.notreprojet:hover{
+    .notreprojettext{
+        color: rgb(154, 1, 90);
+    }
+}
+
 .notreprojettext{
-    color: #9A015B;
+    color: #ffffff;
     font-family: "Comic Sans MS";
     margin-top: 3%;
     margin-left: 35%;
@@ -74,12 +87,18 @@
     height: 50px;
     flex-shrink: 0;
     border-radius: 20px;
-    background: rgba(255, 144, 120, 0.50);
+    background: rgb(255, 145, 120);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.recapcardsbtnabs:hover{
+    .recapcardstextbtnabs{
+        color: rgb(255, 145, 120);
+    }
+}
+
 .recapcardstextbtnabs{
-    color: #F74924;
+    color: #ffffff;
     font-family: "Comic Sans MS";
     margin-top: 3%;
     margin-left: 40%;
@@ -103,12 +122,18 @@
     height: 50px;
     flex-shrink: 0;
     border-radius: 20px;
-    background: rgba(127, 204, 248, 0.80);
+    background: rgb(127, 204, 248);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+.contactbtnabs:hover{
+    .contacttextbtnabs{
+        color: rgb(127, 204, 248);
+    }
+}
+
 .contacttextbtnabs{
-    color: #0069A6;
+    color: #ffffff;
     font-family: "Comic Sans MS";
     margin-top: 3%;
     margin-left: 20%;
