@@ -10,6 +10,9 @@ function RecapCards() {
                 <h2 className='recapcardstitle'>
                     Qui sommes nous ?
                 </h2>
+                <p>
+                    Retrouvez nos missions, notre territoire et notre équipe.
+                </p>
                 <div className='recapcardsbtn rcb1 grid place-items-center'>
                     <p className='recapcardsbtntext'>
                         L'équipe
@@ -20,6 +23,9 @@ function RecapCards() {
                 <h2 className='recapcardstitle'>
                     Vous êtes patient ?
                 </h2>
+                <p>
+                    Retrouvez ce que la CPTS fait pour vous !
+                </p>
                 <div className='recapcardsbtn rcb2 grid place-items-center'>
                     <p className='recapcardsbtntext'>
                         Nos protocoles
@@ -28,18 +34,24 @@ function RecapCards() {
             </div>
             <div className='recapcards rc3 grid place-items-center'>
                 <h2 className='recapcardstitle'>
-                    Vous êtes patient ?
+                    A la une
                 </h2>
+                <p>
+                    Retrouvez l’actualité de la CPTS et des partenaires santé du territoire.
+                </p>
                 <div className='recapcardsbtn rcb3 grid place-items-center'>
                     <p className='recapcardsbtntext'>
-                        Nos protocoles
+                        Nos actualités
                     </p>
                 </div>
             </div>
             <div className='recapcards rc4 grid place-items-center'>
                 <h2 className='recapcardstitle'>
-                    Vous êtes patient ?
+                    Vous êtes professionnel ?
                 </h2>
+                <p>
+                    Retrouvez les annonces et informations, pour vous, professionnels de santé
+                </p>
                 <div className='recapcardsbtn rcb4 grid place-items-center'>
                     <p className='recapcardsbtntext'>
                         Nos protocoles

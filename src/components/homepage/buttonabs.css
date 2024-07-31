@@ -8,9 +8,9 @@
 .btntrns:hover{
     transform: scale(1.03);
     transition-duration: 500ms;
-    background: rgb(255, 255, 255);
+    background: antiquewhite;
 }
-
+    
 .decouvrirquinoussomme{
     position: relative;
     left: 50px;
@@ -82,7 +82,7 @@
 .actualitessbtnabs{
     position: relative;
     left: 200px;
-    top: 750px;
+    top: 520px;
     width: 209px;
     height: 50px;
     flex-shrink: 0;
@@ -117,7 +117,7 @@
 .contactbtnabs{
     position: relative;
     left: 1000px;
-    top: 300px;
+    top: 100px;
     width: 209px;
     height: 50px;
     flex-shrink: 0;

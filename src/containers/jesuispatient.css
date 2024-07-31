@@ -1,4 +1,7 @@
 
+.jsp{
+    background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
+}
 
 .titlejsp{
     color: #0A727B;
@@ -17,4 +20,14 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.btnopenpdf{
+    transition: 500ms;
+}
+
+.btnopenpdf:hover{
+    transition: 500mx;
+    background-color: #0A727B;
+    color: aliceblue;
 }

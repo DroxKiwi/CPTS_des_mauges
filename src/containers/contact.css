@@ -1,3 +1,8 @@
+
+.contact{
+    background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
+}
+
 .maintext{
     color: #000000;
     text-align: center;
@@ -6,4 +11,15 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+
+.redirectioncontact{
+    transition: 500ms;
+    font-size: 15px;
+}
+
+.redirectioncontact:hover{
+    transition: 500ms;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
 }

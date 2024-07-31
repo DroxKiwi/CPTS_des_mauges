@@ -6,6 +6,8 @@ import BureauEtConseil from '../containers/BureauEtConseil';
 import ProjetDeSante from '../containers/ProjetDeSante';
 import NosActualites from '../containers/NosActualites';
 import JeSuisPatient from '../containers/JeSuisPatient';
+import JeSuisProfessionnel from '../containers/JeSuisProfessionnel';
+import CommentAdherer from '../containers/CommentAdherer';
 import Contact from '../containers/Contact';
 import Header from '../components/Header';
 import Footer from '../components/footer/Footer';
@@ -33,17 +35,21 @@ function Root () {
     function ChildWindow () {
         switch (childW) {
             case 'presentation':
-                return <Presentation />;
+                return <Presentation headerHeight={headerHeight} />;
             case 'bureauetconseil':
                 return <BureauEtConseil headerHeight={headerHeight} />;
             case 'projetdesante':
-                return <ProjetDeSante />
+                return <ProjetDeSante headerHeight={headerHeight} />
             case 'nosactualites':
-                return <NosActualites />;
+                return <NosActualites headerHeight={headerHeight} />;
             case 'jesuispatient':
-                return <JeSuisPatient />;
+                return <JeSuisPatient headerHeight={headerHeight} />;
+            case 'jesuisprofessionnel':
+                return <JeSuisProfessionnel headerHeight={headerHeight} />;
+            case 'adherer':
+                return <CommentAdherer headerHeight={headerHeight} />;
             case 'contact':
-                return <Contact />;
+                return <Contact headerHeight={headerHeight} />;
             default:
                 return <HomePage setChildW={setChildW} />;
         }
@@ -53,7 +59,7 @@ function Root () {
         <div className="overflow-x-hidden wrapper">
             <Header setChildW={setChildW} setHeaderHeight={setHeaderHeight} />
             <ChildWindow />
-            <Footer docWidth={docWidth} />
+            <Footer docWidth={docWidth} setChildW={setChildW} />
         </div>
     )
 }

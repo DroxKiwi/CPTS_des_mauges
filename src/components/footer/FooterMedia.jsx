@@ -2,11 +2,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 import './footermedia.css';
-import home from '../../assets/Images/accueil.png';
-import email from '../../assets/Images/e-mail.png';
-import fb from '../../assets/Images/facebook.png';
-import lk from '../../assets/Images/linkedin.png';
-import tel from '../../assets/Images/telephone.png';
+import home from '../../assets/Images/icones/accueil.png';
+import email from '../../assets/Images/icones/e-mail.png';
+import fb from '../../assets/Images/icones/facebook.png';
+import lk from '../../assets/Images/icones/linkedin.png';
+import tel from '../../assets/Images/icones/telephone.png';
 
 
 function FooterMedia (props) {
@@ -15,7 +15,7 @@ function FooterMedia (props) {
         {
             name: 'Adresse des locaux',
             logo: home,
-            type: 'text'
+            type: 'adr'
         },
         {
             name : 'cptsdesmauges@gmail.com',
@@ -49,7 +49,7 @@ function FooterMedia (props) {
                             {
                                 m.type === 'redirection' ? (
                                     <p>
-                                        <a target='_blank' href={m.name}>{m.name}</a>  
+                                        <a className='targetfootermedia' target='_blank' href={m.name}>{m.name}</a>  
                                     </p>
                                 ) : 
                                 (
@@ -59,7 +59,7 @@ function FooterMedia (props) {
                             {
                                 m.type === 'mail' ? (
                                     <p>
-                                        <a href={'mailto:' + m.name}>{m.name}</a>  
+                                        <a className='targetfootermedia' href={'mailto:' + m.name}>{m.name}</a>  
                                     </p>
                                 ) : 
                                 (
@@ -69,7 +69,17 @@ function FooterMedia (props) {
                             {
                                 m.type === 'tel' ? (
                                     <p>
-                                        <a href={'tel:' + m.name}>{m.name}</a>  
+                                        <a className='targetfootermedia' href={'tel:' + m.name}>{m.name}</a>  
+                                    </p>
+                                ) : 
+                                (
+                                    null
+                                )
+                            }
+                            {
+                                m.type === 'adr' ? (
+                                    <p>
+                                        <a className='targetfootermedia' onClick={() => props.setChildW('contact')}>{m.name}</a>  
                                     </p>
                                 ) : 
                                 (
@@ -95,9 +105,9 @@ function FooterMedia (props) {
                     CPTS des Mauges © 2024
                     Réalisé par KDDS avec ReactJS
                     <p>
-                        <span>Développé par </span>
-                        <a href='#' target='_blank'>Corentin Fredj. </a>
-                        <span>Avec la participation de Alban W, <a href="mailto:alban45190@gmail.com">alban45190@gmail.com</a></span>
+                        <span>Développé par Corentin Fredj, </span>
+                        <a className='targetfootermedia' href='mailto:corentinfredj.dev@gmail.com' target='_blank'>corentinfredj.dev@gmail.com </a>
+                        <span>Avec la participation de Alban W, <a className='targetfootermedia' href="mailto:alban45190@gmail.com">alban45190@gmail.com</a></span>
                     </p>
                 </p>
             </div>

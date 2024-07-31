@@ -4,11 +4,14 @@
         {
             "content": "Améliorer l'accès aux soins",
             "code": "2",
-            "color": "#0A727B",
+            "bgcolor": "#0A727B",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Faciliter l'accès à un médecin traitant",
                     "code": "1",
+                    "bgcolor": "#0A727B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Faciliter l'installation des professionnels de santé sur le territoire",
@@ -27,6 +30,8 @@
                 {
                     "content": "Optimisation du temps médical",
                     "code": "1",
+                    "bgcolor": "#0A727B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Promouvoir des dispositifs pouvant faciliter un gain de temps médical",
@@ -41,6 +46,8 @@
                 {
                     "content": "Améliorer la gestion des Soins Non Programmés",
                     "code": "1",
+                    "bgcolor": "#0A727B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Favoriser la visibilité des solutions locales déjà en place dans la gestion des SNP",
@@ -67,6 +74,8 @@
                 {
                     "content": "Développer la télémédecine et l'accès aux seconds recours",
                     "code": "1",
+                    "bgcolor": "#0A727B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Expérimenter les téléconsultations assistées",
@@ -87,11 +96,14 @@
         {
             "content": "Organiser des parcours pluriprofessionnels autour du patient",
             "code": "2",
-            "color": "#F89426",
+            "bgcolor": "#9A015B",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Inscrire la CPTS dans une dynamique partenariale et territoriale",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Participer aux travaux du DAC 49",
@@ -110,6 +122,8 @@
                 {
                     "content": "Renforcer la coordination ville-établissements de santé",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Renfrocer les liens ville-hôpital",
@@ -124,6 +138,8 @@
                 {
                     "content": "Favoriser le déploiement d'outils numériques afin d'améliorer la coordination entre les professionnels",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Recenser les outils de communication utilsés",
@@ -142,6 +158,8 @@
                 {
                     "content": "Fluidifier le parcours Personnes âgées",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Identifier les acteurs du territoire",
@@ -160,6 +178,8 @@
                 {
                     "content": "Fluidifier le parcours en Santé mentale",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Améliorer le lien ville-établissements de santé mentale",
@@ -178,6 +198,8 @@
                 {
                     "content": "Fluidifier le parcours de patients atteints de pathologies chroniques",
                     "code": "1",
+                    "bgcolor": "#9A015B",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Parcours diabète",
@@ -198,11 +220,14 @@
         {
             "content": "Développer des actions de prévention et promotion de la santé",
             "code": "2",
-            "color": "#F74924",
+            "bgcolor": "#F74924",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Participer à la dynamique locale en matière de prévention et promotion de la santé",
                     "code": "1",
+                    "bgcolor": "#F74924",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "En fonction des besoins et opportunité du territoire",
@@ -221,6 +246,8 @@
                 {
                     "content": "Mener des actions de prévention de pathologies chroniques",
                     "code": "1",
+                    "bgcolor": "#F74924",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Promouvoir la nutrition et l'activité physique",
@@ -235,6 +262,8 @@
                 {
                     "content": "Promouvoir et développer l'Education Thérapeutique du Patient (ETP)",
                     "code": "1",
+                    "bgcolor": "#F74924",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Promovoir l'offre existante",
@@ -249,6 +278,8 @@
                 {
                     "content": "Améliorer la qualité de vie au travail des soignants et prévenir l'épuisement professionnel",
                     "code": "1",
+                    "bgcolor": "#F74924",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Sensibiliser au repérage du syndrome d'épuisement professionnel",
@@ -269,11 +300,14 @@
         {
             "content": "Réponse aux crises sanitaires graves",
             "code": "2",
-            "color": "#9A015B",
+            "bgcolor": "#F89426",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Répondre aux enjeux de crises sanitaires graves",
                     "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Elaborer un plan de réponse",
@@ -288,13 +322,16 @@
             ]
         },
         {
-            "content": "QUalité et pertinence des soins",
+            "content": "Qualité et pertinence des soins",
             "code": "2",
-            "color": "#005789",
+            "bgcolor": "#005789",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Favoriser le développement de la qualité et de la pertinence des soins",
                     "code": "1",
+                    "bgcolor": "#005789",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Développer des temps d'échanges entre professionnels",
@@ -315,11 +352,14 @@
         {
             "content": "Accompagnement des professionnels de santé",
             "code": "2",
-            "color": "#005789",
+            "bgcolor": "#005789",
+            "color": "#FFFFFF",
             "items": [
                 {
                     "content": "Favoriser l'attractivité du territoire",
                     "code": "1",
+                    "bgcolor": "#005789",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Accueillir les stagiaires et internes",
@@ -342,6 +382,8 @@
                 {
                     "content": "Déployer un système de communication pour la CPTS",
                     "code": "1",
+                    "bgcolor": "#005789",
+                    "color": "#FFFFFF",
                     "items": [
                         {
                             "content": "Etablir un plan de communication",

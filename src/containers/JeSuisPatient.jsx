@@ -10,10 +10,14 @@ import "./jesuispatient.css";
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 
-function JeSuisPatient () {
+import { ls, ss } from '../utils/store';
 
+function JeSuisPatient (props) {
 
-  
+    useEffect(() => {
+        ss.set('window', 'jesuispatient');
+    }, []);
+
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
     const [data, setData] = useState(null);
@@ -47,15 +51,15 @@ function JeSuisPatient () {
     }
 
     return (
-        <div className='overflow-x-hidden'> 
-            <div className='grid place-items-center card'>
+        <div className='overflow-x-hidden mb-10 jsp' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}> 
+            <div className='grid place-items-center card bg-transparent'>
                 <h2 className='titlejsp'>
                     Je suis Patient
                 </h2>
                 { 
                     data !== null ? (
                         <div>
-                            <p className='maintext card'>
+                            <p className='maintext card bg-transparent'>
                                         <div>
                                             {data.mainText}
                                         </div>
@@ -67,7 +71,7 @@ function JeSuisPatient () {
                                             <p>{d.title}</p>
                                             <p>{d.detail}</p>
                                             <iframe src={d.pdf} />
-                                            <Button label='ouvrir le PDF' raised text onClick={() => handleSetPdfSelected(i)}></Button>
+                                            <Button className='w-[300px] my-5 btnopenpdf bg-white' label='Agrandir le PDF' raised text onClick={() => handleSetPdfSelected(i)}></Button>
                                         </div>
                                     ))
                                 }
@@ -82,7 +86,7 @@ function JeSuisPatient () {
             <Dialog visible={dialogPdfVisible} onHide={() => setDialogPdfVisible(false)}>
                 {
                     pdfSelected !== null ? (
-                        <iframe className='h-[80vh] w-[100vh]' src={pdfSelected} />
+                        <iframe className='h-[80vh] w-[150vh]' src={pdfSelected} />
                     ) : 
                     (
                         null

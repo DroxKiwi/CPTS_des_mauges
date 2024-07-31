@@ -3,8 +3,15 @@ import { useState, useEffect, useRef } from 'react';
 import nactusServ from '../services/nosactualites.json';
 import "./nosactualites.css";
 import { Card } from 'primereact/card';
+import { Badge } from 'primereact/badge';
 
-function NosActualite () {
+import { ls, ss } from '../utils/store';
+
+function NosActualite (props) {
+
+    useEffect(() => {
+        ss.set('window', 'actu');
+    }, []);
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
@@ -25,15 +32,15 @@ function NosActualite () {
     );
 
     return (
-        <div className='overflow-x-hidden'>
-            <div className='grid place-items-center card'>
+        <div className='overflow-x-hidden nosactu' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}>
+            <div className='grid place-items-center card bg-transparent'>
                 <h2 className='titleactu'>
                     L'actualité de la CPTS
                 </h2>
                 { 
                     data !== null ? (
-                        <div>
-                            <p className='maintext card'>
+                        <div className=''>
+                            <p className='maintext card bg-transparent'>
                                 <div>
                                     {data.mainText}
                                 </div>
@@ -42,6 +49,8 @@ function NosActualite () {
                                 {
                                     data.data.map((d) => (
                                         <Card title={d.title} subTitle={d.detail} header={header} className="m-10 h-[10%]">
+                                        <Badge style={{backgroundColor: "#0A727B"}} value="" size="xlarge"></Badge>
+
                                         </Card>
                                     ))
                                 }

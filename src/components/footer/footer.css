@@ -1,6 +1,8 @@
 
 
 .footer{
+    cursor: pointer;
+    z-index: 8999;
     position: fixed;
     bottom: 0px;
     width: 1920px;

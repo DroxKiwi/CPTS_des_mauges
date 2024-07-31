@@ -12,6 +12,9 @@ import './indexLight.css';
 import Root from "./routes/root";
 import ErrorPage from "./utils/error-page";
 
+import logo from './assets/Images/logoDetoure.png';
+
+
 import {
   createBrowserRouter,
   RouterProvider,
@@ -33,6 +36,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <PrimeReactProvider>
+        <div id="container-animation" className='container-animation grid place-items-center'>
+          <img src={logo} width='500px' />
+        </div>
         <RouterProvider router={router}/>
     </PrimeReactProvider>
 );

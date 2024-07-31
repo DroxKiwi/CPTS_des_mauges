@@ -19,8 +19,9 @@ function HomePageTitle(props) {
     return (
         <div className='my-10 overflow-y-hidden grid place-items-center'>
             <h1 className="homepagetitle"><p>Bienvenue sur le site de la</p> <p>CPTS des Mauges</p></h1>
-            <h2 className='homepagetitlesecondary'>communauté professionnelle territoriale de santé</h2>
-            <img src={logo} width='250px'/>
+            <h2 className='homepagetitlesecondary'>Communauté Professionnelle Territoriale de Santé</h2>
+            <div className='h-[250px]'>
+            </div>
         </div>
     )
 

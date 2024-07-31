@@ -18,13 +18,19 @@ function HomePageSubtitle001 (props) {
     }, [props.docHeight])
 
     return (
-        <div id="" className='grid place-items-center overflow-y-hidden'>
+        <div id="" className='grid place-items-center overflow-y-hidden mt-10'>
             <h2 className="homepagesubtitle001">
                 Notre projet de santé
             </h2>
-            <p className='homepagesubtitle001secondary'>Le lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise 
-                <br/>en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. 
-                <br/>Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.</p>
+            <div className='grid grid-cols-5'>
+                <div className='grid col-start-2 col-span-3'>
+                    <p className='homepagesubtitle001secondary'>Retrouvez la déclinaison de notre projet de santé en fonction des missions.</p>
+                    <p className='homepagesubtitle001secondary'>
+                    Le projet de santé porté par les professionnels de santé de notre CPTS peut évoluer au cours
+                    du temps, en fonction des besoins de la population et des professionnels de santé ! Ce projet
+                    de santé a été élaboré fin 2023. Il a été validé en CATS en mars 2024.</p>
+                </div>
+            </div>
         </div>
     )
 }

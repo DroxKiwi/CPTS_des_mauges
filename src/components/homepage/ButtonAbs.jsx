@@ -1,9 +1,9 @@
 
 import './buttonabs.css';
-import cliquezSur from '../../assets/Images/cliquez-sur.png';
-import cliquezSur1 from '../../assets/Images/cliquez-sur(1).png';
-import cliquezSur2 from '../../assets/Images/cliquez-ici.png';
-import cliquezSur3 from '../../assets/Images/le-curseur.png';
+import cliquezSur from '../../assets/Images/icones/cliquez-sur.png';
+import cliquezSur1 from '../../assets/Images/icones/cliquez-sur(1).png';
+import cliquezSur2 from '../../assets/Images/icones/cliquez-ici.png';
+import cliquezSur3 from '../../assets/Images/icones/le-curseur.png';
 
 function ButtonAbs(props) {
 
@@ -11,7 +11,7 @@ function ButtonAbs(props) {
         case 'decouvrir':
             return (
                 <div className="btntrns decouvrirquinoussomme cursor-pointer z-10" onClick={() => props.setChildW('presentation')}>
-                    <p className='decouvrirquinoussommetext'>Découvrir qui nous somme !</p>
+                    <p className='decouvrirquinoussommetext'>Découvrir qui nous sommes !</p>
                     <img className='decouvrirquinoussommeimg' src={cliquezSur} width='70px'/>
                 </div>
             );

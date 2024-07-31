@@ -9,9 +9,21 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    font-size: 13px;
+    color: rgb(59, 0, 126);
 }
 
 .declarationofficiel{
     margin-top: 60px;
     margin-left: 20px;
+}
+
+.targetfootermedia{
+    transition: 500ms;
+}
+
+.targetfootermedia:hover{
+    transition: 500ms;
+    color: azure;
+    font-size: 14px;
 }
