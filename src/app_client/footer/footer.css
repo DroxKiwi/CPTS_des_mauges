@@ -1,0 +1,41 @@
+
+
+.footer{
+    cursor: pointer;
+    z-index: 8999;
+    position: fixed;
+    bottom: 0px;
+    width: 1920px;
+    height: 35px;
+    flex-shrink: 0;
+    background: #43cdd7e8;
+    border: 1px solid yellowgreen;
+    transition: 500ms;
+}
+
+.footer:hover{
+    transition: 500ms;
+    height: 80%;
+}
+
+@media screen and (min-width: 1468px) {
+    .footer{
+        cursor: pointer;
+        z-index: 8999;
+        position: fixed;
+        bottom: 0px;
+        width: 1920px;
+        height: 35px;
+        flex-shrink: 0;
+        background: #43cdd7e8;
+        border: 1px solid yellowgreen;
+        transition: 500ms;
+    }
+}
+
+@media screen and (min-height: 1100px){
+    .footer:hover{
+        transition: 500ms;
+        height: 250px;
+    }    
+}

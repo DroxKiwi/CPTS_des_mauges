@@ -1,18 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import "primereact/resources/themes/soho-dark/theme.css";
+// import "primereact/resources/themes/soho-light/theme.css";
 // import "primereact/resources/themes/lara-dark-blue/theme.css";
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.css';    
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { PrimeReactProvider } from 'primereact/api';
+import { PrimeReactContext } from 'primereact/api';
 import './indexLight.css';
 
 import Root from "./routes/root";
+import Presentation from './app_client/pages/presentation/Presentation';
+import BureauEtConseil from './app_client/pages/bureauetconseil/BureauEtConseil';
+import ProjetDeSante from './app_client/pages/projetdesante/ProjetDeSante';
+import NosActualite from './app_client/pages/nosactu/NosActualites';
+import JeSuisPatient from './app_client/pages/jesuispatient/JeSuisPatient';
+import JeSuisProfessionnel from './app_client/pages/jesuispro/JeSuisProfessionnel';
+import CommentAdherer from './app_client/pages/commentadherer/CommentAdherer';
+import Contact from './app_client/pages/contact/Contact';
+
+import DashboardGeneralSettings from './routes/dashboardGeneralSettings';
+import DashboardViewer from './routes/dashboardViewer';
+import DashboardCreateTags from './routes/dashboardCreateTags';
+import DashboardAddArticle from './routes/dashboardAddArticle';
 import ErrorPage from "./utils/error-page";
 
-import logo from './assets/Images/logoDetoure.png';
+import logo from './app_client/assets/Images/logoDetoure.png';
 
 
 import {
@@ -31,11 +46,72 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/bureauetconseil",
+    element: <BureauEtConseil />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/presentation",
+    element: <Presentation />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/projetdesante",
+    element: <ProjetDeSante />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/nosactualites",
+    element: <NosActualite />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/jesuispatient",
+    element: <JeSuisPatient />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/jesuisprofessionnel",
+    element: <JeSuisProfessionnel />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/adherer",
+    element: <CommentAdherer />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
+    errorElement: <ErrorPage />,
+  },
+
+  {
+    path: "/dashboard",
+    element: <DashboardGeneralSettings />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dashboard/viewer",
+    element: <DashboardViewer />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dashboard/createtags",
+    element: <DashboardCreateTags />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/dashboard/addarticle",
+    element: <DashboardAddArticle />,
+    errorElement: <ErrorPage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <PrimeReactProvider>
+    <PrimeReactProvider value={{ unstyled: false }}>
         <div id="container-animation" className='container-animation grid place-items-center'>
           <img src={logo} width='500px' />
         </div>

@@ -19,6 +19,10 @@ export const ls = {
     setFormated (id, value){
         localStorage.setItem(id, JSON.stringify(value));
         window.dispatchEvent(new Event("storage"));
+    },
+
+    rm (id){
+        return localStorage.removeItem(id);
     }
 };
 
@@ -39,5 +43,9 @@ export const ss = {
     setFormated (id, value){
         sessionStorage.setItem(id, JSON.stringify(value));
         window.dispatchEvent(new Event("storage"));
+    },
+
+    rm (id){
+        sessionStorage.removeItem(id);
     }
 };

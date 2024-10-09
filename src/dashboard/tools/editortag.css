@@ -1,0 +1,9 @@
+.is-editable:hover{
+    cursor: pointer;
+    border: 2px solid blue;
+}
+
+.id-editable{
+    color: rgb(0, 0, 146);
+    font-weight: bold;
+}
