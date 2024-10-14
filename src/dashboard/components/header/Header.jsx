@@ -8,7 +8,6 @@ import fb from '../../assets/Images/fb.png';
 import linkedin from '../../assets/Images/linkedin.png';
 
 
-// Le but du header est uniquement de gérer la gestion d'affichage autre part que dans le corps du composant tableau de bord.
 
 function Header (props) {
 

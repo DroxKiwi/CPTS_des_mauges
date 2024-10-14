@@ -187,8 +187,8 @@ Gestion animation
   }
 }
 
-.animate-bounce{
-  animation: bounce 1s infinite;
+.animate-bounce-mod{
+  animation: bounce 2s infinite;
 
   @keyframes bounce {
     0%, 100% {

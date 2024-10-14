@@ -5,6 +5,7 @@ import { Card } from 'primereact/card';
 import { Badge } from 'primereact/badge';
 import Header from '../../header/Header';
 import { API_actualites } from '../../services/api/actualitesServices';
+import { Tag } from 'primereact/tag';
 
 import EditorTag from '../../../dashboard/tools/EditorTag';
 
@@ -18,7 +19,8 @@ function NosActualite (props) {
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
-    const [data, setData] = useState(null);
+    const [allTags, setAllTags] = useState([]);
+    const [data, setData] = useState([]);
       
     useEffect(() => {
         setDocHeight(window.innerHeight - props.headerHeight);
@@ -30,7 +32,9 @@ function NosActualite (props) {
         const getData = async () => {
             try {
                 setData(await API_actualites.get_all());
+                setAllTags(await API_actualites.get_all_tags());
                 console.log(data);
+                console.log(allTags);
             }
             catch(error){
                 console.error(error);
@@ -39,9 +43,38 @@ function NosActualite (props) {
         getData();
     }, []);
 
-    const header = (
-        <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
-    );
+    const header = (d) => {
+        if (d.img !== null && d.img !== undefined){
+            return (
+                <img alt="Card" src={d.img} />
+            )
+        }
+        else {
+            return (
+                <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+            )
+        }
+    };
+
+    const RenderTag = (props) => {
+        console.log(data, allTags, props.tagid);
+        if (allTags.length > 0){
+            for (let i = 0; i < allTags.length; i++) {
+                console.log(allTags[i], props.tagid);
+                if (allTags[i].tag_id === props.tagid) {
+                    console.log(allTags[i]);
+                    return (
+                        <Tag value={allTags[i].name} style={{backgroundColor: '#' + allTags[i].color}} />
+                    )
+                }
+            }
+        }
+        else {
+            return (
+                null
+            )
+        }
+    }
 
     if (window.innerWidth < 1468){
         return (
@@ -62,9 +95,8 @@ function NosActualite (props) {
                                 <div className='grid grid-cols-1'>
                                     {
                                         data.data.map((d) => (
-                                            <Card title={d.name} header={header} className="m-10 h-[10%]">
-                                                <Badge style={{backgroundColor: "#0A727B"}} value="" size="xlarge"></Badge>
-    
+                                            <Card title={d.name} header={() => header(d)} className="m-10 h-[10%]">
+                                                <RenderTag tagid={d.tagid}/>
                                             </Card>
                                         ))
                                     }
@@ -100,8 +132,8 @@ function NosActualite (props) {
                                         data.map((d) => (
                                             <EditorTag dataObject={d} id={d.article_id} type="article">
                                                 <div>
-                                                    <Card title={d.name} header={header} className="m-10 h-[10%]">
-                                                        <Badge style={{backgroundColor: "#0A727B"}} value="" size="xlarge"></Badge>            
+                                                    <Card title={d.name} header={() => header(d)} className="m-10 h-[10%]">
+                                                        <RenderTag tagid={d.tagid}/>
                                                     </Card>
                                                 </div>
                                             </EditorTag>
