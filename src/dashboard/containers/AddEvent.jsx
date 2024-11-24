@@ -11,7 +11,7 @@ import { API_tagsDash } from '../services/api/tags/tagsServicesDash';
 import { Dropdown } from 'primereact/dropdown';
 import { API_actualitesDash } from '../services/api/articles/actualitesServicesDash';
 
-function AddArticle () {
+function AddEvent () {
     
     const [nameArticle, setNameArticle] = useState(null);
     const [imgArticle, setImgArticle] = useState(null);
@@ -181,4 +181,4 @@ function AddArticle () {
     )
 }
 
-export default AddArticle;
+export default AddEvent;

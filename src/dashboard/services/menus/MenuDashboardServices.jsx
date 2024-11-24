@@ -1,6 +1,7 @@
 import { Badge } from 'primereact/badge';
 import { ls, ss } from '../../../utils/store';
 import { Dialog } from 'primereact/dialog';
+import { API_actualitesDash } from '../api/articles/actualitesServicesDash';
 
 const path = 'src/services/MenuDashboardServices.jsx';
 
@@ -62,7 +63,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'home',
-                    label: 'Accueil',
+                    label: 'accueil',
                     icon:'pi pi-fw pi-code',
                     command:()=>{
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -75,7 +76,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'pre',
-                    label: 'Présentation',
+                    label: 'presentation',
                     icon:'pi pi-fw pi-code',
                     command:()=>{
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -88,7 +89,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'bec',
-                    label: 'Bureau et Conseil',
+                    label: 'bureau et conseil',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -101,7 +102,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'prj',
-                    label: 'Nos projet / Mission',
+                    label: 'projets / missions',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -115,32 +116,33 @@ export const MenuDashboard = {
 
                 {
                     appName: 'act',
-                    label: 'Nos Actualités',
+                    label: 'actualites',
                     icon:'pi pi-fw pi-code',
-                    items: [
-                        {
-                            label: 'Visualiser',
-                            icon: 'pi pi-eye',
-                            command:()=>{ 
-                                if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                                    window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
-                                }
-                                setUrlViewer("/nosactualites")
-                            },
-                        },
-                        {
-                            label: 'Ajouter',
-                            icon: 'pi pi-plus',
-                            command: () => {
-                                window.top.location.href= 'http://localhost:3000/dashboard/addarticle';   
-                            }
+                    command:()=>{ 
+                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
+                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
                         }
-                    ]
+                        setUrlViewer("/nosactualites")
+                    },
+                    items: [],
+                },
+
+                {
+                    appName: 'agd',
+                    label: 'agenda',
+                    icon:'pi pi-fw pi-code',
+                    command:()=>{ 
+                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
+                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        }
+                        setUrlViewer("/agenda")
+                    },
+                    items: [],
                 },
 
                 {
                     appName: 'jsp',
-                    label: 'Je Suis Patient',
+                    label: 'je suis patient',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -153,7 +155,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'jspr',
-                    label: 'Je Suis Professionnel',
+                    label: 'je suis pro',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -166,7 +168,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'adh',
-                    label: 'Comment Adhérer',
+                    label: 'adherer',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
@@ -179,7 +181,7 @@ export const MenuDashboard = {
 
                 {
                     appName: 'ctc',
-                    label: 'Contact',
+                    label: 'nous contacter',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
                         if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){

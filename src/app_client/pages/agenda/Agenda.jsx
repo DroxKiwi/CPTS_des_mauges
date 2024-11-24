@@ -1,14 +1,14 @@
 
 import { useState, useEffect, useRef } from 'react';
-import "./nosactualites.css";
+import "./agenda.css";
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import Header from '../../header/Header';
-import { API_actualites } from '../../services/api/actualitesServices';
+import { API_events } from '../../services/api/eventsServices';
 import { Tag } from 'primereact/tag';
 
-import EditorTagArticle from '../../../dashboard/tools/EditorTagArticle';
-import EditorWindowArticle from '../../../dashboard/tools/EditorWindowArticle';
+import EditorTagEvent from '../../../dashboard/tools/EditorTagEvent';
+import EditorWindowEvent from '../../../dashboard/tools/EditorWindowEvent';
 
 import { ls, ss } from '../../../utils/store';
 import { Dialog } from 'primereact/dialog';
@@ -18,25 +18,47 @@ import { InputText } from 'primereact/inputtext';
 
 import { Dropdown } from 'primereact/dropdown';
 
-function NosActualite (props) {
+import { Toast } from 'primereact/toast';
+
+function Agenda (props) {
+
+    // Gestion d'erreur à l'écran
+    const toast = useRef(null);
+    const triggerError = (error) => {
+        toast.current.show({ severity: 'warn', summary: 'Erreur', detail: error.message, sticky: true });
+    };
+    // Gestion d'erreur à l'écran
+
+    const todayF = new Date();
+    const today = todayF.getFullYear() + '-' + (todayF.getMonth()+1) + '-' + todayF.getDate();
+    const todayJSf = new Date(today);
 
     useEffect(() => {
-        ss.set('window', 'actu');
+        ss.set('window', 'agenda');
+        const test = new Date('2024-11-24')
+        if (todayJSf > test){
+            console.log("todayJSf > test")
+        }
+        else {
+            console.log("todayJSf < test")
+        }
     }, []);
   
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
     const [allTags, setAllTags] = useState([]);
     const [data, setData] = useState([]);
-    const [detailArticleVisible, setDetailArticleVisible] = useState(false);
+    const [detailEventVisible, setDetailEventVisible] = useState(false);
     const [selectedDetail, setSelectedDetail] = useState(null);
     const [searchValue, setSearchValue] = useState("");
     const [selectedTagSearch, setSelectedTagSearch] = useState(null);
 
     const filters = [
         { name: 'Par tags', value: 'bytag' },
-        { name: 'Par date + récente', value: 'bydatedesc' },
-        { name: 'Par date + anciennce', value: 'bydateasc' },
+        { name: 'Par date publication + récente', value: 'bydatedesc' },
+        { name: 'Par date publication + anciennce', value: 'bydateasc' },
+        { name: 'Par date d\'évenement + récente', value: 'bystartdesc'},
+        { name: 'Par date d\'évenement + ancienne', value: 'bystartasc'},
         { name: 'Aucun', value: null },
     ]
     const [selectedFilter, setSelectedFilter] = useState(filters[filters.length - 1]);
@@ -47,6 +69,7 @@ function NosActualite (props) {
             setDocWidth(window.innerWidth - 10);
         }
         catch(error){
+            triggerError(error);
             console.error(error);
         }
     }, [window.innerHeight]);
@@ -56,18 +79,20 @@ function NosActualite (props) {
             //setData(nactusServ);
             const getData = async () => {
                 try {
-                    setData(await API_actualites.get_all());
-                    var allTagsTemp = await API_actualites.get_all_tags();
+                    setData(await API_events.get_all());
+                    var allTagsTemp = await API_events.get_all_tags();
                     allTagsTemp.push({ name: 'Aucun', tag_id: null });
                     setAllTags(allTagsTemp);
                 }
                 catch(error){
+                    triggerError(error);
                     console.error(error);
                 }
             }
             getData();   
         }
         catch(error){
+            triggerError(error);
             console.error(error);
         }
     }, []);
@@ -75,14 +100,12 @@ function NosActualite (props) {
     // Trier la recherche
     useEffect(() => {
         try {
-            console.log(selectedFilter);
             var temp = JSON.parse(JSON.stringify(data));
             var result = [];
             switch (selectedFilter){
                 case 'bytag':
                     for (let i = 0; i < allTags.length; i++){
                         for (let j = 0; j < temp.length; j++){
-                            console.log(allTags[i], temp[j]);
                             if (allTags[i].tag_id === temp[j].tagid){
                                 result.push(temp[j]);
                             }
@@ -91,18 +114,54 @@ function NosActualite (props) {
                     setData(result);
                     break;
                 case 'bydatedesc':
-                    var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => b.article_id - a.article_id)));
-                    for (let i = 0; i < sortedArr.length; i++) {
-                        console.log(sortedArr[i].article_id);
-                    }
+                    var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => b.event_id - a.event_id)));
                     setData(sortedArr);
                     break;
                 case 'bydateasc':
-                    var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => a.article_id - b.article_id)));
-                    for (let i = 0; i < sortedArr.length; i++) {
-                        console.log(sortedArr[i].article_id);
-                    }
+                    var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => a.event_id - b.event_id)));
                     setData(sortedArr);
+                    break;
+                case 'bystartdesc':
+                    var dates = [];
+                    for (let i = 0; i < data.length; i++) {
+                        dates.push(
+                            {
+                                dateM: new Date(data[i].startdate),
+                                event_id: data[i].event_id
+                            }
+                        );
+                    }
+                    var sortedArr = dates.sort((a, b) => b.dateM - a.dateM);
+                    var finalArr = [];
+                    for (let i = 0; i < data.length; i++) {
+                        for (let j = 0; j < data.length; j++){
+                            if (sortedArr[i].event_id === data[j].event_id){
+                                finalArr.push(data[j]);
+                            }
+                        }
+                    }
+                    setData(finalArr);
+                    break;
+                case 'bystartasc':
+                    var dates = [];
+                    for (let i = 0; i < data.length; i++) {
+                        dates.push(
+                            {
+                                dateM: new Date(data[i].startdate),
+                                event_id: data[i].event_id
+                            }
+                        );
+                    }
+                    var sortedArr = dates.sort((a, b) => a.dateM - b.dateM);
+                    var finalArr = [];
+                    for (let i = 0; i < data.length; i++) {
+                        for (let j = 0; j < data.length; j++){
+                            if (sortedArr[i].event_id === data[j].event_id){
+                                finalArr.push(data[j]);
+                            }
+                        }
+                    }
+                    setData(finalArr);
                     break;
                 case null:
                     break;
@@ -110,6 +169,7 @@ function NosActualite (props) {
             }
         }
         catch(error){
+            triggerError(error);
             console.error(error);
         }
     }, [selectedFilter]);
@@ -128,6 +188,7 @@ function NosActualite (props) {
             }
         }
         catch(error){
+            triggerError(error);
             console.error(error);
             return <ErrorComponent error={error} />
         }
@@ -151,6 +212,7 @@ function NosActualite (props) {
             }
         }
         catch(error){
+            triggerError(error);
             console.error(error);
             return <ErrorComponent error={error} />
         }
@@ -158,10 +220,11 @@ function NosActualite (props) {
 
     function handleOpenArticle(d) {
         try {
-            setDetailArticleVisible(true);
+            setDetailEventVisible(true);
             setSelectedDetail(d);
         }
         catch(error){
+            triggerError(error);
             console.error(error);
             return <ErrorComponent error={error} />
         }
@@ -179,28 +242,16 @@ function NosActualite (props) {
             }
         }
         catch(error){
+            triggerError(error);
             console.error(error);
             return <ErrorComponent error={error} />
         }
     };
 
-    useEffect(() => {
-        try {
-            if (selectedTagSearch !== null){
-                console.log("tag search : " + selectedTagSearch.tag_id);
-                console.log(data);
-            }
-        }
-        catch(error){
-            console.error(error);
-            return <ErrorComponent error={error} />
-        }
-    }, [selectedTagSearch])
-
     try {
         if (window.innerWidth < 1468){
             return (
-                <EditorWindowArticle>
+                <EditorWindowEvent>
                 <div className='overflow-x-hidden' style={{width: docWidth - 10, height: docHeight}}>
                     <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     <div className='grid place-items-center card bg-transparent'>
@@ -233,17 +284,18 @@ function NosActualite (props) {
                         }
                     </div>
                 </div>
-                </EditorWindowArticle>
+                </EditorWindowEvent>
             )
         }
         else {
             return (
-                <EditorWindowArticle>
+                <EditorWindowEvent>
+                <Toast ref={toast} />
                 <div className='overflow-x-hidden'>
                     <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     <div className='grid place-items-center card bg-transparent'>
                         <h2 className='titleactu'>
-                            L'actualité de la CPTS
+                            L'agenda de la CPTS
                         </h2>
                         <div className='grid grid-cols-3 gap-4 place-items-center'>
                             <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
@@ -269,14 +321,28 @@ function NosActualite (props) {
                                                                         <>
                                                                             {
                                                                                 selectedTagSearch.tag_id === null || d.tagid === selectedTagSearch.tag_id ? (
-                                                                                    <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
-                                                                                        <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                            <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
-                                                                                                <RenderTag tagid={d.tagid}/>
-                                                                                                <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                            </Card>
-                                                                                        </div>
-                                                                                    </EditorTagArticle>
+                                                                                    <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
+                                                                                        {
+                                                                                            d.actif == true || (todayJSf > (new Date(d.enddate.split("T")[0]))) ? (
+                                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
+                                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                    </Card>
+                                                                                                </div>
+                                                                                            ) :
+                                                                                            (
+                                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
+                                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                    </Card>
+                                                                                                </div>
+                                                                                            )
+                                                                                        }
+                                                                                    </EditorTagEvent>
                                                                                 ) : 
                                                                                 (
                                                                                     null
@@ -285,18 +351,32 @@ function NosActualite (props) {
                                                                         </>
                                                                     ) :
                                                                     (
-                                                                        <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
-                                                                            <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
-                                                                                    <RenderTag tagid={d.tagid}/>
-                                                                                    <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                </Card>
-                                                                            </div>
-                                                                        </EditorTagArticle>
+                                                                        <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
+                                                                        {
+                                                                            (d.actif == true && (todayJSf < (new Date(d.enddate.split("T")[0])))) ? (
+                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
+                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                    </Card>
+                                                                                </div>
+                                                                            ) :
+                                                                            (
+                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] bg-gray-400">
+                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                    </Card>
+                                                                                </div>
+                                                                            )
+                                                                        }
+                                                                        </EditorTagEvent>
                                                                     )
                                                                 }
                                                             </>
-                                                        ) : 
+                                                        ) :
                                                         (
                                                             null
                                                         )
@@ -312,10 +392,13 @@ function NosActualite (props) {
                             )
                         }
                     </div>
-                    <Dialog className='h-[80dvh] w-[60dvw]' visible={detailArticleVisible} onHide={() => setDetailArticleVisible(false)}>
+                    <Dialog className='h-[80dvh] w-[60dvw]' visible={detailEventVisible} onHide={() => setDetailEventVisible(false)}>
                         {
                             selectedDetail !== null ? (
                                 <Card title={selectedDetail.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedDetail.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={headerDetail} className="md:w-25rem">
+                                    <p>
+                                        {selectedDetail.startdate.split('T')[0]} au {selectedDetail.enddate.split('T')[0]}
+                                    </p>
                                     <div>
                                         {
                                             selectedDetail.description.split("&lt;iframe")[1] !== undefined ? (
@@ -337,14 +420,15 @@ function NosActualite (props) {
                         }
                     </Dialog>
                 </div>
-                </EditorWindowArticle>
+                </EditorWindowEvent>
             )
         }
     }
     catch(error){
+        triggerError(error);
         console.error(error);
         return <ErrorComponent error={error} />
     }
 }
 
-export default NosActualite;
+export default Agenda;

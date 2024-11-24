@@ -1,15 +1,15 @@
 
 import { useState, useEffect, useRef } from 'react';
-import jspServ from '../../services/jesuispatient.json';
-import pdftest1 from '../../services/jesuispatientpdf1.pdf';
-import pdftest2 from '../../services/jesuispatientpdf2.pdf';
-import pdftest3 from '../../services/jesuispatientpdf3.pdf';
-import pdftest4 from '../../services/jesuispatientpdf4.pdf';
-import pdftest5 from '../../services/jesuispatientpdf5.pdf';
 import "../jesuispatient/jesuispatient.css";
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
+import { Card } from 'primereact/card';
+import ErrorComponent from '../../../dashboard/tools/ErrorComponent';
+import { API_prods } from '../../services/api/prodsServices';
+import EditorWindowProd from '../../../dashboard/tools/EditorWindowProd';
+import EditorTagProd from '../../../dashboard/tools/EditorTagProd';
 import Header from '../../header/Header';
+
 
 import { ls, ss } from '../../../utils/store';
 
@@ -22,111 +22,90 @@ function JeSuisProfessionnel (props) {
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
     const [data, setData] = useState(null);
-    const [dataPDF, setDataPDF] = useState([]);
-    const [dialogPdfVisible, setDialogPdfVisible] = useState(false);
-    const [pdfSelected, setPdfSelected] = useState(null);
+    const [detailProdVisible, setDetailProdVisible] = useState(false);
+    const [selectedDetail, setSelectedDetail] = useState(null);
+
+    useEffect(() => {
+        try {
+            //setData(nactusServ);
+            const getData = async () => {
+                try {
+                    setData(await API_prods.get_all());
+                }
+                catch(error){
+                    console.error(error);
+                }
+            }
+            getData();   
+        }
+        catch(error){
+            console.error(error);
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(data)
+    }, [data])
       
     useEffect(() => {
         setDocHeight(window.innerHeight);
         setDocWidth(window.innerWidth - 10);
     }, [window.innerHeight]);
 
-    useEffect(() => {
-        var jspServTemp = jspServ;
-        var pdfTabTemp = [];
-        pdfTabTemp.push(pdftest1);
-        pdfTabTemp.push(pdftest2);
-        pdfTabTemp.push(pdftest3);
-        pdfTabTemp.push(pdftest4);
-        pdfTabTemp.push(pdftest5);
-        for (let i = 0; i < pdfTabTemp.length; i++){
-            jspServTemp.data[i].pdf = pdfTabTemp[i];
+    function handleOpenProd(d) {
+        try {
+            setDetailProdVisible(true);
+            setSelectedDetail(d);
         }
-        setData(jspServTemp);
-        console.log(jspServTemp);
-    }, []);
+        catch(error){
+            console.error(error);
+            return <ErrorComponent error={error} />
+        }
+    };
 
-    function handleSetPdfSelected(i) {
-        setPdfSelected(data.data[i].pdf);
-        setDialogPdfVisible(true);
-    }
+    const header = (d) => {
+        try {
+            if (d.img !== null && d.img !== undefined && d.img !== "null"){
+                return (
+                    <img alt="Card" src={d.img} />
+                )
+            }
+            else {
+                return (
+                    <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+                )
+            }
+        }
+        catch(error){
+            console.error(error);
+            return <ErrorComponent error={error} />
+        }
+    };
 
     if (window.innerWidth < 1468){
         return (
             <div className='overflow-x-hidden jsp' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}> 
-                <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                <div className='grid place-items-center card bg-transparent'>
-                    <h2 className='titlejspmobile'>
-                        Je suis Professionnel
-                    </h2>
-                    { 
-                        data !== null ? (
-                            <div>
-                                <p className='maintext card bg-transparent'>
-                                            <div>
-                                                {data.mainText}
-                                            </div>
-                                </p>
-                                <div className='grid grid-cols-1'>
-                                    {
-                                        data.data.map((d, i) => (
-                                            <div className='grid grid-cols-1'>
-                                                <p>{d.title}</p>
-                                                <p>{d.detail}</p>
-                                                <iframe src={d.pdf} />
-                                                <Button className='w-[300px] my-5 btnopenpdf bg-white' label='Agrandir le PDF' raised text onClick={() => handleSetPdfSelected(i)}></Button>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        ) :
-                        (
-                            null
-                        )
-                    }
-                </div>
-                <Dialog visible={dialogPdfVisible} onHide={() => setDialogPdfVisible(false)}>
-                    {
-                        pdfSelected !== null ? (
-                            <iframe className='h-[80vh] w-[150vh]' src={pdfSelected} />
-                        ) : 
-                        (
-                            null
-                        )
-                    }
-                </Dialog>
+
             </div>
         )
     }
     else {
         return (
-            <div className='overflow-x-hidden jsp' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}> 
-                <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                <div className='grid place-items-center card bg-transparent'>
-                    <h2 className='titlejsp'>
-                        Je suis Professionnel
-                    </h2>
+            <EditorWindowProd>
+                <div className='overflow-x-hidden jsp' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}>
+                    <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     { 
                         data !== null ? (
-                            <div>
-                                <p className='maintext card bg-transparent'>
-                                            <div>
-                                                {data.mainText}
-                                            </div>
-                                </p>
-                                <div className='grid grid-cols-4'>
-                                    {
-                                        data.data.map((d, i) => (
-                                            <div className='grid grid-cols-1'>
-                                                <p>{d.title}</p>
-                                                <p>{d.detail}</p>
-                                                <iframe src={d.pdf} />
-                                                <Button className='w-[300px] my-5 btnopenpdf bg-white' label='Agrandir le PDF' raised text onClick={() => handleSetPdfSelected(i)}></Button>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
+                            <div className='grid grid-cols-4'>
+                                {
+                                    data.map((d) => (
+                                        <EditorTagProd dataObject={d} id={d.prod_id} type="prod" setDetailProdVisible={setDetailProdVisible}>
+                                            <Card onClick={() => setDetailProdVisible(true)} title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[100%] cursor-pointer">
+                                                <p></p>
+                                            </Card>
+                                        </EditorTagProd>
+                                    ))
+                                }
                             </div>
                         ) :
                         (
@@ -134,17 +113,10 @@ function JeSuisProfessionnel (props) {
                         )
                     }
                 </div>
-                <Dialog visible={dialogPdfVisible} onHide={() => setDialogPdfVisible(false)}>
-                    {
-                        pdfSelected !== null ? (
-                            <iframe className='h-[80vh] w-[150vh]' src={pdfSelected} />
-                        ) : 
-                        (
-                            null
-                        )
-                    }
+                <Dialog className='h-[80dvh] w-[60dvw]' visible={detailProdVisible} onHide={() => setDetailProdVisible(false)}>
+
                 </Dialog>
-            </div>
+            </EditorWindowProd>
         )
     }
 }

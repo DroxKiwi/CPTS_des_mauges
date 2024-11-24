@@ -16,6 +16,7 @@ import Presentation from './app_client/pages/presentation/Presentation';
 import BureauEtConseil from './app_client/pages/bureauetconseil/BureauEtConseil';
 import ProjetDeSante from './app_client/pages/projetdesante/ProjetDeSante';
 import NosActualite from './app_client/pages/nosactu/NosActualites';
+import Agenda from './app_client/pages/agenda/Agenda';
 import JeSuisPatient from './app_client/pages/jesuispatient/JeSuisPatient';
 import JeSuisProfessionnel from './app_client/pages/jesuispro/JeSuisProfessionnel';
 import CommentAdherer from './app_client/pages/commentadherer/CommentAdherer';
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
   {
     path: "/nosactualites",
     element: <NosActualite />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/agenda",
+    element: <Agenda />,
     errorElement: <ErrorPage />,
   },
   {

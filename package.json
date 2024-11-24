@@ -17,6 +17,7 @@
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
     "primereact": "^10.8.3",
+    "quill": "^2.0.2",
     "react": "^18.2.0",
     "react-axios": "^2.0.6",
     "react-cookie": "^6.1.1",
@@ -32,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "set REACT_APP_BASE_API_URI=http://127.0.0.1:8001&& set REACT_APP_BASE_APP_URI=https://cptsdesmauges.fr&& react-scripts build",
     "local_local": "set REACT_APP_BASE_API_URI=http://127.0.0.1:8001&& set REACT_APP_BASE_APP_URI=http://localhost:3000&& react-scripts start",
     "local_prod": "set REACT_APP_BASE_API_URI=http://127.0.0.1:8000&& set REACT_APP_BASE_APP_URI=http://localhost:3000&& react-scripts start",
     "test": "jest",

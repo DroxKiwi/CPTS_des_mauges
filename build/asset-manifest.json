@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.fc4baf77.css",
-    "main.js": "/static/js/main.173e909f.js",
+    "main.css": "/static/css/main.118056f9.css",
+    "main.js": "/static/js/main.ce5c0a93.js",
     "static/js/453.6f861318.chunk.js": "/static/js/453.6f861318.chunk.js",
+    "static/js/605.1e38033c.chunk.js": "/static/js/605.1e38033c.chunk.js",
     "static/media/jesuispatientpdf1.pdf": "/static/media/jesuispatientpdf1.82fb91b36c0742701806.pdf",
     "static/media/jesuispatientpdf5.pdf": "/static/media/jesuispatientpdf5.6dde76563abe755014cf.pdf",
     "static/media/ldl.pdf": "/static/media/ldl.0b00b6a961cc41d6ef27.pdf",
@@ -22,6 +23,7 @@
     "static/media/9.png": "/static/media/9.622d58bf8e5966038801.png",
     "static/media/jesuispatientpdf4.pdf": "/static/media/jesuispatientpdf4.2527d0272a8bca4f3a85.pdf",
     "static/media/logoDetoure.png": "/static/media/logoDetoure.7aa25b9567b1b78c8dc5.png",
+    "static/media/logoKDDS.png": "/static/media/logoKDDS.a2e967196bf6dd600c7a.png",
     "static/media/User-Profile.png": "/static/media/User-Profile.76a001d0c402b5637a97.png",
     "static/media/primeicons.eot": "/static/media/primeicons.d44157bdfa026dc877af.eot",
     "static/media/primeicons.woff": "/static/media/primeicons.10d3152104f2208ac82a.woff",
@@ -59,12 +61,13 @@
     "static/media/robinet.png": "/static/media/robinet.c9c47173df067a4c2880.png",
     "static/media/coassoc3.png": "/static/media/coassoc3.f8ae9f5dd1f75bcf7475.png",
     "index.html": "/index.html",
-    "main.fc4baf77.css.map": "/static/css/main.fc4baf77.css.map",
-    "main.173e909f.js.map": "/static/js/main.173e909f.js.map",
-    "453.6f861318.chunk.js.map": "/static/js/453.6f861318.chunk.js.map"
+    "main.118056f9.css.map": "/static/css/main.118056f9.css.map",
+    "main.ce5c0a93.js.map": "/static/js/main.ce5c0a93.js.map",
+    "453.6f861318.chunk.js.map": "/static/js/453.6f861318.chunk.js.map",
+    "605.1e38033c.chunk.js.map": "/static/js/605.1e38033c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fc4baf77.css",
-    "static/js/main.173e909f.js"
+    "static/css/main.118056f9.css",
+    "static/js/main.ce5c0a93.js"
   ]
 }

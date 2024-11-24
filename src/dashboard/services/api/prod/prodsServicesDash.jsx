@@ -2,10 +2,10 @@
 import OptionsFetch from '../../../../utils/optionsFetch';
 import { ls, ss } from '../../../../utils/store';
 
-export const API_actualitesDash = {
+export const API_prodsDash = {
     async get_all(){
         try {
-            const api = process.env.REACT_APP_BASE_API_URI + '/articles/all';
+            const api = process.env.REACT_APP_BASE_API_URI + '/prods/all';
             const answer = await fetch(api, await OptionsFetch.GET());
             return await answer.json();
         }
@@ -17,7 +17,7 @@ export const API_actualitesDash = {
 
     async get_by_id(article_id){
         try {
-            const api = process.env.REACT_APP_BASE_API_URI + '/articles/byid/' + article_id;
+            const api = process.env.REACT_APP_BASE_API_URI + '/prods/byid/' + article_id;
             const answer = await fetch(api, await OptionsFetch.GET());
             return await answer.json();
         }
@@ -55,8 +55,8 @@ export const API_actualitesDash = {
     //    }
     //},
 
-    async create_article(){
-        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/articles/new';
+    async create_prod(){
+        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/prods/new';
         const FormData = require('form-data');
         const formData = new FormData();
         try {
@@ -75,11 +75,11 @@ export const API_actualitesDash = {
         }
     },
 
-    async remove_article(article_id){
-        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/articles/remove';
+    async remove_prod(prod_id){
+        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/prods/remove';
         const FormData = require('form-data');
         const formData = new FormData();
-        formData.append('article_id', article_id);
+        formData.append('prod_id', prod_id);
         try {
             const answer = await fetch(apiCmd, await OptionsFetch.POST(formData)).then((res => {
                 if (res.status === 200) {
@@ -96,9 +96,9 @@ export const API_actualitesDash = {
         }
     },
 
-    async update_article(article_id, name, subtitle, description, base64, tag, actif){
+    async update_prod(article_id, name, subtitle, description, base64, tag, actif){
         console.log(article_id, name, base64, tag, actif);
-        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/articles/update';
+        const apiCmd = process.env.REACT_APP_BASE_API_URI + '/prods/update';
         const FormData = require('form-data');
         const formData = new FormData();
 

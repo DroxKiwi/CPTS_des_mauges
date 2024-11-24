@@ -62,12 +62,12 @@ function Header (props) {
                     <Dialog visible={visible} onHide={() => setVisible(false)} >
                         <div id="tbh" className='grid grid-cols-1 place-items-center'>
                             <img src={logo} height={150} width={150} className='cursor-pointer' onClick={(e) => {handleAnimationPlay(e, '/')}}/>
-                            <Button id='presentation' className='headerButton py-8' text label='Qui sommes nous' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
-                            <Button id='bureauetconseil' className='headerButton py-8' text label='Bureau et conseil d’administration' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
-                            <Button id='projetdesante' className='headerButton py-8' text label='Nos projets / Missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
-                            <Button id='nosactualites' className='headerButton py-8' text label='Nos Actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
-                            <Button id='adherer' className='headerButton py-8' text label='Comment adhérer' onClick={(e) => {handleAnimationPlay(e, '/adherer')}}></Button>
-                            <Button id='contact' className='headerButton py-8' text label='Nous Contacter' onClick={(e) => {handleAnimationPlay(e, '/contact')}}></Button>
+                            <Button id='presentation' className='headerButton py-8' text label='qui sommes nous' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
+                            <Button id='bureauetconseil' className='headerButton py-8' text label='bureau conseil d’administration' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
+                            <Button id='projetdesante' className='headerButton py-8' text label='nos projets missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
+                            <Button id='nosactualites' className='headerButton py-8' text label='nos actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
+                            <Button id='adherer' className='headerButton py-8' text label='comment adhérer' onClick={(e) => {handleAnimationPlay(e, '/adherer')}}></Button>
+                            <Button id='contact' className='headerButton py-8' text label='contacts' onClick={(e) => {handleAnimationPlay(e, '/contact')}}></Button>
                         </div>
                     </Dialog>
                 </div>
@@ -79,14 +79,15 @@ function Header (props) {
                     <div className='grid grid-cols-12'>
                         <div id="tbh" className='w-screen header col-span-8 grid grid-cols-11'>
                             <img src={logo} height={150} width={150} className='cursor-pointer' onClick={(e) => {handleAnimationPlay(e, '/')}}/>
-                            <Button id='presentation' className='headerButton my-10' text label='Qui sommes nous' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
-                            <Button id='bureauetconseil' className='headerButton my-10' text label='Bureau et conseil d’administration' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
-                            <Button id='projetdesante' className='headerButton my-10' text label='Nos projets / Missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
-                            <Button id='nosactualites' className='headerButton my-10' text label='Nos Actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
-                            <Button id='jesuispatient' className='headerButton my-10' text label='Je suis patient' onClick={(e) => {handleAnimationPlay(e, '/jesuispatient')}}></Button>
-                            <Button id='jesuisprofessionnel' className='headerButton my-10' text label='Je suis professionnel' onClick={(e) => {handleAnimationPlay(e, '/jesuisprofessionnel')}}></Button>
-                            <Button id='adherer' className='headerButton my-10' text label='Comment adhérer' onClick={(e) => {handleAnimationPlay(e, '/adherer')}}></Button>
-                            <Button id='contact' className='headerButton my-10' text label='Nous Contacter' onClick={(e) => {handleAnimationPlay(e, '/contact')}}></Button>
+                            <Button id='presentation' className='headerButton my-10' text label='qui sommes nous' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
+                            <Button id='bureauetconseil' className='headerButton my-10' text label='bureau et CA' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
+                            <Button id='projetdesante' className='headerButton my-10' text label='nos projets missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
+                            <Button id='nosactualites' className='headerButton my-10' text label='nos actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
+                            <Button id='agenda' className='headerButton my-10' text label='agenda' onClick={(e) => {handleAnimationPlay(e, '/agenda')}}></Button>
+                            <Button id='jesuispatient' className='headerButton my-10' text label='je suis patient' onClick={(e) => {handleAnimationPlay(e, '/jesuispatient')}}></Button>
+                            <Button id='jesuisprofessionnel' className='headerButton my-10' text label='je suis professionnel' onClick={(e) => {handleAnimationPlay(e, '/jesuisprofessionnel')}}></Button>
+                            <Button id='adherer' className='headerButton my-10' text label='comment adhérer' onClick={(e) => {handleAnimationPlay(e, '/adherer')}}></Button>
+                            <Button id='contact' className='headerButton my-10' text label='contacts' onClick={(e) => {handleAnimationPlay(e, '/contact')}}></Button>
                         </div>
                         <div className='grid grid-cols-2 col-start-11 col-end-12'>
                             <div className='iconMediaHeader grid place-items-center ' onClick={() => window.open('https://www.facebook/adrcptmauges.fr')}>
