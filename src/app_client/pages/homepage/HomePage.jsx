@@ -82,9 +82,9 @@ function HomePage(props) {
   }
   else {
     return (
-      <div>
+      <div className=''>
         <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-        <div id='homepage' className="homepagebackgroundmain" style={{width: docWidth, height: docHeight}}>
+        <div id='homepage' className="homepagebackgroundmain" style={{width: docWidth + 10, height: docHeight}}>
           <div className='grid grid-rows-12'>
             <div className='absolute' style={{width: window.innerWidth - 10, height: docHeight}}>
               {/*

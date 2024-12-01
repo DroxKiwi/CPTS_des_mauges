@@ -180,11 +180,11 @@ function EditorTagArticle (props) {
 
     function handleSetVisible(){
         try {
-            props.setDetailArticleVisible(false);
             const getData = async () => {
                 setSelected(await API_actualitesDash.get_by_id(props.id));
             }
             getData();
+            props.setDetailArticleVisible(false);
         }
         catch(error){
             console.error(error);
