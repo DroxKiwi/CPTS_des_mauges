@@ -1,41 +1,38 @@
 
 
 .footer{
+    width: 100dvw;
+    height: 20dvh;
     cursor: pointer;
-    z-index: 8999;
-    position: fixed;
-    bottom: 0px;
-    width: 1920px;
-    height: 35px;
-    flex-shrink: 0;
-    background: #43cdd7e8;
-    border: 1px solid yellowgreen;
-    transition: 500ms;
+    background: #43cdd700;
 }
-
-.footer:hover{
-    transition: 500ms;
-    height: 80%;
-}
-
-@media screen and (min-width: 1468px) {
-    .footer{
-        cursor: pointer;
-        z-index: 8999;
-        position: fixed;
-        bottom: 0px;
-        width: 1920px;
-        height: 35px;
-        flex-shrink: 0;
-        background: #43cdd7e8;
-        border: 1px solid yellowgreen;
-        transition: 500ms;
-    }
-}
-
-@media screen and (min-height: 1100px){
-    .footer:hover{
-        transition: 500ms;
-        height: 250px;
-    }    
-}
+  
+  .container {
+    width: 100dvw;
+    height: 100dvh;
+    background-color: white; /* Fond blanc */
+    position: relative;
+    overflow: hidden; /* Masque tout ce qui dépasse */
+  }
+  
+  .distorted-oval {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 1000px; /* La forme dépasse des côtés */
+    height: 1000px; /* Hauteur ajustable */
+    background-color: #007bff; /* Couleur de la forme */
+    clip-path: path(
+        "M 0 100 C 10 90, 20 95, 30 85 S 50 85, 60 95 S 80 90, 100 100 L 100 100 L 0 100 Z"
+    ); /* Courbes arrondies */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .distorted-oval p {
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0;
+  }

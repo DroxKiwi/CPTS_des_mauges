@@ -1,22 +1,8 @@
 
-.homepagebackgroundmain{
-    background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
-}
 
-.bg{
-    z-index: 0;
-    position: absolute;
-}
 
-.test1{
-    transition: 3000ms;
-}
 
-.test2{
-    transition: 3000ms;
-    width: 0px !important;
-}
-
-.marginmobile{
-    margin-top: 150px;
+.homepage-sector-1{
+    height: 100dvh;
+    width: 100dvw;
 }

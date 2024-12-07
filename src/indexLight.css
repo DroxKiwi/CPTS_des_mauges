@@ -1,6 +1,5 @@
 
 body {
-  background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -32,47 +31,6 @@ html {
 /*
 Gestion scrollbar
 */
-
-::-webkit-scrollbar {
-  width: 0px;
-  height: 10px;
-}
-
-@media screen and (min-width: 1468px) {
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #6f84ff;
-    border: 1px solid rgb(255, 255, 255);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); 
-  }
-  ::-webkit-scrollbar-thumb:window-inactive {
-    background: #6f84ff;
-    border: 1px solid rgb(255, 255, 255);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #abb7ff;
-    border: 1px solid rgb(255, 255, 255);
-    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  }
-}
-
-
 
 @tailwind utilities;
 
@@ -146,27 +104,6 @@ Gestion scrollbar
   transition: 500ms;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 Gestion animation
 */
@@ -214,37 +151,6 @@ Element desactivé
 /*
 Gestion scrollbar
 */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.3); 
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #6f84ff;
-  border: 1px solid rgb(255, 255, 255);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); 
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: #6f84ff;
-  border: 1px solid rgb(255, 255, 255);
-}
-::-webkit-scrollbar-thumb:hover {
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  background: #abb7ff;
-  border: 1px solid rgb(255, 255, 255);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); 
-}
 
 /*
 Gestion loader

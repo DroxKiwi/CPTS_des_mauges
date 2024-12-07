@@ -13,13 +13,26 @@ import InfoBand from './components/InfoBand';
 import bg from '../../assets/Images/backgrounds/bg-1.png';
 import Acturesume from './components/Acturesume';
 import Header from '../../header/Header';
-import Footer from '../../footer/Footer';
 
 function HomePage(props) {
+
+  const [docHeight, setDocHeight] = useState(null);
+  const [docWidth, setDocWidth] = useState(null);
 
   useEffect(() => {
     ss.set('window', 'home');
   }, []);
+
+  useEffect(() => {
+      setDocHeight(window.innerHeight);
+      setDocWidth(window.innerWidth - 10);
+
+      var body = document.body,
+      html = document.documentElement;
+
+      var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+      setDocHeight(height);
+  }, [window.innerHeight]);
 
   if (window.innerWidth < 1468){
     return (
@@ -27,7 +40,7 @@ function HomePage(props) {
         <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
         <div id='homepage' className="homepagebackgroundmain">
           <div className='grid grid-rows-12'>
-            <div className='absolute overflow-hidden'>
+            <div className='absolute overflow-hidden' style={{width: window.innerWidth, height: docHeight}}>
               {/*
                 <Button label='test' onClick={test} ></Button>
               */}
@@ -71,14 +84,13 @@ function HomePage(props) {
     return (
       <div className=''>
         <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-        <div id='homepage' className="homepagebackgroundmain">
+        <div id='homepage' className="homepagebackgroundmain" style={{width: docWidth + 10, height: docHeight}}>
           <div className='grid grid-rows-12'>
-            <div className='absolute'>
-              <div className='homepage-sector-1 bg-red-500'>
-
-              </div>
-
+            <div className='absolute' style={{width: window.innerWidth - 10, height: docHeight}}>
               {/*
+                <Button label='test' onClick={test} ></Button>
+              */}
+              <img src={bg} className='bg' />
               <div className='cursor-pointer'>
                 <ButtonAbs selected={'decouvrir'} setChildW={props.setChildW}/>
               </div>
@@ -94,6 +106,11 @@ function HomePage(props) {
               <div className='my-10 row-start-3 row-end-4'>
                 <CardProject setChildW={props.setChildW} />
               </div>
+              {/*
+              <div className='cursor-pointer'>
+                <ButtonAbs selected={'actualites'} setChildW={props.setChildW}/>
+              </div>
+              */}
               <div className='row-start-4 row-end-5 h-[400px]'>
                 <Acturesume setChildW={props.setChildW}/>
               </div>
@@ -109,8 +126,6 @@ function HomePage(props) {
               <div>
                 <InfoBand setChildW={props.setChildW} />
               </div>
-              */}
-              <Footer />
             </div>
           </div>
         </div>
@@ -118,5 +133,6 @@ function HomePage(props) {
     );
   }
 }
+
 
 export default HomePage;

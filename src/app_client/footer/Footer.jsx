@@ -6,19 +6,18 @@ import { useEffect } from 'react';
 
 function Footer (props){
 
-    useEffect(() => {
-        document.getElementById('divFooter').addEventListener('mouseover', () => {
-            document.getElementById('imgHandDown').classList.remove('animate-pulse')
-        })
-        document.getElementById('divFooter').addEventListener('mouseleave', () => {
-            document.getElementById('imgHandDown').classList.add('animate-pulse')
-        })
-    }, [])
-
     return (
         <div id='divFooter' className="footer">
-            <img id='imgHandDown' src={handDown} width={30} className='animate-pulse' />
-            <FooterMedia docWidth={props.docWidth} setChildW={props.setChildW} />
+            {/* 
+                <img id='imgHandDown' src={handDown} width={30} className='animate-pulse' />
+                <FooterMedia docWidth={props.docWidth} setChildW={props.setChildW} />
+            */}
+            <div class="container">
+                <div class="distorted-oval">
+                    <p>Texte sur l'ovale</p>
+                </div>
+            </div>
+
         </div>
     )
 }

@@ -1,42 +1,21 @@
 
-.jsp{
-    background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
-}
-
-.titlejsp{
-    color: #0A727B;
-    font-family: "Cooper Black";
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.maintext{
-    color: #000;
-    text-align: center;
-    font-family: "Comic Sans MS";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
-.btnopenpdf{
-    transition: 500ms;
-}
-
-.btnopenpdf:hover{
-    transition: 500mx;
-    background-color: #0A727B;
-    color: aliceblue;
-}
 
 @media screen and (min-width: 1468px){
+    
     .titlejsp{
         color: #0A727B;
         font-family: "Cooper Black";
         font-size: 60px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+    
+    .maintextjsp{
+        color: #000;
+        text-align: center;
+        font-family: "Comic Sans MS";
+        font-size: 20px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
