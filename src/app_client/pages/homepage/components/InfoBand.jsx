@@ -30,7 +30,7 @@ function InfoBand (props) {
     }
     else {
         return (
-            <div>
+            <div className='mb-10'>
                 <div className="infoband infoband1 grid place-items-center" onClick={() => handleClick("/jesuispatient")} >
                     <p className='infobandtext'>
                         Vous souhaitez connaître les professionnels de santé à proximité ? 

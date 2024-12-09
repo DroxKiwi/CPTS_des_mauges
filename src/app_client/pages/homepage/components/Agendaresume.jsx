@@ -1,12 +1,12 @@
 
 import { useState, useEffect, useRef } from 'react';
-import './acturesume.css';
+import './agendaresume.css';
 import { Card } from 'primereact/card';
 import { Carousel } from 'primereact/carousel';
-import { API_actualites } from '../../../services/api/actualitesServices';
+import { API_events } from '../../../services/api/eventsServices';
 import { Tag } from 'primereact/tag';
 
-function Acturesume () {
+function Agendaresume () {
 
     const [data, setData] = useState(null);
     const [allTags, setAllTags] = useState([]);
@@ -15,8 +15,8 @@ function Acturesume () {
         try {
             const getData = async () => {
                 try {
-                    setData(await API_actualites.get_all());
-                    var allTagsTemp = await API_actualites.get_all_tags();
+                    setData(await API_events.get_all());
+                    var allTagsTemp = await API_events.get_all_tags();
                     allTagsTemp.push({ name: 'Aucun', tag_id: null });
                     setAllTags(allTagsTemp);
                 }
@@ -73,9 +73,10 @@ function Acturesume () {
 
     const actuTemplate = (d) => {
         return (
-            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="h-[85dvh] w-[70dvw] cardactu">
+            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="m-10 h-[33dvh] w-[15dvw] cardagenda">
                 <RenderTag tagid={d.tagid}/>
-                <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                <p>Débute le {d.startdate.split("T")[0]}</p>
+                <p>Se termine le {d.enddate.split("T")[0]}</p>
             </Card>
         )
     };
@@ -83,12 +84,12 @@ function Acturesume () {
     const responsiveOptions = [
         {
             breakpoint: '1468px',
-            numVisible: 3,
+            numVisible: 1,
             numScroll: 1
         },
         {
             breakpoint: '1100px',
-            numVisible: 2,
+            numVisible: 1,
             numScroll: 1
         },
         {
@@ -100,16 +101,13 @@ function Acturesume () {
 
     return (
         <div className='grid place-items-center'>
-            <div className='grid place-items-center'>
-                <h2 className='title-acturesume'>A la une</h2>
+            <div className=''>
+                <h2 className='title-acturesume'>Nos évenements du moments</h2>
             </div>
-            <div className="flex justify-content-center">
-                <Carousel value={data} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                    orientation="vertical" verticalViewPortHeight="86dvh"
-                    autoplayInterval={10000} itemTemplate={actuTemplate} />
-            </div>
+            <Carousel value={data} numVisible={4} numScroll={4} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+            autoplayInterval={10000} itemTemplate={actuTemplate} />
         </div>
     )
 }
 
-export default Acturesume;
+export default Agendaresume;

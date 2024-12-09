@@ -1,7 +1,14 @@
 
 
-.nosactu{
-    background: linear-gradient(180deg, #FFF 11.75%, #8DC943 100%);
+.container-root{
+    overflow-x: hidden;
+    background: linear-gradient(#ffffff, #fff4ee);
+    height: 100dvh;
+}
+
+.cardagenda{
+    border: 1px solid black;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .titleactu{

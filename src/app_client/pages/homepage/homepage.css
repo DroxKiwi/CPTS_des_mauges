@@ -1,10 +1,16 @@
 
+.container-root{
+    overflow-x: hidden;
+    background: linear-gradient(#ffffff, #fff4ee);
+}
+
 .homepage-sector-1{
     height: 100dvh;
     width: 100dvw;
 }
 
 .headerformsvg{
+    width: 100%;
     position: absolute;
     z-index: 0;
 }

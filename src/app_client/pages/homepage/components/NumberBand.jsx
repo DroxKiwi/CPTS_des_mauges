@@ -108,7 +108,7 @@ function NumberBand(props) {
     else {
         return (
             <div className='grid place-items-center'>
-                <div className="numberband grid grid-cols-3">
+                <div className="numberband grid grid-cols-3 numberbandborder">
                     <div className='col-span-1 grid place-items-center'>
                         <h2 id="testnumber" className='numbers'>{number1}</h2>
                         <h3 className='numberstitle'>Professionnels de santé libéraux</h3>

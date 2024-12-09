@@ -18,6 +18,8 @@ import { InputText } from 'primereact/inputtext';
 
 import { Dropdown } from 'primereact/dropdown';
 
+import Footer from '../../footer/Footer';
+
 function NosActualite (props) {
 
     useEffect(() => {
@@ -201,7 +203,7 @@ function NosActualite (props) {
         if (window.innerWidth < 1468){
             return (
                 <EditorWindowArticle>
-                <div className='overflow-x-hidden' style={{width: docWidth - 10, height: docHeight}}>
+                <div className='container-root' style={{width: docWidth - 10, height: docHeight}}>
                     <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     <div className='grid place-items-center card bg-transparent'>
                         <h2 className='titleactu'>
@@ -239,7 +241,7 @@ function NosActualite (props) {
         else {
             return (
                 <EditorWindowArticle>
-                <div className='overflow-x-hidden'>
+                <div className='container-root'>
                     <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     <div className='grid place-items-center card bg-transparent'>
                         <h2 className='titleactu'>
@@ -271,7 +273,7 @@ function NosActualite (props) {
                                                                                 selectedTagSearch.tag_id === null || d.tagid === selectedTagSearch.tag_id ? (
                                                                                     <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
                                                                                         <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                            <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
+                                                                                            <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardactu">
                                                                                                 <RenderTag tagid={d.tagid}/>
                                                                                                 <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                             </Card>
@@ -287,7 +289,7 @@ function NosActualite (props) {
                                                                     (
                                                                         <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
                                                                             <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
+                                                                                <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardactu">
                                                                                     <RenderTag tagid={d.tagid}/>
                                                                                     <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                 </Card>
@@ -337,6 +339,7 @@ function NosActualite (props) {
                         }
                     </Dialog>
                 </div>
+                <Footer />
                 </EditorWindowArticle>
             )
         }
