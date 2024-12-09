@@ -67,7 +67,8 @@ function CoAssoc (props) {
     else {
         return (
             <div className='grid place-items-center'>
-                <div className="coassoc grid place-items-center">
+                <h2 className='title-coassoc'>Nos partenaires de santé</h2>
+                <div className="coassoc">
                     <Carousel value={coassoc} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={coassocTemplate} />
                 </div>
             </div>

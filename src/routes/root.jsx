@@ -20,7 +20,7 @@ function Root () {
     }, []);
 
     return (
-        <div className="wrapper">
+        <div>
             <HomePage />
         </div>
     )

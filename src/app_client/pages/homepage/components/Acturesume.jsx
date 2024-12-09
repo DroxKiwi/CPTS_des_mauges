@@ -99,7 +99,10 @@ function Acturesume () {
     ];
 
     return (
-        <div className='w-full'>
+        <div className=''>
+            <div className='grid place-items-center'>
+                <h2 className='title-acturesume'>L'actualité de la CPTS résumée</h2>
+            </div>
             <Carousel value={data} numVisible={4} numScroll={4} responsiveOptions={responsiveOptions} className="custom-carousel" circular
             autoplayInterval={10000} itemTemplate={actuTemplate} />
         </div>

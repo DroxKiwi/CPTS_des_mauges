@@ -1,9 +1,9 @@
 
 
-.wrapper{
-    height: 100%;
+.container-root{
+  overflow-x: hidden;
+  background-color: white;
 }
-
 
 .itemappdiv{
     transition: 500ms;

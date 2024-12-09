@@ -1,8 +1,19 @@
 
-
-
-
 .homepage-sector-1{
     height: 100dvh;
     width: 100dvw;
+}
+
+.headerformsvg{
+    position: absolute;
+    z-index: 0;
+}
+
+.headerformsvgcircle{
+    position: absolute;
+    z-index: 0;
+}
+
+.upperelementheader{
+    z-index: 10;
 }

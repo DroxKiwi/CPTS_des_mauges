@@ -7,6 +7,8 @@ import email from '../assets/Images/icones/e-mail.png';
 import fb from '../assets/Images/icones/facebook.png';
 import lk from '../assets/Images/icones/linkedin.png';
 import tel from '../assets/Images/icones/telephone.png';
+import logo from '../assets/Images/logoDetoure.png';
+import carteCouleur from '../assets/Images/CarteSansFond.png';
 
 
 function FooterMedia (props) {
@@ -46,6 +48,7 @@ function FooterMedia (props) {
     if (window.innerWidth < 1468){
         return (
             <div className='footermedia'>
+                {/*
                 <div className={"mt-10 place-items-center grid grid-cols-1"} style={{width: props.docWidth}}>
                     {
                         medias.map((m) => (
@@ -105,6 +108,11 @@ function FooterMedia (props) {
                         ))
                     }
                 </div>
+                */}
+                <div className='grid grid-cols-3'>
+                    <img src={logo} width={150} ></img>
+
+                </div>
                 <div className='declarationofficiel'>
                     <p>
                         CPTS des Mauges © 2024
@@ -124,6 +132,7 @@ function FooterMedia (props) {
     else {
         return (
             <div className='footermedia'>
+                {/*
                 <div className={"mt-10 place-items-center grid grid-cols-" + medias.length} style={{width: props.docWidth}}>
                     {
                         medias.map((m) => (
@@ -182,6 +191,25 @@ function FooterMedia (props) {
                             </div>
                         ))
                     }
+                </div>
+                */}
+                <div className='grid grid-cols-3 place-items-center footer-media-grid'>
+                    <div>
+                        <img src={logo} width={250} ></img>
+                        <p>Adresse des locaux</p>
+                        <p>Code postal Ville</p>
+                        <p>Numéro de Téléphone</p>
+                    </div>
+                    <div className='grid place-items-center'>
+                        <p><b>Retrouvez nous sur les réseaux</b></p>
+                        <div>
+                            <img className='reseaux-footer-item' src={fb} width="40px" ></img>
+                            <img className='reseaux-footer-item' src={lk} width="40px" ></img>
+                        </div>
+                    </div>
+                    <div>
+                        <img src={carteCouleur} width={400}></img>
+                    </div>
                 </div>
                 <div className='declarationofficiel'>
                     <p>

@@ -2,16 +2,6 @@
 
 
 
-.footermedia{
-    color: #FFF;
-    font-family: "Comic Sans MS";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    font-size: 13px;
-    color: rgb(59, 0, 126);
-}
 
 .declarationofficiel{
     margin-top: 60px;
@@ -26,4 +16,9 @@
     transition: 500ms;
     color: azure;
     font-size: 14px;
+}
+
+.footer-media-grid{
+    margin-top: 150px;
+    margin-bottom: -50px;
 }

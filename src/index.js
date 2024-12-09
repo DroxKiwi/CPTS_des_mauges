@@ -10,6 +10,7 @@ import reportWebVitals from './reportWebVitals';
 import { PrimeReactProvider } from 'primereact/api';
 import { PrimeReactContext } from 'primereact/api';
 import './indexLight.css';
+import './scrollbar.css';
 
 import Root from "./routes/root";
 import Presentation from './app_client/pages/presentation/Presentation';
