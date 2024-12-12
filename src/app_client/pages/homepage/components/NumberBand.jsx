@@ -12,22 +12,7 @@ function NumberBand(props) {
     const maxNumber2 = numbanddata.data[1].value;
     const [number3, setNumber3] = useState(0);
     const maxNumber3 = numbanddata.data[2].value;
-
-    useEffect(() => {
-        window.addEventListener('scroll', function (event) {
-            // Get the an HTML element
-            var element = document.getElementById('testnumber');
-            if (ss.get('window') === 'home'){
-                if (isInViewport(element)) {
-                    if (element.innerHTML === '0'){
-                        startAnimation1();
-                        startAnimation2();
-                        startAnimation3();
-                    }
-                }
-            }
-        }, false);
-    }, []);
+    const [isSaw, setIsSaw] = useState(false);
 
     async function startAnimation1 () {
         var speed = 0.1;
@@ -65,32 +50,41 @@ function NumberBand(props) {
         }
     }
 
-    function isInViewport(element) {
-        // Get the bounding client rectangle position in the viewport
-        var bounding = element.getBoundingClientRect();
-        
-        // Checking part. Here the code checks if it's *fully* visible
-        // Edit this part if you just want a partial visibility
-        if (
-            bounding.top >= 0 &&
-            bounding.left >= 0 &&
-            bounding.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-            bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-        ) {
-            console.log('In the viewport! :)');
-            return true;
-        } else {
-            console.log('Not in the viewport. :(');
-            return false;
+    const elementRef = useRef(null); // Référence de l'élément à observer
+    const [isVisible, setIsVisible] = useState(false);
+  
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+            // Détecte si l'élément est visible
+                setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    startAnimation1();
+                    startAnimation2();
+                    startAnimation3();
+                    // Placez ici l'action que vous souhaitez déclencher
+                }
+            },
+            { threshold: 0.5 } // 50% de l'élément doit être visible
+        );
+    
+        if (elementRef.current) {
+            observer.observe(elementRef.current); // Observer l'élément
         }
-    }
+    
+        return () => {
+            if (elementRef.current) {
+            observer.unobserve(elementRef.current); // Nettoyage à la fin
+            }
+        };
+    }, []);
 
     if (props.mobile){
         return (
             <div className='grid place-items-center'>
                 <div className="numberbandmobile grid grid-cols-1">
                     <div className='col-span-1 grid place-items-center'>
-                        <h2 id="testnumber" className='numbersmobile'>{number1}</h2>
+                        <h2 id="numbersanimated" className='numbersmobile'>{number1}</h2>
                         <h3 className='numberstitlemobile'>Professionnels de santé libéraux</h3>
                     </div>
                     <div className='col-span-1 grid place-items-center'>
@@ -107,10 +101,10 @@ function NumberBand(props) {
     }
     else {
         return (
-            <div className='grid place-items-center'>
+            <div className='grid place-items-center' ref={elementRef}>
                 <div className="numberband grid grid-cols-3 numberbandborder">
                     <div className='col-span-1 grid place-items-center'>
-                        <h2 id="testnumber" className='numbers'>{number1}</h2>
+                        <h2 id="numbersanimated" className='numbers'>{number1}</h2>
                         <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
                     </div>
                     <div className='col-span-1 grid place-items-center'>

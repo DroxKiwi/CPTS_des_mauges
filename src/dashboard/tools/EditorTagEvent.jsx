@@ -319,7 +319,7 @@ function EditorTagEvent (props) {
                             {props.children}
                         </>
                     )
-                };
+                }
     
                 <Dialog maximizable header={header} visible={visible} onHide={() => setVisible(false)}>
                     {

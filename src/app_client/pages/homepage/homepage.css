@@ -9,12 +9,6 @@
     width: 100dvw;
 }
 
-.headerformsvg{
-    width: 100%;
-    position: absolute;
-    z-index: 0;
-}
-
 .headerformsvgcircle{
     position: absolute;
     z-index: 0;

@@ -55,7 +55,7 @@ function Header (props) {
     if (!ss.getFormated("editmode")){
         if (docWidth < 1468){  
             return (
-                <div className='header grid place-items-center h-[100px]'>
+                <div className='header grid place-items-center h-[100px] z-100'>
                     <div className="speeddialheaderbutton grid place-content-center" onClick={() => setVisible(true)}>
                         <p>Menu</p>
                     </div>
@@ -75,7 +75,7 @@ function Header (props) {
         }
         else {
             return (
-                <div id="headerDiv">
+                <div id="headerDiv z-100">
                     <div className='grid grid-cols-12'>
                         <div id="tbh" className='w-screen header col-span-8 grid grid-cols-11'>
                             <img src={logo} height={150} width={150} className='cursor-pointer' onClick={(e) => {handleAnimationPlay(e, '/')}}/>

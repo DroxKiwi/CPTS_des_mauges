@@ -84,27 +84,27 @@ function Agendaresume () {
     const responsiveOptions = [
         {
             breakpoint: '1468px',
-            numVisible: 1,
+            numVisible: 4,
             numScroll: 1
         },
         {
             breakpoint: '1100px',
-            numVisible: 1,
+            numVisible: 4,
             numScroll: 1
         },
         {
             breakpoint: '575px',
-            numVisible: 1,
+            numVisible: 4,
             numScroll: 1
         }
     ];
 
     return (
-        <div className='grid place-items-center'>
-            <div className=''>
+        <div className=''>
+            <div className='grid place-items-center'>
                 <h2 className='title-acturesume'>Nos évenements du moments</h2>
             </div>
-            <Carousel value={data} numVisible={4} numScroll={4} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+            <Carousel value={data} numVisible={4} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
             autoplayInterval={10000} itemTemplate={actuTemplate} />
         </div>
     )
