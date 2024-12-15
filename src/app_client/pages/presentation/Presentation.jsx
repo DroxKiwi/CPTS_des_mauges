@@ -50,7 +50,7 @@ function Presentation (props) {
                         territoire. En effet, elles se composent de professionnels des soins du premier et/ou du second recours mais aussi
                     </p>
                 </div>
-                <div className="infoband infoband2 grid place-items-center" onClick={() => handleClick("/adherer")}>
+                <div className="infoband infoband2 grid place-items-center mb-10" onClick={() => handleClick("/adherer")}>
                     <p className='infobandtext'>
                         Vous souhaitez adhérer ?
                     </p>

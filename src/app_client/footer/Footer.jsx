@@ -16,8 +16,8 @@ function Footer (props){
             */}
             <div class="container-footer">
                 <div className=''>
-                    <h2 className='reseaux-footer-title'>#cptsdesmauges</h2>
-                    <h3 className='reseaux-footer-subtitle'>Retrouvez nous sur les réseaux</h3>
+                    <h2 className='reseaux-footer-title cooperblack'>#cptsdesmauges</h2>
+                    <h3 className='reseaux-footer-subtitle comicsansms'>Retrouvez nous sur les réseaux</h3>
                     <div className='reseaux-footer-items'>
                         <img className='reseaux-footer-item' src={fb} width="50px" ></img>
                         <img className='reseaux-footer-item' src={lk} width="50px" ></img>

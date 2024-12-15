@@ -107,13 +107,13 @@ function JeSuisProfessionnel (props) {
             <div className='container-root'>
                 <EditorWindowPatd>
                 <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
+                <path d="M2003.5 42.5C2290 335.5 2322.89 291.534 1968 119C1588.5 -65.5 -77 549 -160.5 274.5C-184.262 196.384 -249 -79.0003 -57 23.4997C518.171 330.558 1858.41 -105.884 2003.5 42.5Z" fill="#8DC943" fill-opacity="0.33"/>
+                </svg>
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
+                <path d="M1999.5 28.4999C2286 321.5 2324.39 307.534 1969.5 135C1590 -49.5 -63.9998 515 -147.5 240.5C-171.262 162.385 -254.5 -15.4999 -62.5 87.0001C512.671 394.058 1854.41 -119.884 1999.5 28.4999Z" fill="#8DC943" fill-opacity="0.33"/>
+                </svg>
                 <div className='grid place-items-center card bg-transparent'>
-                    <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
-                    <path d="M2003.5 42.5C2290 335.5 2322.89 291.534 1968 119C1588.5 -65.5 -77 549 -160.5 274.5C-184.262 196.384 -249 -79.0003 -57 23.4997C518.171 330.558 1858.41 -105.884 2003.5 42.5Z" fill="#8DC943" fill-opacity="0.33"/>
-                    </svg>
-                    <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
-                    <path d="M1999.5 28.4999C2286 321.5 2324.39 307.534 1969.5 135C1590 -49.5 -63.9998 515 -147.5 240.5C-171.262 162.385 -254.5 -15.4999 -62.5 87.0001C512.671 394.058 1854.41 -119.884 1999.5 28.4999Z" fill="#8DC943" fill-opacity="0.33"/>
-                    </svg>
                     <h2 className='titlejsp'>
                         Les outils pour votre pratique
                     </h2>

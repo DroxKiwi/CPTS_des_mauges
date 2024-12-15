@@ -24,7 +24,7 @@ function AdminDashGeneralSettings () {
         <div className="overflow-x-hidden wrapper">
             <div className="h-full w-full overflow-y-hidden">
                 <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
-                    <GeneralSettings />;
+                    <GeneralSettings />
                 </SideMenu>
             </div>
         </div>

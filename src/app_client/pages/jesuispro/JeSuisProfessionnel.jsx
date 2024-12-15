@@ -10,6 +10,7 @@ import EditorWindowProd from '../../../dashboard/tools/EditorWindowProd';
 import EditorTagProd from '../../../dashboard/tools/EditorTagProd';
 import Header from '../../header/Header';
 import './jesuisprofessionnel.css';
+import Footer from '../../footer/Footer';
 
 
 import { ls, ss } from '../../../utils/store';
@@ -104,7 +105,13 @@ function JeSuisProfessionnel (props) {
     }
     else {
         return (
-            <div className='fullscreen-bg'>
+            <div className='container-root'>
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="274" viewBox="0 -70 1920 274" fill="none">
+                <path d="M1969.5 147.685C1997.68 176.5 2000 291.828 1969.5 270.5C1623.69 28.6873 55.3823 294.383 -147.5 91.5C-182 57 -105 -16.3691 -66.4998 4.18471C508.669 311.247 1824.41 -0.699097 1969.5 147.685Z" fill="#008CDD" fill-opacity="0.33"/>
+                </svg>
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="487" viewBox="0 -70 1920 487" fill="none">
+                <path d="M2043.5 250C2050.57 289.677 2159.61 523.723 2129.1 502.396C1783.29 260.583 129.382 401.883 -73.4998 199C-108 164.5 -201.194 -137 -40.5 76C275.988 495.505 2010 62.0003 2043.5 250Z" fill="#008CDD" fill-opacity="0.33"/>
+                </svg>
                 <EditorWindowProd>
                     <div className='overflow-x-hidden jsp grid place-items-center' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}>
                         <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
@@ -113,7 +120,7 @@ function JeSuisProfessionnel (props) {
 
                         { 
                             data !== null ? (
-                                <div className='grid grid-cols-5'>
+                                <div className='grid grid-cols-5 z-10'>
                                     {
                                         data.map((d) => (
                                             <EditorTagProd dataObject={d} id={d.prod_id} type="prod" setDetailProdVisible={setDetailProdVisible}>
@@ -168,6 +175,7 @@ function JeSuisProfessionnel (props) {
                         }
                     </Dialog>
                 </EditorWindowProd>
+                <Footer />
             </div>
         )
     }

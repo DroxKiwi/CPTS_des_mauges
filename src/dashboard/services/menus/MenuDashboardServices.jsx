@@ -10,8 +10,8 @@ export const MenuDashboard = {
         try {
             const result = [
                 {
-                    label: 'Accueil',
-                    icon: 'pi pi-home',
+                    label: 'Général',
+                    icon: 'pi pi-cog',
                     command: () => {
                         ss.set("menu", "general");
                         window.top.location.href= '/dashboard';

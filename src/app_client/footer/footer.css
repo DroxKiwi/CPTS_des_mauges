@@ -4,7 +4,7 @@
 .container-footer {
   width: 100dvw;
   height: 85dvh;
-  background-color: #fff4ee;
+  background-color: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -64,7 +64,7 @@
   left: 0;
   width: 100%; /* Étend sur toute la largeur */
   height: 500px; 
-  background-color: #8dc94394; /* Couleur de la forme */
+  background: linear-gradient(#c2f387, #77aa38); /* Couleur de la forme */
   clip-path: path(
     "M -100 0 C 0 0, 0 0, 300 100 S 1000 0, 2000 0, L 1920 500 L 0 500 Z"
   ); /* Courbes arrondies */

@@ -1,22 +1,33 @@
 import { useState, useEffect, useRef } from 'react';
 import numbanddata from '../../../services/numberband.json';
 import { ls, ss } from '../../../../utils/store';
+import { API_global } from '../../../services/api/globalServices';
 
 import './numberband.css';
 
 function NumberBand(props) {
 
     const [number1, setNumber1] = useState(0);
-    const maxNumber1 = numbanddata.data[0].value;
+    const [maxNumber1, setMaxNumber1] = useState(0);
     const [number2, setNumber2] = useState(0);
-    const maxNumber2 = numbanddata.data[1].value;
+    const [maxNumber2, setMaxNumber2] = useState(0);
     const [number3, setNumber3] = useState(0);
-    const maxNumber3 = numbanddata.data[2].value;
+    const [maxNumber3, setMaxNumber3] = useState(0);
     const [isSaw, setIsSaw] = useState(false);
+
+    useEffect(() => {
+        const getData = async () => {
+            const globalData = await API_global.get_all();
+            setMaxNumber1(globalData[0].chiffrepsl);
+            setMaxNumber2(globalData[0].chiffrecom);
+            setMaxNumber3(globalData[0].chiffrehab);
+        }
+        getData();
+    }, [])
 
     async function startAnimation1 () {
         var speed = 0.1;
-        for (let i = 0; i < maxNumber1; i++){
+        for (let i = 0; i <= maxNumber1; i++){
             if (i > maxNumber1-11){
                 speed = 100;
             }
@@ -30,7 +41,7 @@ function NumberBand(props) {
 
     async function startAnimation2() {
         var speed = 100;
-        for (let i = 0; i < maxNumber2; i++){
+        for (let i = 0; i <= maxNumber2; i++){
             setNumber2(i);
             await new Promise(r => setTimeout(r, speed));
         }
@@ -38,7 +49,7 @@ function NumberBand(props) {
 
     async function startAnimation3() {
         var speed = 0.00005;
-        for (let i = 0; i < maxNumber3; i++){
+        for (let i = 0; i <= maxNumber3; i++){
             if (i > maxNumber3-11){
                 speed = 100;
             }
@@ -77,7 +88,7 @@ function NumberBand(props) {
             observer.unobserve(elementRef.current); // Nettoyage à la fin
             }
         };
-    }, []);
+    }, [maxNumber1]);
 
     if (props.mobile){
         return (
