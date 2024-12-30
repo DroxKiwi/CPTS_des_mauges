@@ -19,6 +19,7 @@ import './commentadherer.css';
 import Header from '../../header/Header';
 import Footer from '../../footer/Footer';
 import iconehand from '../../assets/Images/icones/cliquez-sur.png';
+import EditorWindowAdh from '../../../dashboard/tools/EditorWindowAdh';
 
 import { ls, ss } from '../../../utils/store';
 
@@ -87,6 +88,7 @@ function CommentAdherer(props) {
     }
     else {
         return (
+            <EditorWindowAdh>
             <div className='container-root'>
                 <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />        
                 <div className='grid place-items-center card bg-transparent z-10'>
@@ -113,7 +115,7 @@ function CommentAdherer(props) {
                         </div>
                     </div>
                     <img src={iconehand} width="50px" />
-                    <p className='comicsansms'>Cliquez sur le livre pour l'ouvrir</p>
+                    <p className='comicsansms'>Cliquez sur le livret pour l'ouvrir</p>
                     {
                         images !== null ? (
                             <Dialog visible={visible} onHide={() => setVisible(false)} >
@@ -143,6 +145,7 @@ function CommentAdherer(props) {
                 </div>
                 <Footer />
             </div>
+            </EditorWindowAdh>
         )
     }
 }

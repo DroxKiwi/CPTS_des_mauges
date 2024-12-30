@@ -15,10 +15,20 @@ export const API_globalsDash = {
         }
     },
 
-    async update_global(globaldata_id, tel, adr, postalcode, facebook, linkedin, chiffrepsl, chiffrecom, chiffrehab){
+    async update_global(globaldata_id, tel, adr, postalcode, facebook, linkedin, chiffrepsl, chiffrecom, chiffrehab, hommepageprjstext, quisommesnousmaintext, mail){
         const apiCmd = process.env.REACT_APP_BASE_API_URI + '/globaldatas/update';
         const FormData = require('form-data');
         const formData = new FormData();
+
+        var valueToSendHommepageprjstext;
+        if (hommepageprjstext === null || hommepageprjstext === undefined){
+            valueToSendHommepageprjstext = '';
+        };
+
+        var valueToSendQuisommesnousmaintext;
+        if (quisommesnousmaintext === null || quisommesnousmaintext === undefined){
+            valueToSendQuisommesnousmaintext = '';
+        };
 
         formData.append('globaldata_id', globaldata_id);
         formData.append('tel', tel);
@@ -29,6 +39,9 @@ export const API_globalsDash = {
         formData.append('chiffrepsl', chiffrepsl);
         formData.append('chiffrecom', chiffrecom);
         formData.append('chiffrehab', chiffrehab);
+        formData.append('hommepageprjstext', valueToSendHommepageprjstext);
+        formData.append('quisommesnousmaintext', valueToSendQuisommesnousmaintext);
+        formData.append('mail', mail);
         try {
             const answer = await fetch(apiCmd, await OptionsFetch.POST(formData)).then((res => {
                 if (res.status === 200) {

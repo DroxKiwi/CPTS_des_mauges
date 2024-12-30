@@ -42,6 +42,7 @@
     .infoband{
         transition-duration: 500ms;
         cursor: pointer;
+        position: relative;
     }
     
     .infoband.infoband1{

@@ -54,7 +54,7 @@ function HomePage(props) {
         </svg>
 
         <div className='grid place-items-center'>
-          <img className='upperelementheader' src={logo} width="300px" />
+          <img className='upperelementheader' src={logo} height="300dvh" width="300dvw" />
         </div>
 
         <HomePageTitle />

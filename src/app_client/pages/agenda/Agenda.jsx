@@ -254,38 +254,7 @@ function Agenda (props) {
         if (window.innerWidth < 1468){
             return (
                 <EditorWindowEvent>
-                <div className='overflow-x-hidden' style={{width: docWidth - 10, height: docHeight}}>
-                    <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                    <div className='grid place-items-center card bg-transparent'>
-                        <h2 className='titleactu'>
-                            L'actualité de la CPTS
-                        </h2>
-                        { 
-                            data !== null ? (
-                                <div className=''>
-                                    <p className='maintext card bg-transparent'>
-                                        <div>
-                                            {data.mainText}
-                                        </div>
-                                    </p>
-                                    <div className='grid grid-cols-1'>
-                                        {
-                                            data.data.map((d) => (
-                                                <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%]">
-                                                    <RenderTag tagid={d.tagid}/>
-                                                    <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                </Card>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
-                            ) :
-                            (
-                                null
-                            )
-                        }
-                    </div>
-                </div>
+
                 </EditorWindowEvent>
             )
         }
@@ -302,10 +271,10 @@ function Agenda (props) {
                             <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                             <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
                             </svg>
-                            <h2 className='titleactu'>
+                            <h2 className='titleactu relative'>
                                 L'agenda de la CPTS
                             </h2>
-                            <div className='grid grid-cols-3 gap-4 place-items-center'>
+                            <div className='grid grid-cols-3 gap-4 place-items-center relative'>
                                 <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
                                 <Dropdown value={selectedTagSearch} onChange={(e) => setSelectedTagSearch(e.value)} options={allTags} optionLabel="name" 
                                     placeholder="Rechercher par tags" checkmark={true} highlightOnSelect={false} />

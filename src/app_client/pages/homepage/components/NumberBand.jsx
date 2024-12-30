@@ -23,7 +23,7 @@ function NumberBand(props) {
             setMaxNumber3(globalData[0].chiffrehab);
         }
         getData();
-    }, [])
+    }, []);
 
     async function startAnimation1 () {
         var speed = 0.1;
@@ -32,6 +32,7 @@ function NumberBand(props) {
                 speed = 100;
             }
             setNumber1(i);
+            console.log(maxNumber1);
             if (i < maxNumber1-100){
                 i = i + 10;
             }
@@ -45,7 +46,7 @@ function NumberBand(props) {
             setNumber2(i);
             await new Promise(r => setTimeout(r, speed));
         }
-    }
+    };
 
     async function startAnimation3() {
         var speed = 0.00005;
@@ -59,7 +60,7 @@ function NumberBand(props) {
             }
             await new Promise(r => setTimeout(r, speed));
         }
-    }
+    };
 
     const elementRef = useRef(null); // Référence de l'élément à observer
     const [isVisible, setIsVisible] = useState(false);

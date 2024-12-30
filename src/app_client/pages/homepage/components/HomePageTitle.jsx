@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 import './homepagetitle.css';
-import logo from '../../../assets/Images/logoDetoure.png';
-import { coyWithoutShadows } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 function HomePageTitle(props) {

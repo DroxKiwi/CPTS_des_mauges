@@ -10,7 +10,7 @@ export const MenuDashboard = {
         try {
             const result = [
                 {
-                    label: 'Général',
+                    label: 'Paramètres globaux',
                     icon: 'pi pi-cog',
                     command: () => {
                         ss.set("menu", "general");

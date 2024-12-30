@@ -3,15 +3,23 @@
 import { useState, useEffect, useRef } from 'react';
 import carteCouleur from '../../assets/Images/CarteSansFond.png';
 import './presentation.css';
-import bg from '../../assets/Images/backgrounds/bg-2.png';
-import numbanddata from '../../services/numberband.json';
 import Header from '../../header/Header';
 import NumberBand from '../homepage/components/NumberBand';
 import Footer from '../../footer/Footer';
+import { API_global } from '../../services/api/globalServices';
 
 import { ls, ss } from '../../../utils/store';
 
 function Presentation (props) {
+
+    const [globalData, setGlobalData] = useState(null);
+
+    useEffect(() => {
+        const getData = async () => {
+            setGlobalData(await API_global.get_all());
+        }
+        getData();
+    }, []);
 
     function handleClick(page) {
         window.location.replace(process.env.REACT_APP_BASE_APP_URI + page);
@@ -42,13 +50,14 @@ function Presentation (props) {
                     <h2 className='titlepresentation card bg-transparent'>
                         Qu’est-ce qu’une CPTS ?                    
                     </h2>
-                    <p className='textpresentation card bg-transparent'>
-                        « Créées en 2016 par la loi de modernisation de notre système de santé, les communautés professionnelles territoriales de
-                        santé (CPTS) constituent un dispositif souple à la main des professionnels qui veulent travailler ensemble pour répondre aux
-                        besoins de santé spécifiques d’un bassin de population.
-                        Constituées à l’initiative des « professionnels de santé », ces CPTS ont vocation à rassembler les « acteurs de santé » de leur
-                        territoire. En effet, elles se composent de professionnels des soins du premier et/ou du second recours mais aussi
-                    </p>
+                    {
+                        globalData !== null ? (
+                            <p className='textpresentation card bg-transparent'>{globalData[0].quisommesnousmaintext}</p>
+                        ) :
+                        (
+                            null
+                        )
+                    }
                 </div>
                 <div className="infoband infoband2 grid place-items-center mb-10" onClick={() => handleClick("/adherer")}>
                     <p className='infobandtext'>

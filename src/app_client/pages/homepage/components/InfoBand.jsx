@@ -9,7 +9,7 @@ function InfoBand (props) {
 
     if (props.mobile){
         return (
-            <div>
+            <div className='z-10'>
                 <div className="infoband infoband1 grid place-items-center" onClick={() => handleClick("/jesuispatient")}>
                     <p className='infobandtext'>
                         Vous souhaitez connaître les professionnels de santé à proximité ? 
@@ -30,7 +30,7 @@ function InfoBand (props) {
     }
     else {
         return (
-            <div className='mb-10'>
+            <div className='mb-10 z-10'>
                 <div className="infoband infoband1 grid place-items-center" onClick={() => handleClick("/jesuispatient")} >
                     <p className='infobandtext'>
                         Vous souhaitez connaître les professionnels de santé à proximité ? 
