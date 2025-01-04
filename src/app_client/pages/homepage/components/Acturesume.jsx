@@ -100,14 +100,23 @@ function Acturesume () {
 
     return (
         <div className='grid place-items-center'>
-            <div className='grid place-items-center'>
-                <h2 className='title-acturesume'>A la une</h2>
-            </div>
-            <div className="flex justify-content-center">
-                <Carousel value={data} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                    orientation="vertical" verticalViewPortHeight="86dvh"
-                    autoplayInterval={10000} itemTemplate={actuTemplate} />
-            </div>
+            {
+                data !== null ? (
+                    <>
+                        <div className='grid place-items-center'>
+                            <h2 className='title-acturesume'>A la une</h2>
+                        </div>
+                        <div className="flex justify-content-center">
+                            <Carousel value={data} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+                                orientation="vertical" verticalViewPortHeight="86dvh"
+                                autoplayInterval={10000} itemTemplate={actuTemplate} />
+                        </div>
+                    </>
+                ) : (
+                    null
+                )
+            }
+
         </div>
     )
 }

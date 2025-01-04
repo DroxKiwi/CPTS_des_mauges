@@ -22,7 +22,7 @@ function SideMenu (props) {
     useEffect(() => {
         if (!isCollapse) {
 
-            if (window.top.location.href === 'http://localhost:3000/dashboard/viewer'){
+            if (window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
                 var itemsTemp = [];
                 var applications = {
                     label: 'Pages',
@@ -86,7 +86,7 @@ function SideMenu (props) {
                     icon: 'pi pi-microsoft',
                     template: ItemRenderer,
                     command: () => {
-                        window.top.location.href = "http://localhost:3000/dashboard/viewer";
+                        window.top.location.href = process.env.REACT_APP_BASE_APP_URI + "/dashboard/viewer";
                     }
                 }
                 itemsTemp.push(applications);

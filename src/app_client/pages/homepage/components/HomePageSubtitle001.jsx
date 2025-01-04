@@ -27,30 +27,37 @@ function HomePageSubtitle001 (props) {
         }
     }, [props.docHeight]);
 
-    if (props.mobile){
-        return (
-            <div id="" className='grid place-items-center overflow-y-hidden mt-10'>
-            </div>
-        )
-    }
-    else {
-        return (
-            <div id="" className='overflow-y-hidden grid place-items-center'>
-                <h2 className="homepagesubtitle001">
-                    Notre projet de santé
-                </h2>
-                <div className='grid place-items-center'>
-                    <p className='homepagesubtitle001secondary'>Retrouvez la déclinaison de notre projet de santé en fonction des missions.</p>
-                    {
-                        globalData !== null ? (
-                            <p className='homepagesubtitle001secondarymobile w-[70dvw]'>{globalData[0].hommepageprjstext}</p>
-                        ) :
-                        (
-                            null
-                        )
-                    }
+    try {
+        if (props.mobile){
+            return (
+                <div id="" className='grid place-items-center overflow-y-hidden mt-10'>
                 </div>
-            </div>
+            )
+        }
+        else {
+            return (
+                <div id="" className='overflow-y-hidden grid place-items-center'>
+                    <h2 className="homepagesubtitle001">
+                        Notre projet de santé
+                    </h2>
+                    <div className='grid place-items-center'>
+                        <p className='homepagesubtitle001secondary'>Retrouvez la déclinaison de notre projet de santé en fonction des missions.</p>
+                        {
+                            globalData !== null ? (
+                                <p className='homepagesubtitle001secondarymobile w-[70dvw]'>{globalData[0].hommepageprjstext}</p>
+                            ) :
+                            (
+                                null
+                            )
+                        }
+                    </div>
+                </div>
+            )
+        }
+    }
+    catch(error){
+        return (
+            null
         )
     }
 }

@@ -251,156 +251,147 @@ function Agenda (props) {
     };
 
     try {
-        if (window.innerWidth < 1468){
-            return (
+        return (
+            <div className='container-root'>
                 <EditorWindowEvent>
-
-                </EditorWindowEvent>
-            )
-        }
-        else {
-            return (
-                <div className='container-root'>
-                    <EditorWindowEvent>
-                        <Toast ref={toast} />
-                        <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                        <div className='grid place-items-center card bg-transparent'>
-                            <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 157" fill="none">
-                            <path d="M2005 26.4999C2192 -63.5007 2398.5 106.001 2005 135.5C1625.21 163.971 -92.4998 451.5 -176 177C-199.762 98.8847 -293.541 -50.1995 -71.9997 54.0001C518 331.5 1818 116.501 2005 26.4999Z" fill="#F2EE2C" fill-opacity="0.33"/>
-                            </svg>
-                            <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
-                            <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
-                            </svg>
-                            <h2 className='titleactu relative'>
-                                L'agenda de la CPTS
-                            </h2>
-                            <div className='grid grid-cols-3 gap-4 place-items-center relative'>
-                                <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
-                                <Dropdown value={selectedTagSearch} onChange={(e) => setSelectedTagSearch(e.value)} options={allTags} optionLabel="name" 
-                                    placeholder="Rechercher par tags" checkmark={true} highlightOnSelect={false} />
-                                <span className=''>Filtrer votre recherche</span>
-                                <Dropdown value={selectedFilter} onChange={(e) => setSelectedFilter(e.value)} options={filters} optionLabel="name" 
-                                        placeholder="Filtrer" checkmark={true} highlightOnSelect={false} />
-                                <span className='ml-4'>Trier votre recherche</span>
-                            </div>
-                            { 
-                                data !== null ? (
-                                    <div className='z-10'>
-                                        <div className='grid grid-cols-4'>
-                                            {
-                                                data.map((d) => (
-                                                    <>
-                                                        {
-                                                            d.name.includes(searchValue) || d.subtitle.includes(searchValue) || d.tectimeinsert.includes(searchValue) ? (
-                                                                <>
-                                                                    {
-                                                                        selectedTagSearch !== null ? (
-                                                                            <>
-                                                                                {
-                                                                                    selectedTagSearch.tag_id === null || d.tagid === selectedTagSearch.tag_id ? (
-                                                                                        <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
-                                                                                            {
-                                                                                                d.actif == true || (todayJSf > (new Date(d.enddate.split("T")[0]))) ? (
-                                                                                                    <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
-                                                                                                            <RenderTag tagid={d.tagid}/>
-                                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
-                                                                                                        </Card>
-                                                                                                    </div>
-                                                                                                ) :
-                                                                                                (
-                                                                                                    <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
-                                                                                                            <RenderTag tagid={d.tagid}/>
-                                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
-                                                                                                        </Card>
-                                                                                                    </div>
-                                                                                                )
-                                                                                            }
-                                                                                        </EditorTagEvent>
-                                                                                    ) : 
-                                                                                    (
-                                                                                        null
-                                                                                    )
-                                                                                }
-                                                                            </>
-                                                                        ) :
-                                                                        (
-                                                                            <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
+                    <Toast ref={toast} />
+                    <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
+                    <div className='grid place-items-center card bg-transparent'>
+                        <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 157" fill="none">
+                        <path d="M2005 26.4999C2192 -63.5007 2398.5 106.001 2005 135.5C1625.21 163.971 -92.4998 451.5 -176 177C-199.762 98.8847 -293.541 -50.1995 -71.9997 54.0001C518 331.5 1818 116.501 2005 26.4999Z" fill="#F2EE2C" fill-opacity="0.33"/>
+                        </svg>
+                        <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
+                        <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
+                        </svg>
+                        <h2 className='titleactu relative'>
+                            L'agenda de la CPTS
+                        </h2>
+                        <div className='grid grid-cols-3 gap-4 place-items-center relative'>
+                            <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                            <Dropdown value={selectedTagSearch} onChange={(e) => setSelectedTagSearch(e.value)} options={allTags} optionLabel="name" 
+                                placeholder="Rechercher par tags" checkmark={true} highlightOnSelect={false} />
+                            <span className=''>Filtrer votre recherche</span>
+                            <Dropdown value={selectedFilter} onChange={(e) => setSelectedFilter(e.value)} options={filters} optionLabel="name" 
+                                    placeholder="Filtrer" checkmark={true} highlightOnSelect={false} />
+                            <span className='ml-4'>Trier votre recherche</span>
+                        </div>
+                        { 
+                            data !== null ? (
+                                <div className='z-10'>
+                                    <div className='grid grid-cols-4'>
+                                        {
+                                            data.map((d) => (
+                                                <>
+                                                    {
+                                                        d.name.includes(searchValue) || d.subtitle.includes(searchValue) || d.tectimeinsert.includes(searchValue) ? (
+                                                            <>
+                                                                {
+                                                                    selectedTagSearch !== null ? (
+                                                                        <>
                                                                             {
-                                                                                (d.actif == true && (todayJSf < (new Date(d.enddate.split("T")[0])))) ? (
-                                                                                    <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
-                                                                                            <RenderTag tagid={d.tagid}/>
-                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
-                                                                                        </Card>
-                                                                                    </div>
-                                                                                ) :
+                                                                                selectedTagSearch.tag_id === null || d.tagid === selectedTagSearch.tag_id ? (
+                                                                                    <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
+                                                                                        {
+                                                                                            d.actif == true || (todayJSf > (new Date(d.enddate.split("T")[0]))) ? (
+                                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
+                                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                    </Card>
+                                                                                                </div>
+                                                                                            ) :
+                                                                                            (
+                                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
+                                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                    </Card>
+                                                                                                </div>
+                                                                                            )
+                                                                                        }
+                                                                                    </EditorTagEvent>
+                                                                                ) : 
                                                                                 (
-                                                                                    <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] bg-gray-400 cardagenda">
-                                                                                            <RenderTag tagid={d.tagid}/>
-                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
-                                                                                        </Card>
-                                                                                    </div>
+                                                                                    null
                                                                                 )
                                                                             }
-                                                                            </EditorTagEvent>
-                                                                        )
-                                                                    }
-                                                                </>
-                                                            ) :
-                                                            (
-                                                                null
-                                                            )
-                                                        }
-                                                    </>
-                                                ))
-                                            }
-                                        </div>
+                                                                        </>
+                                                                    ) :
+                                                                    (
+                                                                        <EditorTagEvent dataObject={d} id={d.event_id} type="event" setDetailEventVisible={setDetailEventVisible}>
+                                                                        {
+                                                                            (d.actif == true && (todayJSf < (new Date(d.enddate.split("T")[0])))) ? (
+                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
+                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                    </Card>
+                                                                                </div>
+                                                                            ) :
+                                                                            (
+                                                                                <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] bg-gray-400 cardagenda">
+                                                                                        <RenderTag tagid={d.tagid}/>
+                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                    </Card>
+                                                                                </div>
+                                                                            )
+                                                                        }
+                                                                        </EditorTagEvent>
+                                                                    )
+                                                                }
+                                                            </>
+                                                        ) :
+                                                        (
+                                                            null
+                                                        )
+                                                    }
+                                                </>
+                                            ))
+                                        }
                                     </div>
-                                ) :
-                                (
-                                    null
-                                )
-                            }
-                        </div>
-                        <Dialog className='h-[80dvh] w-[60dvw]' visible={detailEventVisible} onHide={() => setDetailEventVisible(false)}>
-                            {
-                                selectedDetail !== null ? (
-                                    <Card title={selectedDetail.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedDetail.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={headerDetail} className="md:w-25rem">
-                                        <p>
-                                            {selectedDetail.startdate.split('T')[0]} au {selectedDetail.enddate.split('T')[0]}
-                                        </p>
-                                        <div>
-                                            {
-                                                selectedDetail.description.split("&lt;iframe")[1] !== undefined ? (
-                                                    <div>
-                                                        <div dangerouslySetInnerHTML={{ __html: selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>").split("&lt;iframe")[0] + selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>").split("iframe&gt;")[1] }}></div>
-                                                        <iframe width="560" height="315" src={selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").split("iframe")[1].split('src="')[1].split('" title="')[0]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                                    </div>
-                                                ) :
-                                                (
-                                                    <div dangerouslySetInnerHTML={{ __html: selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>") }}></div>
-                                                )
-                                            }
-                                        </div>
-                                    </Card>
-                                ) : 
-                                (
-                                    null
-                                )
-                            }
-                        </Dialog>
-                    </EditorWindowEvent>
-                    <Footer />
-                </div>
-            )
-        }
+                                </div>
+                            ) :
+                            (
+                                null
+                            )
+                        }
+                    </div>
+                    <Dialog className='h-[80dvh] w-[60dvw]' visible={detailEventVisible} onHide={() => setDetailEventVisible(false)}>
+                        {
+                            selectedDetail !== null ? (
+                                <Card title={selectedDetail.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedDetail.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={headerDetail} className="md:w-25rem">
+                                    <p>
+                                        {selectedDetail.startdate.split('T')[0]} au {selectedDetail.enddate.split('T')[0]}
+                                    </p>
+                                    <div>
+                                        {
+                                            selectedDetail.description.split("&lt;iframe")[1] !== undefined ? (
+                                                <div>
+                                                    <div dangerouslySetInnerHTML={{ __html: selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>").split("&lt;iframe")[0] + selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>").split("iframe&gt;")[1] }}></div>
+                                                    <iframe width="560" height="315" src={selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").split("iframe")[1].split('src="')[1].split('" title="')[0]} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                                </div>
+                                            ) :
+                                            (
+                                                <div dangerouslySetInnerHTML={{ __html: selectedDetail.description.replaceAll('_GD_', '"').replaceAll("_GS_", "'").replaceAll('/@', "<a target='_blank' href='").replaceAll('@/', "'>lien</a>") }}></div>
+                                            )
+                                        }
+                                    </div>
+                                </Card>
+                            ) : 
+                            (
+                                null
+                            )
+                        }
+                    </Dialog>
+                </EditorWindowEvent>
+                <Footer />
+            </div>
+        )
     }
     catch(error){
         triggerError(error);

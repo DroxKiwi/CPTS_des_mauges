@@ -56,30 +56,17 @@ function BureauEtConseil(props) {
 
     // ----
 
-    if (window.innerWidth < 1468){
-        return (
-            <div className="overflow-x-hidden">
-                <Header setHeaderHeight={props.setHeaderHeight} />
-                <div className="backgroundbureauetconseil overflow-x-hidden place-items-center" style={{width: docWidth, height: "100%"}}>
-                    <div className={"ml-10 dialmobile"}>
-                        <SpeedDial id='organigrame' ref={refSpeedDial} visible={true} buttonStyle={{display: 'none'}} disabled={false} hideOnClickOutside={false} model={items} />
-                    </div>
+
+    return (
+        <div>
+            <Header setHeaderHeight={props.setHeaderHeight} />
+            <div className="backgroundbureauetconseil overflow-hidden h-screen grid grid-cols-1 place-items-center">
+                <div className={"grid place-items-center h-[500px]"}>
+                    <SpeedDial id='organigrame' ref={refSpeedDial} visible={true} buttonStyle={{display: 'none'}} disabled={false} hideOnClickOutside={false} model={items} radius={(250)} type="circle" rotateAnimation={true} />
                 </div>
             </div>
-        )
-    }
-    else {
-        return (
-            <div>
-                <Header setHeaderHeight={props.setHeaderHeight} />
-                <div className="backgroundbureauetconseil overflow-hidden h-screen grid grid-cols-1 place-items-center">
-                    <div className={"grid place-items-center h-[500px]"}>
-                        <SpeedDial id='organigrame' ref={refSpeedDial} visible={true} buttonStyle={{display: 'none'}} disabled={false} hideOnClickOutside={false} model={items} radius={(250)} type="circle" rotateAnimation={true} />
-                    </div>
-                </div>
-            </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default BureauEtConseil;

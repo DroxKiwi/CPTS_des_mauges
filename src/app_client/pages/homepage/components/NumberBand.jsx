@@ -91,46 +91,25 @@ function NumberBand(props) {
         };
     }, [maxNumber1]);
 
-    if (props.mobile){
-        return (
-            <div className='grid place-items-center'>
-                <div className="numberbandmobile grid grid-cols-1">
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 id="numbersanimated" className='numbersmobile'>{number1}</h2>
-                        <h3 className='numberstitlemobile'>Professionnels de santé libéraux</h3>
-                    </div>
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 className='numbersmobile'>{number2}</h2>
-                        <h3 className='numberstitlemobile'>Communes</h3>
-                    </div>
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 className='numbersmobile'>{number3}</h2>
-                        <h3 className='numberstitlemobile'>Habitants</h3>
-                    </div>
+
+    return (
+        <div className='grid place-items-center' ref={elementRef}>
+            <div className="numberband grid grid-cols-3 numberbandborder">
+                <div className='col-span-1 grid place-items-center'>
+                    <h2 id="numbersanimated" className='numbers'>{number1}</h2>
+                    <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
+                </div>
+                <div className='col-span-1 grid place-items-center'>
+                    <h2 className='numbers'>{number2}</h2>
+                    <h3 className='numberstitle'>Communes</h3>
+                </div>
+                <div className='col-span-1 grid place-items-center'>
+                    <h2 className='numbers'>{number3}</h2>
+                    <h3 className='numberstitle'>Habitants</h3>
                 </div>
             </div>
-        )
-    }
-    else {
-        return (
-            <div className='grid place-items-center' ref={elementRef}>
-                <div className="numberband grid grid-cols-3 numberbandborder">
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 id="numbersanimated" className='numbers'>{number1}</h2>
-                        <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
-                    </div>
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 className='numbers'>{number2}</h2>
-                        <h3 className='numberstitle'>Communes</h3>
-                    </div>
-                    <div className='col-span-1 grid place-items-center'>
-                        <h2 className='numbers'>{number3}</h2>
-                        <h3 className='numberstitle'>Habitants</h3>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+        </div>
+    )
 
 }
 

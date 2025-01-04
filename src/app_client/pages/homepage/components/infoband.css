@@ -1,11 +1,11 @@
-
 .infoband{
     transition-duration: 500ms;
     cursor: pointer;
+    position: relative;
 }
 
 .infoband.infoband1{
-    width: 90%;
+    width: 800px;
     height: 70px;
     border-radius: 0px 50px 50px 0px;
     background: #1076B0;
@@ -13,7 +13,7 @@
 }
 
 .infoband.infoband2{
-    width: 80%;
+    width: 800px;
     height: 70px;
     border-radius: 0px 50px 50px 0px;
     background: #2791CD;
@@ -21,85 +21,43 @@
 }
 
 .infoband.infoband3{
-    width: 85%;
+    width: 800px;
     height: 70px;
     border-radius: 0px 50px 50px 0px;
     background: #3BAAEA;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
 .infobandtext{
-    padding-left: 10px;
     color: #FFF;
     font-family: "Comic Sans MS";
-    font-size: 14px;
+    font-size: 23px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
-@media screen and (min-width: 1468px){
-    .infoband{
-        transition-duration: 500ms;
-        cursor: pointer;
-        position: relative;
-    }
-    
-    .infoband.infoband1{
-        width: 800px;
-        height: 70px;
-        border-radius: 0px 50px 50px 0px;
-        background: #1076B0;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    
-    .infoband.infoband2{
-        width: 800px;
-        height: 70px;
-        border-radius: 0px 50px 50px 0px;
-        background: #2791CD;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    
-    .infoband.infoband3{
-        width: 800px;
-        height: 70px;
-        border-radius: 0px 50px 50px 0px;
-        background: #3BAAEA;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    .infobandtext{
-        color: #FFF;
-        font-family: "Comic Sans MS";
-        font-size: 23px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-    }
+.infoband:hover{
+    width: 850px;
+    transition-duration: 500ms;
+}
 
-    .infoband:hover{
-        width: 850px;
-        transition-duration: 500ms;
+.infoband1:hover{
+    background-color: antiquewhite;
+    > * {
+        color: #1076B0;
     }
-    
-    .infoband1:hover{
-        background-color: antiquewhite;
-        > * {
-            color: #1076B0;
-        }
+}
+
+.infoband2:hover{
+    background-color: antiquewhite;
+    > * {
+        color: #2791CD;
     }
-    
-    .infoband2:hover{
-        background-color: antiquewhite;
-        > * {
-            color: #2791CD;
-        }
-    }
-    
-    .infoband3:hover{
-        background-color: antiquewhite;
-        > * {
-            color: #3BAAEA;
-        }
+}
+
+.infoband3:hover{
+    background-color: antiquewhite;
+    > * {
+        color: #3BAAEA;
     }
 }

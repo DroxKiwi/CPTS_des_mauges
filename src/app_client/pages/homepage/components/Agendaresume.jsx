@@ -105,7 +105,7 @@ function Agendaresume () {
                 <h2 className='title-acturesume'>Nos évenements du moments</h2>
             </div>
             <Carousel value={data} numVisible={4} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-            autoplayInterval={10000} itemTemplate={actuTemplate} />
+                autoplayInterval={10000} itemTemplate={actuTemplate} />
         </div>
     )
 }

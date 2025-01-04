@@ -193,100 +193,51 @@ function ProjetDeSante (props) {
         )
     }
 
-    if (window.innerWidth < 1468){
-        return (
-            <div>
-                <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                <div className='overflow-x-hidden'>
-                    <img src={bg} className='bg' />
-                    <h1 className='titleprojetsmissions grid place-items-center mt-10 bg-transparent marginmobileprj'>
-                        Nos Projets / Missions
-                    </h1>
-                    <div>
-                        {
-                            data !== null ? (
-                                <div className='bg-transparent'>
-                                    <div className='bg-transparent'>
-                                        <p className='maintext'>
-                                            {data.mainText}
-                                        </p>
-                                    </div>
-                                    <div id='aus' className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={0} z='100' />
-                                    </div>
-                                    <div id="cs" className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={1} z='90' />
-                                    </div>
-                                    <div id="pre" className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={2} z='90' />
-                                    </div>
-                                    <div id="par" className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={3} z='90' />
-                                    </div>
-                                    <div id="mo" className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={4} z='90' />
-                                    </div>
-                                    <div className='bg-transparent my-10'>
-                                        <RenderItemsMobile it={5} z='90' />
-                                    </div>
-                                </div>
-                            ) : 
-                            (
-                                null
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        )
-    }
-    else {
-        return (
-            <div>
-                <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-                <div className='overflow-x-hidden' style={{height: docHeight}}>
-                    <img src={bg} className='bg' />
-                    <h1 className='titleprojetsmissions grid place-items-center mt-10 bg-transparent'>
-                        Nos Projets / Missions
-                    </h1>
-                    <div>
-                        {
-                            data !== null ? (
+    return (
+        <div>
+            <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
+            <div className='overflow-x-hidden' style={{height: docHeight}}>
+                <img src={bg} className='bg' />
+                <h1 className='titleprojetsmissions grid place-items-center mt-10 bg-transparent'>
+                    Nos Projets / Missions
+                </h1>
+                <div>
+                    {
+                        data !== null ? (
+                            <div className='card bg-transparent'>
                                 <div className='card bg-transparent'>
-                                    <div className='card bg-transparent'>
-                                        <p className='maintext'>
-                                            {data.mainText}
-                                        </p>
-                                    </div>
-                                    <div id='aus' className='card bg-transparent my-10'>
-                                        <RenderItems it={0} z='100' />
-                                    </div>
-                                    <div id='cs' className='card bg-transparent my-10'>
-                                        <RenderItems it={1} z='90' />
-                                    </div>
-                                    <div id='pre' className='card bg-transparent my-10'>
-                                        <RenderItems it={2} z='90' />
-                                    </div>
-                                    <div id='par' className='card bg-transparent my-10'>
-                                        <RenderItems it={3} z='90' />
-                                    </div>
-                                    <div id='mo' className='card bg-transparent my-10'>
-                                        <RenderItems it={4} z='90' />
-                                    </div>
-                                    <div className='card bg-transparent my-10'>
-                                        <RenderItems it={5} z='90' />
-                                    </div>
+                                    <p className='maintext'>
+                                        {data.mainText}
+                                    </p>
                                 </div>
-                            ) : 
-                            (
-                                null
-                            )
-                        }
-                    </div>
+                                <div id='aus' className='card bg-transparent my-10'>
+                                    <RenderItems it={0} z='100' />
+                                </div>
+                                <div id='cs' className='card bg-transparent my-10'>
+                                    <RenderItems it={1} z='90' />
+                                </div>
+                                <div id='pre' className='card bg-transparent my-10'>
+                                    <RenderItems it={2} z='90' />
+                                </div>
+                                <div id='par' className='card bg-transparent my-10'>
+                                    <RenderItems it={3} z='90' />
+                                </div>
+                                <div id='mo' className='card bg-transparent my-10'>
+                                    <RenderItems it={4} z='90' />
+                                </div>
+                                <div className='card bg-transparent my-10'>
+                                    <RenderItems it={5} z='90' />
+                                </div>
+                            </div>
+                        ) : 
+                        (
+                            null
+                        )
+                    }
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default ProjetDeSante;

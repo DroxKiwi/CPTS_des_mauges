@@ -66,8 +66,8 @@ export const MenuDashboard = {
                     label: 'accueil',
                     icon:'pi pi-fw pi-code',
                     command:()=>{
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/")
                     },
@@ -79,8 +79,8 @@ export const MenuDashboard = {
                     label: 'presentation',
                     icon:'pi pi-fw pi-code',
                     command:()=>{
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/presentation")
                     },
@@ -92,8 +92,8 @@ export const MenuDashboard = {
                     label: 'bureau et conseil',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/bureauetconseil")
                     },
@@ -105,8 +105,8 @@ export const MenuDashboard = {
                     label: 'projets / missions',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/projetdesante")
                     },
@@ -119,8 +119,8 @@ export const MenuDashboard = {
                     label: 'actualites',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/nosactualites")
                     },
@@ -132,8 +132,8 @@ export const MenuDashboard = {
                     label: 'agenda',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/agenda")
                     },
@@ -145,8 +145,8 @@ export const MenuDashboard = {
                     label: 'je suis patient',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/jesuispatient")
                     },
@@ -158,8 +158,8 @@ export const MenuDashboard = {
                     label: 'je suis pro',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/jesuisprofessionnel")
                     },
@@ -171,8 +171,8 @@ export const MenuDashboard = {
                     label: 'adherer',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/adherer")
                     },
@@ -184,8 +184,8 @@ export const MenuDashboard = {
                     label: 'nous contacter',
                     icon:'pi pi-fw pi-code',
                     command:()=>{ 
-                        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
-                            window.top.location.href= 'http://localhost:3000/dashboard/viewer';   
+                        if (window.top.location.href !== process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+                            window.top.location.href= process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer';   
                         }
                         setUrlViewer("/contact")
                     },
