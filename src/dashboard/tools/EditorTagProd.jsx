@@ -253,7 +253,7 @@ function EditorTagProd (props) {
     return (
         <div>
             {
-                window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
                     <div className='mx-5'>
                         <p>{props.id}</p>
                         <Button label='Supprimer le dossier' severity='danger' onClick={() => handleRemoveProd(props.id)}></Button>

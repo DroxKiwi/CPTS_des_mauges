@@ -226,7 +226,7 @@ function EditorWindowPatd (props) {
     return (
         <div>
             {
-                window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
                     <div>
                         <Button className='m-5' label='Créer un dossier' severity='info' onClick={handleAddPatd} />
                         <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>

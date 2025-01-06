@@ -34,7 +34,7 @@ function EditorWindowAdh (props) {
     return (
         <div>
             {
-                window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
                     <div>
                         <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddEvent} />
                         <Toast ref={toast}></Toast> 

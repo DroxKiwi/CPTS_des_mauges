@@ -47,11 +47,18 @@ function EditorWindowArticle (props) {
             showError();
         }
     };
+
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        console.log(url);
+        console.log(regex.test(url));
+        return regex.test(url);
+    };
     
     return (
         <div>
             {
-                window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                isDashboardViewerUrl(window.top.location.href) ? (
                     <div>
                         <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddArticle} />
                         <Toast ref={toast}></Toast> 

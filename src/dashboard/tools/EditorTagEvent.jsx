@@ -305,7 +305,7 @@ function EditorTagEvent (props) {
             <div>
                 <Toast ref={toast}></Toast>
                 {
-                    window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                    window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
                         <div>
                             <p className='id-editable'>{props.id}</p>
                             <Button label='Supprimer' severity='danger' onClick={() => handleRemoveEvent(props.id)}></Button>

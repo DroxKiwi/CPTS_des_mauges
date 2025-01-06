@@ -226,12 +226,19 @@ function EditorTagArticle (props) {
         }
     };
 
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        console.log(url);
+        console.log(regex.test(url));
+        return regex.test(url);
+    };
+
     // Gestion article ------------------------------------------------------------------------------------------
 
     return (
         <div>
             {
-                window.top.location.href === 'http://localhost:3000/dashboard/viewer' ? (
+                isDashboardViewerUrl(window.top.location.href) ? (
                     <div>
                         <p className='id-editable'>{props.id}</p>
                         <Button label='Supprimer' severity='danger' onClick={() => handleRemoveArticle(props.id)}></Button>
