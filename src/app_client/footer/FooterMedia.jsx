@@ -66,8 +66,8 @@ function FooterMedia (props) {
                         <div className='grid place-items-center'>
                             <p><b>Retrouvez nous sur les réseaux</b></p>
                             <div>
-                                <img className='reseaux-footer-item' src={fb} width="40px" onClick={() => handleRedirect("fb")} ></img>
                                 <img className='reseaux-footer-item' src={lk} width="40px" onClick={() => handleRedirect("lk")} ></img>
+                                <img className='reseaux-footer-item' src={fb} width="40px" onClick={() => handleRedirect("fb")} ></img>
                             </div>
                         </div>
                         <div>

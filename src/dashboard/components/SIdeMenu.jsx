@@ -19,10 +19,14 @@ function SideMenu (props) {
     const [isCollapse, setIsCollapse] = useState(false);
     const [items, setItems] = useState([]);
 
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
+
     useEffect(() => {
         if (!isCollapse) {
-
-            if (window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer'){
+            if (isDashboardViewerUrl(window.top.location.href)){
                 var itemsTemp = [];
                 var applications = {
                     label: 'Pages',
@@ -87,6 +91,7 @@ function SideMenu (props) {
                     template: ItemRenderer,
                     command: () => {
                         window.top.location.href = process.env.REACT_APP_BASE_APP_URI + "/dashboard/viewer";
+                        ss.set("editmode", true);
                     }
                 }
                 itemsTemp.push(applications);

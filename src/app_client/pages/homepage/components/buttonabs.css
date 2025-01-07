@@ -142,6 +142,45 @@
     line-height: normal;
 }
 
+.testabs{
+    position: relative;
+    margin: 100px;
+    left: 0px;
+    width: 300px;
+    height: 70px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: rgb(127, 204, 248);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.testabs:hover{
+    .contacttextbtnabs{
+        color: rgb(127, 204, 248);
+    }
+}
+
+.testabs{
+    color: #ffffff;
+    font-family: "Comic Sans MS";
+    margin-top: 3%;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.testtextbtnabs{
+    color: #ffffff;
+    font-family: "Comic Sans MS";
+    margin-top: 3%;
+    margin-left: 10%;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
 .contactimgbtnabs{
     margin-left: 50%;
     margin-top: 5%;

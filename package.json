@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "set REACT_APP_BASE_API_URI=https://www.cptsdesmauges.fr/api&& set REACT_APP_BASE_APP_URI=https://www.cptsdesmauges.fr&& react-scripts build",
+    "build": "set REACT_APP_BASE_API_URI=https://cptsdesmauges.fr/api&& set REACT_APP_BASE_APP_URI=https://cptsdesmauges.fr&& react-scripts build",
     "local_local": "set REACT_APP_BASE_API_URI=http://127.0.0.1:8001&& set REACT_APP_BASE_APP_URI=http://localhost:3000&& react-scripts start",
     "local_prod": "set REACT_APP_BASE_API_URI=http://127.0.0.1:8000&& set REACT_APP_BASE_APP_URI=http://localhost:3000&& react-scripts start",
     "test": "jest",

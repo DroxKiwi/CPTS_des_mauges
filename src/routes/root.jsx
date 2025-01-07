@@ -11,8 +11,13 @@ function Root () {
 
     const winW = useWindowSize();
 
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
+
     useEffect(() => {
-        if (window.top.location.href !== 'http://localhost:3000/dashboard/viewer'){
+        if (!isDashboardViewerUrl(window.top.location.href)){
             if (ss.getFormated("editmode")){
                 ss.set("editmode", false);
             }

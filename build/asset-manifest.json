@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.ae443536.css",
-    "main.js": "/static/js/main.96131ba6.js",
+    "main.css": "/static/css/main.9ec36dab.css",
+    "main.js": "/static/js/main.325559a8.js",
     "static/js/453.6f861318.chunk.js": "/static/js/453.6f861318.chunk.js",
     "static/js/605.1e38033c.chunk.js": "/static/js/605.1e38033c.chunk.js",
     "static/media/ldl.pdf": "/static/media/ldl.0b00b6a961cc41d6ef27.pdf",
@@ -26,7 +26,6 @@
     "static/media/coassoc1.png": "/static/media/coassoc1.1880bb7ee4a0d09e1c24.png",
     "static/media/bg-1.png": "/static/media/bg-1.c28f239cae09de4fb879.png",
     "static/media/rollup1.png": "/static/media/rollup1.815805f5cb1d04136605.png",
-    "static/media/bg-3.png": "/static/media/bg-3.ddeb276455d05077680a.png",
     "static/media/rollup6.png": "/static/media/rollup6.7fc07dab30d4ed0f8c9a.png",
     "static/media/rollup5.png": "/static/media/rollup5.4a476e844d94a1cc0b4d.png",
     "static/media/accesauxsoins.png": "/static/media/accesauxsoins.1ab5e453ba5aa60ec679.png",
@@ -55,13 +54,13 @@
     "static/media/robinet.png": "/static/media/robinet.c9c47173df067a4c2880.png",
     "static/media/coassoc3.png": "/static/media/coassoc3.f8ae9f5dd1f75bcf7475.png",
     "index.html": "/index.html",
-    "main.ae443536.css.map": "/static/css/main.ae443536.css.map",
-    "main.96131ba6.js.map": "/static/js/main.96131ba6.js.map",
+    "main.9ec36dab.css.map": "/static/css/main.9ec36dab.css.map",
+    "main.325559a8.js.map": "/static/js/main.325559a8.js.map",
     "453.6f861318.chunk.js.map": "/static/js/453.6f861318.chunk.js.map",
     "605.1e38033c.chunk.js.map": "/static/js/605.1e38033c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ae443536.css",
-    "static/js/main.96131ba6.js"
+    "static/css/main.9ec36dab.css",
+    "static/js/main.325559a8.js"
   ]
 }

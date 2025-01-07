@@ -48,8 +48,8 @@ function GeneralSettings () {
                 setChiffrepsl(data[0].chiffrepsl);
                 setChiffrecom(data[0].chiffrecom);
                 setChiffrehab(data[0].chiffrehab);
-                setHommepageprjstext(data[0].hommepageprjstext);
-                setQuisommesnousmaintext(data[0].quisommesnousmaintext);
+                setHommepageprjstext(data[0].hommepageprjstext.replaceAll('_GD_', '"').replaceAll("_GS_", "'"));
+                setQuisommesnousmaintext(data[0].quisommesnousmaintext.replaceAll('_GD_', '"').replaceAll("_GS_", "'"));
             } 
             catch (error) {
                 console.log(error);

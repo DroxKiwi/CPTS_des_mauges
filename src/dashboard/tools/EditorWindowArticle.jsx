@@ -50,8 +50,6 @@ function EditorWindowArticle (props) {
 
     function isDashboardViewerUrl(url) {
         const regex = /.*\/dashboard\/viewer$/;
-        console.log(url);
-        console.log(regex.test(url));
         return regex.test(url);
     };
     
@@ -60,7 +58,7 @@ function EditorWindowArticle (props) {
             {
                 isDashboardViewerUrl(window.top.location.href) ? (
                     <div>
-                        <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddArticle} />
+                        <Button className='m-5 z-10' label='Ajouter' severity='info' onClick={handleAddArticle} />
                         <Toast ref={toast}></Toast> 
                         {props.children}
                     </div>

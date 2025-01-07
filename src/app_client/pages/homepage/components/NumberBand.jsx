@@ -4,6 +4,7 @@ import { ls, ss } from '../../../../utils/store';
 import { API_global } from '../../../services/api/globalServices';
 
 import './numberband.css';
+import ErrorPage from '../../../../utils/error-page';
 
 function NumberBand(props) {
 
@@ -92,25 +93,29 @@ function NumberBand(props) {
     }, [maxNumber1]);
 
 
-    return (
-        <div className='grid place-items-center' ref={elementRef}>
-            <div className="numberband grid grid-cols-3 numberbandborder">
-                <div className='col-span-1 grid place-items-center'>
-                    <h2 id="numbersanimated" className='numbers'>{number1}</h2>
-                    <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
-                </div>
-                <div className='col-span-1 grid place-items-center'>
-                    <h2 className='numbers'>{number2}</h2>
-                    <h3 className='numberstitle'>Communes</h3>
-                </div>
-                <div className='col-span-1 grid place-items-center'>
-                    <h2 className='numbers'>{number3}</h2>
-                    <h3 className='numberstitle'>Habitants</h3>
+    try {
+        return (
+            <div className='grid place-items-center relative' ref={elementRef}>
+                <div className="numberband grid grid-cols-3 numberbandborder">
+                    <div className='col-span-1 grid place-items-center'>
+                        <h2 id="numbersanimated" className='numbers'>{number1}</h2>
+                        <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
+                    </div>
+                    <div className='col-span-1 grid place-items-center'>
+                        <h2 className='numbers'>{number2}</h2>
+                        <h3 className='numberstitle'>Communes</h3>
+                    </div>
+                    <div className='col-span-1 grid place-items-center'>
+                        <h2 className='numbers'>{number3}</h2>
+                        <h3 className='numberstitle'>Habitants</h3>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
-
+        )
+    }
+    catch (error){
+        return <ErrorPage error={error} />;
+    }
 }
 
 export default NumberBand;

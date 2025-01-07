@@ -13,7 +13,7 @@ import EditorWindowArticle from '../../../dashboard/tools/EditorWindowArticle';
 import { ls, ss } from '../../../utils/store';
 import { Dialog } from 'primereact/dialog';
 
-import ErrorComponent from '../../../dashboard/tools/ErrorComponent';
+import ErrorPage from '../../../utils/error-page';
 import { InputText } from 'primereact/inputtext';
 
 import { Dropdown } from 'primereact/dropdown';
@@ -131,7 +131,7 @@ function NosActualite (props) {
         }
         catch(error){
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -154,7 +154,7 @@ function NosActualite (props) {
         }
         catch(error){
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -165,7 +165,7 @@ function NosActualite (props) {
         }
         catch(error){
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -182,7 +182,7 @@ function NosActualite (props) {
         }
         catch(error){
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -195,7 +195,7 @@ function NosActualite (props) {
         }
         catch(error){
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     }, [selectedTagSearch])
 
@@ -211,7 +211,7 @@ function NosActualite (props) {
                     <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                     <path d="M1999.5 28.4999C2286 321.5 2324.39 307.534 1969.5 135C1590 -49.5 -63.9998 515 -147.5 240.5C-171.262 162.385 -254.5 -15.4999 -62.5 87.0001C512.671 394.058 1854.41 -119.884 1999.5 28.4999Z" fill="#8DC943" fill-opacity="0.33"/>
                     </svg>
-                    <h2 className='titleactu relative'>
+                    <h2 className='titlepage relative'>
                         L'actualité de la CPTS
                     </h2>
                     <div className='grid grid-cols-3 gap-4 place-items-center z-10'>
@@ -312,7 +312,7 @@ function NosActualite (props) {
     }
     catch(error){
         console.error(error);
-        return <ErrorComponent error={error} />
+        return <ErrorPage error={error} />
     }
 }
 

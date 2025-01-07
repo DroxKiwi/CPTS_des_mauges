@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './organigrame.css';
-
+import ErrorPage from '../../../utils/error-page';
 
 
 function Organigrame (props) {
@@ -23,14 +23,18 @@ function Organigrame (props) {
             });
         }
     }, [loaded])
-
-    if (window.innerWidth < 800){
+    
+    try {
         return (
             <div ref={testRef} className='h-[100px] grid grid-rows-2'>
                 <div class={props.src.link}>
-                    <div className=''>
-                        <img src={props.imgSrc} height="200px" width="200px" ></img>
+                    <div className='grid grid-cols-2'>
+                        <img className='imgorganigrame' src={props.imgSrc} ></img>
                         <div className='nameoutbox'>
+                            <p>{props.src.role}</p>
+                            <p>{props.src.comp}</p>
+                        </div>
+                        <div className='nameoutbox nameoutboxlabel'>
                             {props.src.label}
                         </div>
                     </div>
@@ -38,19 +42,8 @@ function Organigrame (props) {
             </div>
         )
     }
-    else {
-        return (
-            <div ref={testRef} className='h-[100px] grid grid-rows-2'>
-                <div class={props.src.link}>
-                    <div className=''>
-                        <img src={props.imgSrc} height="200px" width="200px" ></img>
-                        <div className='nameoutbox'>
-                            {props.src.label}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        )
+    catch(error){
+        return <ErrorPage error={error} />
     }
 }
 

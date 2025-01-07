@@ -1,14 +1,24 @@
 
 
-
-
+import { useState, useEffect, useRef } from 'react';
+import { Toast } from 'primereact/toast';
 
 function ErrorComponent (props) {
 
+    const toast = useRef(null);
+    const triggerError = () => {
+        toast.current.show({ severity: 'warn', summary: 'Erreur', detail: props.error.message, sticky: true });
+    };
+
+    useEffect(() => {
+        triggerError(props.error);
+    }, []);
+
     return (
         <div>
+            <Toast ref={toast} />
             <p>Error : {props.error.message}</p>
-            <p>Contacter votre développeur en charge du projet avec l'erreur !</p>
+            <h1>Oops ! <span className='errorOops'>Une erreur s'est produite .. veuillez nous excusez.</span></h1>
         </div>
     )
 }

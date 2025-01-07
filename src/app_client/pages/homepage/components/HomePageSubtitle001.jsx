@@ -44,7 +44,7 @@ function HomePageSubtitle001 (props) {
                         <p className='homepagesubtitle001secondary'>Retrouvez la déclinaison de notre projet de santé en fonction des missions.</p>
                         {
                             globalData !== null ? (
-                                <p className='homepagesubtitle001secondarymobile w-[70dvw]'>{globalData[0].hommepageprjstext}</p>
+                                <p className='homepagesubtitle001secondarymobile w-[70dvw]'>{globalData[0].hommepageprjstext.replaceAll('_GD_', '"').replaceAll("_GS_", "'")}</p>
                             ) :
                             (
                                 null

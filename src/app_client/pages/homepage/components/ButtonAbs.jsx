@@ -40,6 +40,13 @@ function ButtonAbs(props) {
                     <img className='contactimgbtnabs' src={cliquezSur3} width='70px'/>
                 </div>
             );
+        case 'test':
+            return (
+                <div className="btntrns testabs cursor-pointer z-10" onClick={() => handleClick('/contact')}>
+                    <p className='testtextbtnabs'>Adhérer à la CPTS !</p>
+                    <img className='contactimgbtnabs' src={cliquezSur3} width='70px'/>
+                </div>
+            );
         default:
             return (
                 null

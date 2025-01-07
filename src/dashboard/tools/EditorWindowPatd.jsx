@@ -222,17 +222,22 @@ function EditorWindowPatd (props) {
             console.error(error);
         }
     };
+
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
     
     return (
         <div>
             {
-                window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
+                isDashboardViewerUrl(window.top.location.href) ? (
                     <div>
-                        <Button className='m-5' label='Créer un dossier' severity='info' onClick={handleAddPatd} />
+                        <Button className='m-5 z-10' label='Créer un dossier' severity='info' onClick={handleAddPatd} />
                         <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>
                         {props.children}
                         <Divider />
-                        <Button className='m-5' label='Créer un document' severity='secondary' onClick={handleAddPatf} />
+                        <Button className='m-5 z-10' label='Créer un document' severity='secondary' onClick={handleAddPatf} />
                         <h2 className='text-green-700 ml-2'>Documents existants</h2>
                         <div className='grid grid-cols-5 gap-5 mx-5'>
                             {

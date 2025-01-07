@@ -299,13 +299,18 @@ function EditorTagEvent (props) {
     }, [startdateEvent]);
 
     // Gestion date
+    
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
 
     try {
         return (
             <div>
                 <Toast ref={toast}></Toast>
                 {
-                    window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
+                    isDashboardViewerUrl(window.top.location.href) ? (
                         <div>
                             <p className='id-editable'>{props.id}</p>
                             <Button label='Supprimer' severity='danger' onClick={() => handleRemoveEvent(props.id)}></Button>

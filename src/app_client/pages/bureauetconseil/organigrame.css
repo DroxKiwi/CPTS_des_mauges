@@ -1,5 +1,16 @@
 
+.imgorganigrame{
+  transition: 1000ms;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+}
 
+.imgorganigrame:hover{
+  transition: 1000ms;
+  width: 250px;
+  height: 250px;
+}
 
 .nameoutbox{
   width: 200px;
@@ -12,6 +23,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.nameoutboxlabel{
+  font-size: 23px;
 }
 
 .p-speeddial-item{

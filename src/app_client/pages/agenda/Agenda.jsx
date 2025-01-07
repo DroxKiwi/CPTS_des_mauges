@@ -13,7 +13,7 @@ import EditorWindowEvent from '../../../dashboard/tools/EditorWindowEvent';
 import { ls, ss } from '../../../utils/store';
 import { Dialog } from 'primereact/dialog';
 
-import ErrorComponent from '../../../dashboard/tools/ErrorComponent';
+import ErrorPage from '../../../utils/error-page';
 import { InputText } from 'primereact/inputtext';
 
 import { Dropdown } from 'primereact/dropdown';
@@ -25,10 +25,7 @@ import Footer from '../../footer/Footer';
 function Agenda (props) {
 
     // Gestion d'erreur à l'écran
-    const toast = useRef(null);
-    const triggerError = (error) => {
-        toast.current.show({ severity: 'warn', summary: 'Erreur', detail: error.message, sticky: true });
-    };
+
     // Gestion d'erreur à l'écran
 
     const todayF = new Date();
@@ -71,7 +68,6 @@ function Agenda (props) {
             setDocWidth(window.innerWidth - 10);
         }
         catch(error){
-            triggerError(error);
             console.error(error);
         }
     }, [window.innerHeight]);
@@ -87,14 +83,12 @@ function Agenda (props) {
                     setAllTags(allTagsTemp);
                 }
                 catch(error){
-                    triggerError(error);
                     console.error(error);
                 }
             }
             getData();   
         }
         catch(error){
-            triggerError(error);
             console.error(error);
         }
     }, []);
@@ -171,7 +165,6 @@ function Agenda (props) {
             }
         }
         catch(error){
-            triggerError(error);
             console.error(error);
         }
     }, [selectedFilter]);
@@ -190,9 +183,8 @@ function Agenda (props) {
             }
         }
         catch(error){
-            triggerError(error);
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -214,9 +206,8 @@ function Agenda (props) {
             }
         }
         catch(error){
-            triggerError(error);
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -226,9 +217,8 @@ function Agenda (props) {
             setSelectedDetail(d);
         }
         catch(error){
-            triggerError(error);
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -244,9 +234,8 @@ function Agenda (props) {
             }
         }
         catch(error){
-            triggerError(error);
             console.error(error);
-            return <ErrorComponent error={error} />
+            return <ErrorPage error={error} />
         }
     };
 
@@ -254,7 +243,6 @@ function Agenda (props) {
         return (
             <div className='container-root'>
                 <EditorWindowEvent>
-                    <Toast ref={toast} />
                     <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
                     <div className='grid place-items-center card bg-transparent'>
                         <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 157" fill="none">
@@ -263,7 +251,7 @@ function Agenda (props) {
                         <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                         <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
                         </svg>
-                        <h2 className='titleactu relative'>
+                        <h2 className='titlepage relative'>
                             L'agenda de la CPTS
                         </h2>
                         <div className='grid grid-cols-3 gap-4 place-items-center relative'>
@@ -394,9 +382,7 @@ function Agenda (props) {
         )
     }
     catch(error){
-        triggerError(error);
-        console.error(error);
-        return <ErrorComponent error={error} />
+        return <ErrorPage error={error} />
     }
 }
 

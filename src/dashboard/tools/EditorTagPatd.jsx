@@ -251,10 +251,15 @@ function EditorTagPatd (props) {
         );
     };
 
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
+
     return (
         <div>
             {
-                window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
+                isDashboardViewerUrl(window.top.location.href) ? (
                     <div className='mx-5'>
                         <p>{props.id}</p>
                         <Button label='Supprimer le dossier' severity='danger' onClick={() => handleRemovePatd(props.id)}></Button>

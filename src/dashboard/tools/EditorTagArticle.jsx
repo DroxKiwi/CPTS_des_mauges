@@ -228,8 +228,6 @@ function EditorTagArticle (props) {
 
     function isDashboardViewerUrl(url) {
         const regex = /.*\/dashboard\/viewer$/;
-        console.log(url);
-        console.log(regex.test(url));
         return regex.test(url);
     };
 

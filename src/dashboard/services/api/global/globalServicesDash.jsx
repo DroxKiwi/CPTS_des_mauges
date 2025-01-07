@@ -21,14 +21,23 @@ export const API_globalsDash = {
         const formData = new FormData();
 
         var valueToSendHommepageprjstext;
-        if (hommepageprjstext === null || hommepageprjstext === undefined){
-            valueToSendHommepageprjstext = '';
+        if (hommepageprjstext === null || hommepageprjstext === undefined || hommepageprjstext === ''){
+            valueToSendHommepageprjstext = ' ';
+        }
+        else {
+            valueToSendHommepageprjstext = hommepageprjstext;
         };
 
         var valueToSendQuisommesnousmaintext;
-        if (quisommesnousmaintext === null || quisommesnousmaintext === undefined){
-            valueToSendQuisommesnousmaintext = '';
+        if (quisommesnousmaintext === null || quisommesnousmaintext === undefined || quisommesnousmaintext === ''){
+            valueToSendQuisommesnousmaintext = ' ';
+        }
+        else {
+            valueToSendQuisommesnousmaintext = quisommesnousmaintext;
         };
+
+        var valueToSendHommepageprjstext = valueToSendHommepageprjstext.replaceAll('"', '_GD_').replaceAll("'", '_GS_');
+        var valueToSendQuisommesnousmaintext = valueToSendQuisommesnousmaintext.replaceAll('"', '_GD_').replaceAll("'", '_GS_');
 
         formData.append('globaldata_id', globaldata_id);
         formData.append('tel', tel);

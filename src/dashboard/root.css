@@ -99,3 +99,12 @@
         visibility: hidden;
     }
   }
+
+.titlepage{
+  color: #0A727B;
+  font-family: "Cooper Black";
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

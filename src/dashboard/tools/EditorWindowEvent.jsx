@@ -65,13 +65,18 @@ function EditorWindowEvent (props) {
         }
     };
     
+    function isDashboardViewerUrl(url) {
+        const regex = /.*\/dashboard\/viewer$/;
+        return regex.test(url);
+    };
+    
     try {
         return (
             <div>
                 {
-                    window.top.location.href === process.env.REACT_APP_BASE_APP_URI + '/dashboard/viewer' ? (
+                    isDashboardViewerUrl(window.top.location.href) ? (
                         <div>
-                            <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddEvent} />
+                            <Button className='m-5 z-10' label='Ajouter' severity='info' onClick={handleAddEvent} />
                             <Toast ref={toast}></Toast> 
                             {props.children}
                         </div>

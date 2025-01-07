@@ -25,7 +25,7 @@ function AdminDashViewer () {
         <div className="overflow-x-hidden wrapper">
             <div className="h-full w-full overflow-y-hidden">
                 <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
-                    <Viewer setChildW={setChildW} urlViewer={urlViewer} />;
+                    <Viewer setChildW={setChildW} urlViewer={urlViewer} />
                 </SideMenu>
             </div>
         </div>

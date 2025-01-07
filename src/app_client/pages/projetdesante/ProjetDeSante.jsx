@@ -15,9 +15,9 @@ import Rollup5 from '../../assets/Images/rollups/rollup5.png';
 import Rollupimg5rounded from '../../assets/Images/rollups/rollupimg5rounded.png';
 import Rollup6 from '../../assets/Images/rollups/rollup6.png';
 import Rollupimg6rounded from '../../assets/Images/rollups/rollupimg6rounded.png';
-import bg from '../../assets/Images/backgrounds/bg-3.png';
 import Header from '../../header/Header';
-
+import Footer from '../../footer/Footer';
+import ErrorPage from '../../../utils/error-page';
 
 import { ls, ss } from '../../../utils/store';
 
@@ -85,123 +85,140 @@ function ProjetDeSante (props) {
     }, []);
 
     const RenderItems = (props) => {
-        return (
-            <div className='w-full overflow-x-hidden'>
-                <div className='rollup-lvl-0'>
-                    <div className='rollup-lvl-0-0 absolute'>
-                        <img src={rollupSelection[props.it].base} className='rollup-lvl-0-0-item' width="300px" />
-                        <img src={rollupSelection[props.it].img} className='rollup-lvl-0-0-image absolute' width="80px" />
-                    </div>
-                    <div className={'rollup-lvl-0-1 absolute z-' + props.z}>
-                        <div className='rollup-lvl-0-1-item grid place-items-center w-full' style={{backgroundColor: rollupSelection[props.it].color}}>
-                            <div>
-                                {
-                                    data.accordion.map((ia, i) => (
-                                        <div className='accru-lvl-0'>
-                                        {
-                                            i === props.it ? (
-                                                <div>
-                                                    <span className='titleiacontent'>{ia.content}</span>
-                                                    <div className='grid grid-cols-3 gridstartcolpjs'>
-                                                    {
-                                                        ia.items.map((ib) => (
-                                                            <div class="cardpjs" style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                <div className='contentaccordion' style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                    <p className='subtitleaccordion'>{ib.content}</p>
-                                                                    <div style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                        {
-                                                                            ib.items.map((ic) => (
-                                                                                <div className=''>
-                                                                                        <p>{ic.content}</p>
-                                                                                </div>
-                                                                            ))
-                                                                        }
+        try {
+            return (
+                <div className='w-full overflow-x-hidden'>
+                    <div className='rollup-lvl-0'>
+                        <div className='rollup-lvl-0-0 absolute'>
+                            <img src={rollupSelection[props.it].base} className='rollup-lvl-0-0-item' width="300px" />
+                            <img src={rollupSelection[props.it].img} className='rollup-lvl-0-0-image absolute' width="80px" />
+                        </div>
+                        <div className={'rollup-lvl-0-1 absolute z-' + props.z}>
+                            <div className='rollup-lvl-0-1-item grid place-items-center w-full' style={{backgroundColor: rollupSelection[props.it].color}}>
+                                <div>
+                                    {
+                                        data.accordion.map((ia, i) => (
+                                            <div className='accru-lvl-0'>
+                                            {
+                                                i === props.it ? (
+                                                    <div>
+                                                        <span className='titleiacontent'>{ia.content}</span>
+                                                        <div className='grid grid-cols-3 gridstartcolpjs'>
+                                                        {
+                                                            ia.items.map((ib) => (
+                                                                <div class="cardpjs" style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                    <div className='contentaccordion' style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                        <p className='subtitleaccordion'>{ib.content}</p>
+                                                                        <div style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                            {
+                                                                                ib.items.map((ic) => (
+                                                                                    <div className=''>
+                                                                                            <p>{ic.content}</p>
+                                                                                    </div>
+                                                                                ))
+                                                                            }
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        ))
-                                                    }
+                                                            ))
+                                                        }
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ) : 
-                                            (
-                                                null
-                                            )
-                                        }
-                                        </div>
-                                    ))
-                                }
+                                                ) : 
+                                                (
+                                                    null
+                                                )
+                                            }
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        catch(error){
+            return <ErrorPage error={error} />
+        }
     };
 
     const RenderItemsMobile = (props) => {
-        return (
-            <div className='w-full overflow-x-hidden'>
-                <div className='rollup-lvl-0'>
-                    <div className=''>
-                        <img src={rollupSelection[props.it].base} className='rollup-lvl-0-0-item' width="300px" />
-                    </div>
-                    <div className={'z-' + props.z}>
-                        <div className='grid place-items-center w-full rollup-lvl-0-0-content' style={{backgroundColor: rollupSelection[props.it].color}}>
-                            <div>
-                                {
-                                    data.accordion.map((ia, i) => (
-                                        <div className=''>
-                                        {
-                                            i === props.it ? (
-                                                <div className='px-5 py-10'>
-                                                    <p className='titleiacontent'>{ia.content}</p>
-                                                    <div className=''>
-                                                    {
-                                                        ia.items.map((ib) => (
-                                                            <div class="" style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                <div className='contentaccordion' style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                    <p className='subtitleaccordion'>{ib.content}</p>
-                                                                    <div style={{backgroundColor: ia.bgcolor, color: ia.color}}>
-                                                                        {
-                                                                            ib.items.map((ic) => (
-                                                                                <div className=''>
-                                                                                        <p className='contentmobile'>{ic.content}</p>
-                                                                                </div>
-                                                                            ))
-                                                                        }
+        try {
+            return (
+                <div className='w-full overflow-x-hidden'>
+                    <div className='rollup-lvl-0'>
+                        <div className=''>
+                            <img src={rollupSelection[props.it].base} className='rollup-lvl-0-0-item' width="300px" />
+                        </div>
+                        <div className={'z-' + props.z}>
+                            <div className='grid place-items-center w-full rollup-lvl-0-0-content' style={{backgroundColor: rollupSelection[props.it].color}}>
+                                <div>
+                                    {
+                                        data.accordion.map((ia, i) => (
+                                            <div className=''>
+                                            {
+                                                i === props.it ? (
+                                                    <div className='px-5 py-10'>
+                                                        <p className='titleiacontent'>{ia.content}</p>
+                                                        <div className=''>
+                                                        {
+                                                            ia.items.map((ib) => (
+                                                                <div class="" style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                    <div className='contentaccordion' style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                        <p className='subtitleaccordion'>{ib.content}</p>
+                                                                        <div style={{backgroundColor: ia.bgcolor, color: ia.color}}>
+                                                                            {
+                                                                                ib.items.map((ic) => (
+                                                                                    <div className=''>
+                                                                                            <p className='contentmobile'>{ic.content}</p>
+                                                                                    </div>
+                                                                                ))
+                                                                            }
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        ))
-                                                    }
+                                                            ))
+                                                        }
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            ) : 
-                                            (
-                                                null
-                                            )
-                                        }
-                                        </div>
-                                    ))
-                                }
+                                                ) : 
+                                                (
+                                                    null
+                                                )
+                                            }
+                                            </div>
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
+        catch(error){
+            return <ErrorPage error={error} />
+        }
     }
 
-    return (
-        <div>
-            <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
-            <div className='overflow-x-hidden' style={{height: docHeight}}>
-                <img src={bg} className='bg' />
-                <h1 className='titleprojetsmissions grid place-items-center mt-10 bg-transparent'>
-                    Nos Projets / Missions
-                </h1>
-                <div>
+    try {
+        return (
+            <div className='container-root'>
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="274" viewBox="0 -70 1920 274" fill="none">
+                <path d="M1969.5 147.685C1997.68 176.5 2000 291.828 1969.5 270.5C1623.69 28.6873 55.3823 294.383 -147.5 91.5C-182 57 -105 -16.3691 -66.4998 4.18471C508.669 311.247 1824.41 -0.699097 1969.5 147.685Z" fill="#008CDD" fill-opacity="0.33"/>
+                </svg>
+                <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="487" viewBox="0 -70 1920 487" fill="none">
+                <path d="M2043.5 250C2050.57 289.677 2159.61 523.723 2129.1 502.396C1783.29 260.583 129.382 401.883 -73.4998 199C-108 164.5 -201.194 -137 -40.5 76C275.988 495.505 2010 62.0003 2043.5 250Z" fill="#008CDD" fill-opacity="0.33"/>
+                </svg>
+                <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />
+                <div className='grid place-items-center card bg-transparent'>
+                    <h2 className='titlepage relative'>
+                        Nos Projets / Missions
+                    </h2>
+                </div>
+                <div className='place-items-start'>
                     {
                         data !== null ? (
                             <div className='card bg-transparent'>
@@ -235,9 +252,13 @@ function ProjetDeSante (props) {
                         )
                     }
                 </div>
+                <Footer />
             </div>
-        </div>
-    )
+        )
+    }
+    catch(error){
+        return <ErrorPage error={error} />
+    };
 }
 
 export default ProjetDeSante;
