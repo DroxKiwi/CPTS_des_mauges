@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import './organigrame.css';
 import ErrorPage from '../../../utils/error-page';
+import EditorTagBCA from '../../../dashboard/tools/EditorTagBCA';
 
 
 function Organigrame (props) {
@@ -13,32 +14,39 @@ function Organigrame (props) {
     }, []);
 
     useEffect(() => {
-        if (loaded){
-            var test = testRef.current;
-            test.addEventListener('mouseover', (e) => {
-                test.classList.add('z-10');
-            });
-            test.addEventListener('mouseout', (e) => {
-                test.classList.remove('z-0');
-            });
+        try {
+            if (loaded){
+                var test = testRef.current;
+                test.addEventListener('mouseover', (e) => {
+                    test.classList.add('z-10');
+                });
+                test.addEventListener('mouseout', (e) => {
+                    test.classList.remove('z-0');
+                });
+            }
+        }
+        catch(error){
+            console.log(error);
         }
     }, [loaded])
     
     try {
         return (
             <div ref={testRef} className='h-[100px] grid grid-rows-2'>
-                <div class={props.src.link}>
-                    <div className='grid grid-cols-2'>
-                        <img className='imgorganigrame' src={props.imgSrc} ></img>
-                        <div className='nameoutbox'>
-                            <p>{props.src.role}</p>
-                            <p>{props.src.comp}</p>
-                        </div>
-                        <div className='nameoutbox nameoutboxlabel'>
-                            {props.src.label}
+                <EditorTagBCA id={props.src.orga_id}>
+                    <div class="boxorgab">
+                        <div className='grid grid-cols-2'>
+                            <img className='imgorganigrame' src={props.src.img} ></img>
+                            <div className='nameoutbox'>
+                                <p>{props.src.role}</p>
+                                <p>{props.src.description}</p>
+                            </div>
+                            <div className='nameoutbox nameoutboxlabel'>
+                                {props.src.name}
+                            </div>
                         </div>
                     </div>
-                </div>
+                </EditorTagBCA>
             </div>
         )
     }

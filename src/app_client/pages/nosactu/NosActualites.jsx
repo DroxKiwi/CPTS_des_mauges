@@ -120,7 +120,7 @@ function NosActualite (props) {
         try {
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
-                    <img alt="Card" src={d.img} />
+                    <img alt="Card" src={d.img} className='object-cover' />
                 )
             }
             else {
@@ -176,7 +176,7 @@ function NosActualite (props) {
                     return <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
                 }
                 else {
-                    return <img alt="Card" src={selectedDetail.img} />
+                    return <img alt="Card" src={selectedDetail.img} className='object-cover' />
                 }
             }
         }
@@ -240,7 +240,7 @@ function NosActualite (props) {
                                                                             selectedTagSearch.tag_id === null || d.tagid === selectedTagSearch.tag_id ? (
                                                                                 <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
                                                                                     <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 w-[30dvw] h-[30dvh] cardactu">
+                                                                                        <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardactu">
                                                                                             <RenderTag tagid={d.tagid}/>
                                                                                             <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                         </Card>
@@ -256,7 +256,7 @@ function NosActualite (props) {
                                                                 (
                                                                     <EditorTagArticle dataObject={d} id={d.article_id} type="article" setDetailArticleVisible={setDetailArticleVisible}>
                                                                         <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                            <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardactu">
+                                                                            <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardactu">
                                                                                 <RenderTag tagid={d.tagid}/>
                                                                                 <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                             </Card>

@@ -53,7 +53,7 @@ function JeSuisProfessionnel (props) {
         try {
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
-                    <img alt="Card" src={d.img} />
+                    <img alt="Card" src={d.img} className='object-cover' />
                 )
             }
             else {

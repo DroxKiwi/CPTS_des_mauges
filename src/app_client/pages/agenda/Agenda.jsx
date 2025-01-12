@@ -173,7 +173,7 @@ function Agenda (props) {
         try {
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
-                    <img alt="Card" src={d.img} />
+                    <img alt="Card" src={d.img} className='object-cover' />
                 )
             }
             else {
@@ -229,7 +229,7 @@ function Agenda (props) {
                     return <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
                 }
                 else {
-                    return <img alt="Card" src={selectedDetail.img} />
+                    return <img alt="Card" src={selectedDetail.img} className='object-cover' />
                 }
             }
         }
@@ -282,16 +282,18 @@ function Agenda (props) {
                                                                                         {
                                                                                             d.actif == true || (todayJSf > (new Date(d.enddate.split("T")[0]))) ? (
                                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
-                                                                                                        <RenderTag tagid={d.tagid}/>
-                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
+                                                                                                        <div>
+                                                                                                            <RenderTag tagid={d.tagid}/>
+                                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                        </div>
                                                                                                     </Card>
                                                                                                 </div>
                                                                                             ) :
                                                                                             (
                                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
+                                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
                                                                                                         <RenderTag tagid={d.tagid}/>
                                                                                                         <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                                         <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
@@ -312,7 +314,7 @@ function Agenda (props) {
                                                                         {
                                                                             (d.actif == true && (todayJSf < (new Date(d.enddate.split("T")[0])))) ? (
                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] cardagenda">
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
                                                                                         <RenderTag tagid={d.tagid}/>
                                                                                         <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                         <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
@@ -321,7 +323,7 @@ function Agenda (props) {
                                                                             ) :
                                                                             (
                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
-                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 h-[10%] bg-gray-400 cardagenda">
+                                                                                    <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 bg-gray-400 cardagenda">
                                                                                         <RenderTag tagid={d.tagid}/>
                                                                                         <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                         <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>

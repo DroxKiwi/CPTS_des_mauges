@@ -1,5 +1,4 @@
 
-
 import { useState, useEffect, useRef } from "react";
 import './bureauetconseil.css';
 import OrganigrameItem from "./OrganigrameItem";
@@ -13,13 +12,18 @@ import ErrorPage from "../../../utils/error-page";
 import { API_bureauetca } from "../../services/api/bureauetcaServices";
 import EditorWindowBCA from "../../../dashboard/tools/EditorWindowBCA";
 
-import FullScreenCircularLayout from "./FullScreenCirularLayout";
-
 function BureauEtConseil(props) {
   
+    const [data, setData] = useState([]);
     const [docHeight, setDocHeight] = useState(null);
     const [docWidth, setDocWidth] = useState(null);
+    const [orgaHeight, setOrgaHeight] = useState(null);
     const [items, setItems] = useState([]);
+    const [usersProfil, setUsersProfil] = useState([]);
+    const [loaded, setLoaded] = useState(false);
+    const [visible, setVisible] = useState(true);
+
+    const refSpeedDial = useRef(null);
     
     useEffect(() => {
         ss.set('window', 'bureauetconseil');
@@ -28,27 +32,65 @@ function BureauEtConseil(props) {
     useEffect(() => {
         try {
             const getData = async () => {
-                //setData(await await API_bureauetca.get_all());
-
-                var dataTemp = await await API_bureauetca.get_all()
-                const temp = dataTemp.map((item) => ({
-                    ...item,
-                    template: <OrganigrameItem imgSrc={userProfil} src={item} />,
-                }));
-                setItems(temp);
+                setData(await await API_bureauetca.get_all());
             }
             getData();
         }
         catch(error){
-            console.error(error);
+            console.log(error);
         }
     }, []);
 
     useEffect(() => {
+        try {
+            var temp = data;
+            for (let i = 0; i < temp.length; i++) {
+                temp[i].template = <OrganigrameItem imgSrc={userProfil} src={temp[i]} />
+                temp[i].command = console.log("Delete clicked");
+            }
+            setItems(temp);
+            setLoaded(true);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }, [data]);
+
+    useEffect(() => {
+        try {
+            var tabTemp = [];
+            for (let i = 0; i < orgServ.items.length; i++){
+                tabTemp.push(orgServ.items[i]);
+            }
+            setUsersProfil(tabTemp);
+            refSpeedDial.current.show();
+        }
+        catch(error){
+            console.log(error);
+        }
+    }, [items]);
+  
+    useEffect(() => {
         setDocHeight(window.innerHeight);
         setDocWidth(window.innerWidth - 10);
     }, [window.innerHeight]);
-    
+
+    // ----
+
+    const handleToggle = (e) => {
+        try {
+            setVisible(true); // Force l'état ouvert
+        }
+        catch(error){
+            console.error(error);
+        }
+    };
+
+    const handleKeyDown = (event) => {
+        event.preventDefault(); // Empêche le comportement par défaut
+        console.log("Disabled key !");
+    };
+
     try {
         return (
             <div className='container-root'>
@@ -67,36 +109,9 @@ function BureauEtConseil(props) {
                             </h2>
                         </div>
                         <div className="overflow-hidden h-screen grid grid-cols-1 place-items-center">
-                        <FullScreenCircularLayout
-                            items={items}
-                            radius={320} // Radius of the circle
-                            hoverScale={2.7} // Element size multiplier on hover
-                            renderItem={(key, value) => (
-                            <div
-                                style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                textAlign: "center",
-                                }}
-                            >
-                                <img
-                                src={value.img} // "img" used here
-                                className="object-cover"
-                                style={{
-                                    width: "50px",
-                                    height: "50px",
-                                    borderRadius: "50%",
-                                    marginBottom: "5px",
-                                }}
-                                />
-                                <small style={{ fontSize: "12px", color: "gray" }}>{value.role.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
-                                <strong>{value.name.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</strong>
-                                <small style={{ fontSize: "12px", color: "gray" }}>{value.description.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                            <div className="grid place-items-center h-50dvh">
+                                <SpeedDial onKeyDown={handleKeyDown} onVisibleChange={handleToggle} id='organigrame' ref={refSpeedDial} visible={visible} buttonStyle={{display: 'none'}} disabled={false} hideOnClickOutside={false} model={items} radius={(450)} type="circle" rotateAnimation={true} />
                             </div>
-                            )}
-                        />
                         </div>
                     </div>
                 </EditorWindowBCA>

@@ -10,9 +10,9 @@ import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
-import { InputTextarea } from "primereact/inputtextarea";
 import { Editor } from "primereact/editor";
 import defaultImg from '../assets/Images/defaultimg.png';
+import { imageConverter } from '../../utils/imageConverter';
 
 import { API_tagsDash } from '../services/api/tags/tagsServicesDash';
 import { API_actualitesDash } from '../services/api/articles/actualitesServicesDash';
@@ -95,13 +95,10 @@ function EditorTagArticle (props) {
 
     async function handleUpdateArticle(){
         try {
-            customBase64UploaderCanvas(
-                (dataUrl) => {
-                    upload(dataUrl);
-                }
-            );
-        }
-        catch(error){
+            const dataUrl = await imageConverter.customBase64UploaderCanvas(document.getElementById("imgToDownload"));
+            await upload(dataUrl);
+        } 
+        catch (error) {
             console.error(error);
         }
     };
@@ -119,25 +116,6 @@ function EditorTagArticle (props) {
         }
     }
 
-    const customBase64UploaderCanvas = async (callback) => {
-        try {
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
-            var dataURL;
-            var imageFromTag = document.getElementById('imgToDownload');
-            ctx.drawImage(imageFromTag, 0, 0);
-            //createImageBitmap(this).then(imageBitmap=>{ctx.drawImage(imageBitmap,0,0)});
-            canvas.toBlob(function() {        // get content as JPEG blob
-                // here the image is a blob
-            }, "image/png", 0.75);
-            dataURL = canvas.toDataURL();
-            callback(dataURL);
-        }
-        catch(error){
-            console.error(error);
-        }
-    };
-
     const headerArticleEdit = () => {
         try {
             if (selected !== null) {
@@ -145,7 +123,7 @@ function EditorTagArticle (props) {
                     return <img id="imgToDownload" alt="Card" src={defaultImg} />
                 }
                 else {
-                    return <img id="imgToDownload" alt="Card" className='w-[500px] h-[300px]' src={imgArticle} />
+                    return <img id="imgToDownload" alt="Card" className='object-cover' src={imgArticle} />
                 }
             }
             else {

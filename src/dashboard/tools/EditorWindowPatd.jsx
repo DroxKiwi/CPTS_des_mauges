@@ -11,6 +11,7 @@ import { FileUpload } from 'primereact/fileupload';
 import { InputText } from 'primereact/inputtext';
 import defaultImg from '../assets/Images/defaultimg.png';
 import { InputSwitch } from 'primereact/inputswitch';
+import { imageConverter } from '../../utils/imageConverter';
 
 function EditorWindowPatd (props) {
 
@@ -56,7 +57,7 @@ function EditorWindowPatd (props) {
             console.log(d);
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
-                    <img alt="Card" src={d.img} />
+                    <img alt="Card" src={d.img} className='object-cover' />
                 )
             }
             else {
@@ -131,7 +132,7 @@ function EditorWindowPatd (props) {
                     return <img id="imgToDownloadPatf" alt="Card" src={defaultImg} />
                 }
                 else {
-                    return <img id="imgToDownloadPatf" alt="Card" src={imgPatf} />
+                    return <img id="imgToDownloadPatf" alt="Card" src={imgPatf} className='object-cover' />
                 }
             }
             else {
@@ -180,13 +181,10 @@ function EditorWindowPatd (props) {
 
     async function handleUpdatePatf(){
         try {
-            customBase64UploaderCanvas(
-                (dataUrl) => {
-                    upload(dataUrl);
-                }
-            );
-        }
-        catch(error){
+            const dataUrl = await imageConverter.customBase64UploaderCanvas(document.getElementById("imgToDownloadPatf"));
+            await upload(dataUrl);
+        } 
+        catch (error) {
             console.error(error);
         }
     };
@@ -203,25 +201,6 @@ function EditorWindowPatd (props) {
             console.error(error);
         }
     }
-
-    const customBase64UploaderCanvas = async (callback) => {
-        try {
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
-            var dataURL;
-            var imageFromTag = document.getElementById('imgToDownloadPatf');
-            ctx.drawImage(imageFromTag, 0, 0);
-            //createImageBitmap(this).then(imageBitmap=>{ctx.drawImage(imageBitmap,0,0)});
-            canvas.toBlob(function() {        // get content as JPEG blob
-                // here the image is a blob
-            }, "image/png", 0.75);
-            dataURL = canvas.toDataURL();
-            callback(dataURL);
-        }
-        catch(error){
-            console.error(error);
-        }
-    };
 
     function isDashboardViewerUrl(url) {
         const regex = /.*\/dashboard\/viewer$/;

@@ -18,48 +18,68 @@ function NumberBand(props) {
 
     useEffect(() => {
         const getData = async () => {
-            const globalData = await API_global.get_all();
-            setMaxNumber1(globalData[0].chiffrepsl);
-            setMaxNumber2(globalData[0].chiffrecom);
-            setMaxNumber3(globalData[0].chiffrehab);
+            try {
+                const globalData = await API_global.get_all();
+                setMaxNumber1(globalData[0].chiffrepsl);
+                setMaxNumber2(globalData[0].chiffrecom);
+                setMaxNumber3(globalData[0].chiffrehab);
+            }
+            catch(error){
+                console.error(error);
+            }
         }
         getData();
     }, []);
 
     async function startAnimation1 () {
-        var speed = 0.1;
-        for (let i = 0; i <= maxNumber1; i++){
-            if (i > maxNumber1-11){
-                speed = 100;
+        try {
+            var speed = 0.1;
+            for (let i = 0; i <= maxNumber1; i++){
+                if (i > maxNumber1-11){
+                    speed = 100;
+                }
+                setNumber1(i);
+                console.log(maxNumber1);
+                if (i < maxNumber1-100){
+                    i = i + 10;
+                }
+                await new Promise(r => setTimeout(r, speed));
             }
-            setNumber1(i);
-            console.log(maxNumber1);
-            if (i < maxNumber1-100){
-                i = i + 10;
-            }
-            await new Promise(r => setTimeout(r, speed));
+        }
+        catch (error){
+            console.error(error);
         }
     };
 
     async function startAnimation2() {
-        var speed = 100;
-        for (let i = 0; i <= maxNumber2; i++){
-            setNumber2(i);
-            await new Promise(r => setTimeout(r, speed));
+        try {
+            var speed = 100;
+            for (let i = 0; i <= maxNumber2; i++){
+                setNumber2(i);
+                await new Promise(r => setTimeout(r, speed));
+            }
+        }
+        catch(error){
+            console.error(error);
         }
     };
 
     async function startAnimation3() {
-        var speed = 0.00005;
-        for (let i = 0; i <= maxNumber3; i++){
-            if (i > maxNumber3-11){
-                speed = 100;
+        try {
+            var speed = 0.00005;
+            for (let i = 0; i <= maxNumber3; i++){
+                if (i > maxNumber3-11){
+                    speed = 100;
+                }
+                setNumber3(i);
+                if (i < maxNumber3-100){
+                    i = i + 100;
+                }
+                await new Promise(r => setTimeout(r, speed));
             }
-            setNumber3(i);
-            if (i < maxNumber3-100){
-                i = i + 100;
-            }
-            await new Promise(r => setTimeout(r, speed));
+        }
+        catch(error){
+            console.error(error);
         }
     };
 
@@ -67,29 +87,34 @@ function NumberBand(props) {
     const [isVisible, setIsVisible] = useState(false);
   
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-            // Détecte si l'élément est visible
-                setIsVisible(entry.isIntersecting);
-                if (entry.isIntersecting) {
-                    startAnimation1();
-                    startAnimation2();
-                    startAnimation3();
-                    // Placez ici l'action que vous souhaitez déclencher
-                }
-            },
-            { threshold: 0.5 } // 50% de l'élément doit être visible
-        );
-    
-        if (elementRef.current) {
-            observer.observe(elementRef.current); // Observer l'élément
-        }
-    
-        return () => {
+        try {
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                // Détecte si l'élément est visible
+                    setIsVisible(entry.isIntersecting);
+                    if (entry.isIntersecting) {
+                        startAnimation1();
+                        startAnimation2();
+                        startAnimation3();
+                        // Placez ici l'action que vous souhaitez déclencher
+                    }
+                },
+                { threshold: 0.5 } // 50% de l'élément doit être visible
+            );
+        
             if (elementRef.current) {
-            observer.unobserve(elementRef.current); // Nettoyage à la fin
+                observer.observe(elementRef.current); // Observer l'élément
             }
-        };
+        
+            return () => {
+                if (elementRef.current) {
+                observer.unobserve(elementRef.current); // Nettoyage à la fin
+                }
+            };
+        }
+        catch(error){
+            console.error(error);
+        }
     }, [maxNumber1]);
 
 

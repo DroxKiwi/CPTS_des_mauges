@@ -10,9 +10,8 @@ import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { PickList } from 'primereact/picklist';
-import { InputTextarea } from "primereact/inputtextarea";
-import { Editor } from "primereact/editor";
 import defaultImg from '../assets/Images/defaultimg.png';
+import { imageConverter } from '../../utils/imageConverter';
 
 import { API_prodsDash } from '../services/api/prod/prodsServicesDash';
 
@@ -67,13 +66,10 @@ function EditorTagProd (props) {
 
     async function handleUpdateProd(){
         try {
-            customBase64UploaderCanvas(
-                (dataUrl) => {
-                    upload(dataUrl);
-                }
-            );
-        }
-        catch(error){
+            const dataUrl = await imageConverter.customBase64UploaderCanvas(document.getElementById("imgToDownload"));
+            await upload(dataUrl);
+        } 
+        catch (error) {
             console.error(error);
         }
     };
@@ -85,25 +81,6 @@ function EditorTagProd (props) {
                 window.location.reload();
             }
             postData();
-        }
-        catch(error){
-            console.error(error);
-        }
-    }
-
-    const customBase64UploaderCanvas = async (callback) => {
-        try {
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext('2d');
-            var dataURL;
-            var imageFromTag = document.getElementById('imgToDownload');
-            ctx.drawImage(imageFromTag, 0, 0);
-            //createImageBitmap(this).then(imageBitmap=>{ctx.drawImage(imageBitmap,0,0)});
-            canvas.toBlob(function() {        // get content as JPEG blob
-                // here the image is a blob
-            }, "image/png", 0.75);
-            dataURL = canvas.toDataURL();
-            callback(dataURL);
         }
         catch(error){
             console.error(error);

@@ -20,7 +20,7 @@ function AdminDashViewer () {
     useEffect(() => {
         ss.set("editmode", true);
     }, []);
-
+    
     return (
         <div className="overflow-x-hidden wrapper">
             <div className="h-full w-full overflow-y-hidden">
