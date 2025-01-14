@@ -77,14 +77,12 @@ function NosActualite (props) {
     // Trier la recherche
     useEffect(() => {
         try {
-            console.log(selectedFilter);
             var temp = JSON.parse(JSON.stringify(data));
             var result = [];
             switch (selectedFilter){
                 case 'bytag':
                     for (let i = 0; i < allTags.length; i++){
                         for (let j = 0; j < temp.length; j++){
-                            console.log(allTags[i], temp[j]);
                             if (allTags[i].tag_id === temp[j].tagid){
                                 result.push(temp[j]);
                             }
@@ -94,16 +92,10 @@ function NosActualite (props) {
                     break;
                 case 'bydatedesc':
                     var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => b.article_id - a.article_id)));
-                    for (let i = 0; i < sortedArr.length; i++) {
-                        console.log(sortedArr[i].article_id);
-                    }
                     setData(sortedArr);
                     break;
                 case 'bydateasc':
                     var sortedArr = JSON.parse(JSON.stringify(data.sort((a, b) => a.article_id - b.article_id)));
-                    for (let i = 0; i < sortedArr.length; i++) {
-                        console.log(sortedArr[i].article_id);
-                    }
                     setData(sortedArr);
                     break;
                 case null:
@@ -185,19 +177,6 @@ function NosActualite (props) {
             return <ErrorPage error={error} />
         }
     };
-
-    useEffect(() => {
-        try {
-            if (selectedTagSearch !== null){
-                console.log("tag search : " + selectedTagSearch.tag_id);
-                console.log(data);
-            }
-        }
-        catch(error){
-            console.error(error);
-            return <ErrorPage error={error} />
-        }
-    }, [selectedTagSearch])
 
     try {
         return (

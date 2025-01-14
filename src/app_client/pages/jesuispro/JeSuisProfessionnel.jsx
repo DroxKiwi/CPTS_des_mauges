@@ -73,7 +73,6 @@ function JeSuisProfessionnel (props) {
             setDetailProdVisible(true);
             var profsTemp = [];
             if (prof_ids !== ""){
-                console.log(prof_ids)
                 var tabProf_ids = prof_ids.split(',');
                 for (let i = 0; i < tabProf_ids.length; i++){
                     profsTemp.push(await API_prods.get_by_id_prof(tabProf_ids[i]));

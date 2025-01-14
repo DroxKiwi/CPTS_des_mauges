@@ -85,8 +85,8 @@ function CommentAdherer(props) {
 
     try {
         return (
-            <EditorWindowAdh>
             <div className='container-root'>
+                <EditorWindowAdh>
                 <Header setChildW={props.setChildW} setHeaderHeight={props.setHeaderHeight} />        
                 <div className='grid place-items-center card bg-transparent z-10'>
                     <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 257" fill="none">
@@ -147,8 +147,8 @@ function CommentAdherer(props) {
                     }
                 </div>
                 <Footer />
+                </EditorWindowAdh>
             </div>
-            </EditorWindowAdh>
         )
     }
     catch(error){

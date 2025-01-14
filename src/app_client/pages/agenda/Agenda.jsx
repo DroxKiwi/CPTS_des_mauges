@@ -34,13 +34,6 @@ function Agenda (props) {
 
     useEffect(() => {
         ss.set('window', 'agenda');
-        const test = new Date('2024-11-24')
-        if (todayJSf > test){
-            console.log("todayJSf > test")
-        }
-        else {
-            console.log("todayJSf < test")
-        }
     }, []);
   
     const [docHeight, setDocHeight] = useState(null);
