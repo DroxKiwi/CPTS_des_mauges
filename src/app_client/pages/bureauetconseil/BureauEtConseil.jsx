@@ -66,37 +66,39 @@ function BureauEtConseil(props) {
                                 Organigramme de la CPTS
                             </h2>
                         </div>
-                        <div className="overflow-hidden h-screen grid grid-cols-1 place-items-center">
-                        <FullScreenCircularLayout
-                            items={items}
-                            radius={320} // Radius of the circle
-                            hoverScale={2.7} // Element size multiplier on hover
-                            renderItem={(key, value) => (
-                            <div
-                                style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                textAlign: "center",
-                                }}
-                            >
-                                <img
-                                src={value.img} // "img" used here
-                                className="object-cover"
-                                style={{
-                                    width: "50px",
-                                    height: "50px",
-                                    borderRadius: "50%",
-                                    marginBottom: "5px",
-                                }}
-                                />
-                                <small style={{ fontSize: "12px", color: "gray" }}>{value.role.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
-                                <strong>{value.name.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</strong>
-                                <small style={{ fontSize: "12px", color: "gray" }}>{value.description.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
-                            </div>
-                            )}
-                        />
+                        <div className="overflow-hidden h-screen grid grid-cols-1 place-items-center"
+                        style={{marginTop: '200px', marginBottom: '200px'}}>
+                            <FullScreenCircularLayout
+                                items={items}
+                                radius={320} // Radius of the circle
+                                hoverScale={2.7} // Element size multiplier on hover
+                                renderItem={(key, value) => (
+                                <div
+                                    style={{
+                                    paddingTop: '200px',
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    textAlign: "center",
+                                    }}
+                                >
+                                    <img
+                                    src={value.img} // "img" used here
+                                    className="object-cover"
+                                    style={{
+                                        width: "50px",
+                                        height: "50px",
+                                        borderRadius: "50%",
+                                        marginBottom: "5px",
+                                    }}
+                                    />
+                                    <small style={{ fontSize: "12px", color: "gray" }}>{value.role.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                                    <strong>{value.name.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</strong>
+                                    <small style={{ fontSize: "12px", color: "gray" }}>{value.description.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                                </div>
+                                )}
+                            />
                         </div>
                     </div>
                 </EditorWindowBCA>

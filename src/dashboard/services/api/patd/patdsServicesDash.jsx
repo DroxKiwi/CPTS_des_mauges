@@ -76,7 +76,12 @@ export const API_patdsDash = {
         // Modification des guillements vers un caractère spécial pour l'insertion en BDD (à cause du pkdDal)
         var nameToSend = name.replaceAll('"', '_GD_').replaceAll("'", '_GS_');
 
-        var patf_ids = "";
+        if (target.length > 0){
+            var patf_ids = "";
+        }
+        else {
+            var patf_ids = "null";
+        }
         for (let i = 0; i < target.length; i++) {
             if (i === target.length - 1) {
                 patf_ids += target[i].patf_id;
@@ -123,6 +128,7 @@ export const API_patdsDash = {
 
     async get_by_id_patf(patf_id){
         try {
+            console.log(patf_id);
             const api = process.env.REACT_APP_BASE_API_URI + '/patds/patf/byid/' + patf_id;
             const answer = await fetch(api, await OptionsFetch.GET());
             return await answer.json();

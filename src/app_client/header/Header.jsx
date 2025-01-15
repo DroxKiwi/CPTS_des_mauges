@@ -93,7 +93,7 @@ function Header (props) {
                                 <img src={logo} height="100dvh" width="100dvw" className='cursor-pointer ml-10' onClick={(e) => {handleAnimationPlay(e, '/')}}/>
                                 <Button id='presentation' className='headerButton my-10' text label='Qui sommes nous ?' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
                                 <Button id='bureauetconseil' className='headerButton my-10' text label='Bureau / CA' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
-                                <Button id='projetdesante' className='headerButton my-10' text label='Nos projets missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
+                                <Button id='projetdesante' className='headerButton my-10' text label='Nos projets / missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
                                 <Button id='nosactualites' className='headerButton my-10' text label='Nos actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
                                 <Button id='agenda' className='headerButton my-10' text label='Agenda' onClick={(e) => {handleAnimationPlay(e, '/agenda')}}></Button>
                                 <Button id='jesuispatient' className='headerButton my-10' text label='Je suis patient' onClick={(e) => {handleAnimationPlay(e, '/jesuispatient')}}></Button>
@@ -114,7 +114,7 @@ function Header (props) {
                                 <img src={logo} height="100dvh" width="100dvw" className='cursor-pointer ml-10' onClick={(e) => {handleAnimationPlay(e, '/')}}/>
                                 <Button id='presentation' className='headerButton my-10' text label='Qui sommes nous ?' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>
                                 <Button id='bureauetconseil' className='headerButton my-10' text label='Bureau / CA' onClick={(e) => {handleAnimationPlay(e, '/bureauetconseil')}}></Button>
-                                <Button id='projetdesante' className='headerButton my-10' text label='Nos projets missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
+                                <Button id='projetdesante' className='headerButton my-10' text label='Nos projets / missions' onClick={(e) => {handleAnimationPlay(e, '/projetdesante')}}></Button>
                                 <Button id='nosactualites' className='headerButton my-10' text label='Nos actualités' onClick={(e) => {handleAnimationPlay(e, '/nosactualites')}}></Button>
                                 <Button id='agenda' className='headerButton my-10' text label='Agenda' onClick={(e) => {handleAnimationPlay(e, '/agenda')}}></Button>
                                 <Button id='jesuispatient' className='headerButton my-10' text label='Je suis patient' onClick={(e) => {handleAnimationPlay(e, '/jesuispatient')}}></Button>

@@ -94,123 +94,23 @@
             ]
         },
         {
-            "content": "Organiser des parcours pluriprofessionnels autour du patient",
+            "content": "Réponse aux crises sanitaires graves",
             "code": "2",
             "bgcolor": "#9A015B",
             "color": "#FFFFFF",
             "items": [
                 {
-                    "content": "Inscrire la CPTS dans une dynamique partenariale et territoriale",
+                    "content": "Répondre aux enjeux de crises sanitaires graves",
                     "code": "1",
                     "bgcolor": "#9A015B",
                     "color": "#FFFFFF",
                     "items": [
                         {
-                            "content": "Participer aux travaux du DAC 49",
+                            "content": "Elaborer un plan de réponse",
                             "code": "0"
                         },
                         {
-                            "content": "Promouvoir des protocoles de coopération pluriprofessionnels et organisationnels",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Favoriser l'interconnaissance pour une meilleure orientation des patients",
-                            "code": "0"
-                        }
-                    ]
-                },
-                {
-                    "content": "Renforcer la coordination ville-établissements de santé",
-                    "code": "1",
-                    "bgcolor": "#9A015B",
-                    "color": "#FFFFFF",
-                    "items": [
-                        {
-                            "content": "Renfrocer les liens ville-hôpital",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Renforcer les liens avec l'HAD",
-                            "code": "0"
-                        }
-                    ]
-                },
-                {
-                    "content": "Favoriser le déploiement d'outils numériques afin d'améliorer la coordination entre les professionnels",
-                    "code": "1",
-                    "bgcolor": "#9A015B",
-                    "color": "#FFFFFF",
-                    "items": [
-                        {
-                            "content": "Recenser les outils de communication utilsés",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Informer les professionnels de santé à la messagerie sécurisée",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Choisir et déployer un ou des outils numériques",
-                            "code": "0"
-                        }
-                    ]
-                },
-                {
-                    "content": "Fluidifier le parcours Personnes âgées",
-                    "code": "1",
-                    "bgcolor": "#9A015B",
-                    "color": "#FFFFFF",
-                    "items": [
-                        {
-                            "content": "Identifier les acteurs du territoire",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Prévenir la dépendance",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Améliorer les liens avec les acteurs de la gérontologie",
-                            "code": "0"
-                        }
-                    ]
-                },
-                {
-                    "content": "Fluidifier le parcours en Santé mentale",
-                    "code": "1",
-                    "bgcolor": "#9A015B",
-                    "color": "#FFFFFF",
-                    "items": [
-                        {
-                            "content": "Améliorer le lien ville-établissements de santé mentale",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Participer à l'amélioration de l'accès aux soins en psychiatrie",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Elaborer des parcours par thématique",
-                            "code": "0"
-                        }
-                    ]
-                },
-                {
-                    "content": "Fluidifier le parcours de patients atteints de pathologies chroniques",
-                    "code": "1",
-                    "bgcolor": "#9A015B",
-                    "color": "#FFFFFF",
-                    "items": [
-                        {
-                            "content": "Parcours diabète",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Parcours insuffisance cardiaque",
-                            "code": "0"
-                        },
-                        {
-                            "content": "Etude d'autres parcours",
+                            "content": "Former les professionnels",
                             "code": "0"
                         }
                     ]
@@ -297,24 +197,125 @@
                 }
             ]
         },
+
         {
-            "content": "Réponse aux crises sanitaires graves",
+            "content": "Organiser des parcours pluriprofessionnels autour du patient",
             "code": "2",
             "bgcolor": "#F89426",
             "color": "#FFFFFF",
             "items": [
                 {
-                    "content": "Répondre aux enjeux de crises sanitaires graves",
+                    "content": "Inscrire la CPTS dans une dynamique partenariale et territoriale",
                     "code": "1",
                     "bgcolor": "#F89426",
                     "color": "#FFFFFF",
                     "items": [
                         {
-                            "content": "Elaborer un plan de réponse",
+                            "content": "Participer aux travaux du DAC 49",
                             "code": "0"
                         },
                         {
-                            "content": "Former les professionnels",
+                            "content": "Promouvoir des protocoles de coopération pluriprofessionnels et organisationnels",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Favoriser l'interconnaissance pour une meilleure orientation des patients",
+                            "code": "0"
+                        }
+                    ]
+                },
+                {
+                    "content": "Renforcer la coordination ville-établissements de santé",
+                    "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
+                    "items": [
+                        {
+                            "content": "Renfrocer les liens ville-hôpital",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Renforcer les liens avec l'HAD",
+                            "code": "0"
+                        }
+                    ]
+                },
+                {
+                    "content": "Favoriser le déploiement d'outils numériques afin d'améliorer la coordination entre les professionnels",
+                    "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
+                    "items": [
+                        {
+                            "content": "Recenser les outils de communication utilsés",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Informer les professionnels de santé à la messagerie sécurisée",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Choisir et déployer un ou des outils numériques",
+                            "code": "0"
+                        }
+                    ]
+                },
+                {
+                    "content": "Fluidifier le parcours Personnes âgées",
+                    "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
+                    "items": [
+                        {
+                            "content": "Identifier les acteurs du territoire",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Prévenir la dépendance",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Améliorer les liens avec les acteurs de la gérontologie",
+                            "code": "0"
+                        }
+                    ]
+                },
+                {
+                    "content": "Fluidifier le parcours en Santé mentale",
+                    "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
+                    "items": [
+                        {
+                            "content": "Améliorer le lien ville-établissements de santé mentale",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Participer à l'amélioration de l'accès aux soins en psychiatrie",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Elaborer des parcours par thématique",
+                            "code": "0"
+                        }
+                    ]
+                },
+                {
+                    "content": "Fluidifier le parcours de patients atteints de pathologies chroniques",
+                    "code": "1",
+                    "bgcolor": "#F89426",
+                    "color": "#FFFFFF",
+                    "items": [
+                        {
+                            "content": "Parcours diabète",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Parcours insuffisance cardiaque",
+                            "code": "0"
+                        },
+                        {
+                            "content": "Etude d'autres parcours",
                             "code": "0"
                         }
                     ]

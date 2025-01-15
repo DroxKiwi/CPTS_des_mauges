@@ -73,7 +73,7 @@ function Acturesume () {
 
     const actuTemplate = (d) => {
         return (
-            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="h-[85dvh] w-[70dvw] cardactu">
+            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="m-10 cardactu">
                 <RenderTag tagid={d.tagid}/>
                 <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
             </Card>
@@ -83,7 +83,7 @@ function Acturesume () {
     const responsiveOptions = [
         {
             breakpoint: '1468px',
-            numVisible: 3,
+            numVisible: 2,
             numScroll: 1
         },
         {
@@ -103,12 +103,11 @@ function Acturesume () {
             {
                 data !== null ? (
                     <>
-                        <div className='grid place-items-center'>
+                        <div className='grid place-items-center' style={{marginTop: '200px'}}>
                             <h2 className='title-acturesume'>A la une</h2>
                         </div>
                         <div className="flex justify-content-center">
-                            <Carousel value={data} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                                orientation="vertical" verticalViewPortHeight="86dvh"
+                            <Carousel value={data} numVisible={2} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
                                 autoplayInterval={10000} itemTemplate={actuTemplate} />
                         </div>
                     </>

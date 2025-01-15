@@ -9,7 +9,11 @@ function ButtonAbs(props) {
 
     function handleClick(page) {
         window.location.replace(process.env.REACT_APP_BASE_APP_URI + page);
-    } 
+    };
+
+    function handleRelocateToURL() {
+        window.open('https://www.helloasso.com/associations/communaute-professionnelle-territoriale-de-sante-des-mauges/adhesions/adhesion-2024', '_blank');
+    };
 
     switch (props.selected){
         case 'decouvrir':
@@ -40,9 +44,9 @@ function ButtonAbs(props) {
                     <img className='contactimgbtnabs' src={cliquezSur3} width='70px'/>
                 </div>
             );
-        case 'test':
+        case 'redirectAdh':
             return (
-                <div className="btntrns testabs cursor-pointer z-10" onClick={() => handleClick('/contact')}>
+                <div className="btntrns testabs cursor-pointer z-10" onClick={handleRelocateToURL}>
                     <p className='testtextbtnabs'>Adhérer à la CPTS !</p>
                     <img className='contactimgbtnabs' src={cliquezSur3} width='70px'/>
                 </div>

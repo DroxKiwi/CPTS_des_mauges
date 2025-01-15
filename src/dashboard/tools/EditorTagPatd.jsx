@@ -182,7 +182,7 @@ function EditorTagPatd (props) {
                     if (selected.patf_ids.length > 0){
                         var tabpatf_ids = selected.patf_ids.split(',');
                         for (let i = 0; i < tabpatf_ids.length; i++){
-                            patfsTemp.push(await API_patdsDash.get_by_id_prof(tabpatf_ids[i]));
+                            patfsTemp.push(await API_patdsDash.get_by_id_patf(tabpatf_ids[i]));
                         }
                     }
                 }

@@ -92,34 +92,20 @@ function EditorWindowPatd (props) {
     const toast = useRef(null);
     const [selected, setSelected] = useState(null);
 
-    function handleSetVisible(patf_id){
+    function handleSetVisible(patf){
         try {
-            const getData = async () => {
-                setSelected(await API_patdsDash.get_by_id_patf(patf_id));
-            }
-            getData();
+            setSelected(patf);
+            setNamePatf(patf.name);
+            setSubtitlePatf(patf.subtitle);
+            setDescriptionPatf(patf.description);
+            setImgPatf(patf.img);
+            setActifPatf(patf.actif);
+            setVisiblePatfEdit(true);
         }
         catch(error){
             console.error(error);
         }
     };
-
-    useEffect(() => {
-        try {
-            if (selected !== null){
-                console.log(selected);
-                setNamePatf(selected.name);
-                setSubtitlePatf(selected.subtitle);
-                setDescriptionPatf(selected.description);
-                setImgPatf(selected.img);
-                setActifPatf(selected.actif);
-                setVisiblePatfEdit(true);
-            }
-        }
-        catch(error){
-            console.error(error);
-        }
-    }, [selected]);
 
     const namePatfEdit = (
         <InputText value={namePatf} onChange={(e) => setNamePatf(e.target.value)} />
@@ -200,7 +186,7 @@ function EditorWindowPatd (props) {
         catch(error){
             console.error(error);
         }
-    }
+    };
 
     function isDashboardViewerUrl(url) {
         const regex = /.*\/dashboard\/viewer$/;
@@ -225,7 +211,7 @@ function EditorWindowPatd (props) {
                                         <p>{patf.patf_id}</p>
                                         <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeletePatf(patf.patf_id)}></Button>
                                         <div className='is-editable mx-5 py-5'>
-                                            <Card title={patf.name} header={() => header(patf)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(patf.patf_id)}>
+                                            <Card title={patf.name} header={() => header(patf)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(patf)}>
                                                 <p></p>
                                                 <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
                                             </Card>

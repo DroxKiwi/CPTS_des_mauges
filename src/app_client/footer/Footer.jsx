@@ -43,7 +43,7 @@ function Footer (props){
                 globalData !== null ? (
                     <div class="container-footer">
                         <div className='contaner-footer-transparent'>
-                            <h2 className='reseaux-footer-title cooperblack'>#cptsdesmauges</h2>
+                            <h2 className='reseaux-footer-title cooperblack'>@cptsdesmauges</h2>
                             <h3 className='reseaux-footer-subtitle comicsansms'>Retrouvez nous sur les réseaux</h3>
                             <div className='reseaux-footer-items'>
                                 <img className='reseaux-footer-item' src={lk} width="50px" onClick={() => handleRedirect("lk")} ></img>

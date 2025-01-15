@@ -3,17 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Galleria } from 'primereact/galleria';
-import { Button } from 'primereact/button';
-import ldl1 from '../../assets/Images/ldl/1.png';
-import ldl2 from '../../assets/Images/ldl/2.png';
-import ldl3 from '../../assets/Images/ldl/3.png';
-import ldl4 from '../../assets/Images/ldl/4.png';
-import ldl5 from '../../assets/Images/ldl/5.png';
-import ldl6 from '../../assets/Images/ldl/6.png';
-import ldl7 from '../../assets/Images/ldl/7.png';
-import ldl8 from '../../assets/Images/ldl/8.png';
-import ldl9 from '../../assets/Images/ldl/9.png';
-import ldl10 from '../../assets/Images/ldl/10.png';
 import ldl from '../../assets/Images/ldl.pdf';
 import './commentadherer.css';
 import Header from '../../header/Header';
@@ -21,51 +10,44 @@ import Footer from '../../footer/Footer';
 import iconehand from '../../assets/Images/icones/cliquez-sur.png';
 import EditorWindowAdh from '../../../dashboard/tools/EditorWindowAdh';
 import ErrorPage from '../../../utils/error-page';
-import cliquezSur3 from '../../assets/Images/icones/le-curseur.png';
+import { API_livretpages } from '../../services/api/livretpagesServices';
+import MergeImagesToPDF from './MergeImagesToPDF';
 
 import ButtonAbs from '../homepage/components/ButtonAbs';
-
-import { ls, ss } from '../../../utils/store';
 
 function CommentAdherer(props) {
 
     const [visible, setVisible] = useState(false);
-    const [images, setImages] = useState(null);
+    const [images, setImages] = useState([]);
+
+    const [livretpages, setLivretpages] = useState([]);
+    
+    useEffect(() => {
+        try {
+            const getData = async () => {
+                setLivretpages(await API_livretpages.get_all());
+            };
+            getData();
+        }
+        catch(error){
+            console.error(error);
+        }
+    }, []);
 
     useEffect(() => {
-        ss.set('window', 'commentadherer');
-        setImages(
-            [
-                {
-                    itemImageSrc: ldl2,
-                },
-                {
-                    itemImageSrc: ldl3,
-                },
-                {
-                    itemImageSrc: ldl4,
-                },
-                {
-                    itemImageSrc: ldl5,
-                },
-                {
-                    itemImageSrc: ldl6,
-                },
-                {
-                    itemImageSrc: ldl7,
-                },
-                {
-                    itemImageSrc: ldl8,
-                },
-                {
-                    itemImageSrc: ldl9,
-                },
-                {
-                    itemImageSrc: ldl10,
-                },
-            ]
-        )
-    }, []);
+        try {
+            var imagesTemp = [];
+            for (let i = 1; i < livretpages.length; i++) {
+                imagesTemp.push({
+                    itemImageSrc: livretpages[i].img,
+                });
+            }
+            setImages(imagesTemp);
+        }
+        catch(error) {
+            console.error(error);
+        }
+    }, [livretpages]);
 
     const itemTemplate = (item) => {
         return <img src={item.itemImageSrc} style={{ width: '100%', display: 'block' }} />;
@@ -78,10 +60,6 @@ function CommentAdherer(props) {
     function handleDownloadLdl () {
         window.open(ldl, '_blank');
     };
-
-    function handleRelocateToURL() {
-        window.open('https://www.helloasso.com/associations/communaute-professionnelle-territoriale-de-sante-des-mauges/adhesions/adhesion-2024', '_blank');
-    }
 
     try {
         return (
@@ -102,7 +80,14 @@ function CommentAdherer(props) {
                         <div class="book">
                             <div class="front">
                                 <div class="cover">
-                                    <img src={ldl1} alt="" className="w-[97%]"/>
+                                    {
+                                        images.length > 0 ? (
+                                            <img src={livretpages[0].img} alt="" className="w-[97%]"/>
+                                        ) :
+                                        (
+                                            null
+                                        )
+                                    }
                                 </div>
                             </div>
                             <div class="left-side">
@@ -116,16 +101,14 @@ function CommentAdherer(props) {
                     <div className='grid place-items-center'>
                         <img src={iconehand} width="50px" />
                         <p className='comicsansms'>Cliquez sur le livret pour l'ouvrir</p>
-                        <ButtonAbs selected={'test'} setChildW={props.setChildW}/>
+                        <ButtonAbs selected={'redirectAdh'} />
                     </div>
 
                     {
                         images !== null ? (
                             <Dialog visible={visible} onHide={() => setVisible(false)} >
                                 <div>
-                                    <div className='btn-download grid place-items-center' onClick={() => handleDownloadLdl()}>
-                                        <p>Télécharger</p>
-                                    </div>
+                                    <MergeImagesToPDF />
                                     <Galleria
                                         value={images}
                                         style={{ maxWidth: '640px' }}

@@ -76,7 +76,12 @@ export const API_prodsDash = {
         // Modification des guillements vers un caractère spécial pour l'insertion en BDD (à cause du pkdDal)
         var nameToSend = name.replaceAll('"', '_GD_').replaceAll("'", '_GS_');
 
-        var prof_ids = "";
+        if (target.length > 0){
+            var prof_ids = "";
+        }
+        else {
+            var prof_ids = "null";
+        }
         for (let i = 0; i < target.length; i++) {
             if (i === target.length - 1) {
                 prof_ids += target[i].prof_id;
@@ -84,7 +89,7 @@ export const API_prodsDash = {
             else {
                 prof_ids += target[i].prof_id + ',';
             }
-        }
+        };
 
         formData.append('prod_id', prod_id);
         formData.append('prof_ids', prof_ids);

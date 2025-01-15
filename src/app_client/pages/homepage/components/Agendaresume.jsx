@@ -73,7 +73,7 @@ function Agendaresume () {
 
     const actuTemplate = (d) => {
         return (
-            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="m-10 h-[33dvh] w-[15dvw] cardagenda">
+            <Card title={d.title} subTitle={d.subtitle} header={() => header(d)} className="m-10 cardagenda">
                 <RenderTag tagid={d.tagid}/>
                 <p>Débute le {d.startdate.split("T")[0]}</p>
                 <p>Se termine le {d.enddate.split("T")[0]}</p>
@@ -105,7 +105,7 @@ function Agendaresume () {
                 <h2 className='title-acturesume'>Nos évenements du moments</h2>
             </div>
             <Carousel value={data} numVisible={4} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                autoplayInterval={10000} itemTemplate={actuTemplate} />
+                autoplayInterval={3000} itemTemplate={actuTemplate} />
         </div>
     )
 }

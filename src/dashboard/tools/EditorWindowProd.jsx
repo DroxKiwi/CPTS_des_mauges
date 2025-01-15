@@ -54,7 +54,6 @@ function EditorWindowProd (props) {
 
     const header = (d) => {
         try {
-            console.log(d);
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
                     <img alt="Card" src={d.img} className='object-cover' />
@@ -92,34 +91,20 @@ function EditorWindowProd (props) {
     const toast = useRef(null);
     const [selected, setSelected] = useState(null);
 
-    function handleSetVisible(prof_id){
+    function handleSetVisible(prof){
         try {
-            const getData = async () => {
-                setSelected(await API_prodsDash.get_by_id_prof(prof_id));
-            }
-            getData();
+            setSelected(prof);
+            setNameProf(prof.name);
+            setSubtitleProf(prof.subtitle);
+            setDescriptionProf(prof.description);
+            setImgProf(prof.img);
+            setActifProf(prof.actif);
+            setVisibleProfEdit(true);
         }
         catch(error){
             console.error(error);
         }
     };
-
-    useEffect(() => {
-        try {
-            if (selected !== null){
-                console.log(selected);
-                setNameProf(selected.name);
-                setSubtitleProf(selected.subtitle);
-                setDescriptionProf(selected.description);
-                setImgProf(selected.img);
-                setActifProf(selected.actif);
-                setVisibleProfEdit(true);
-            }
-        }
-        catch(error){
-            console.error(error);
-        }
-    }, [selected]);
 
     const nameProfEdit = (
         <InputText value={nameProf} onChange={(e) => setNameProf(e.target.value)} />
@@ -225,7 +210,7 @@ function EditorWindowProd (props) {
                                         <p>{prof.prof_id}</p>
                                         <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeleteProf(prof.prof_id)}></Button>
                                         <div className='is-editable mx-5 py-5'>
-                                            <Card title={prof.name} header={() => header(prof)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(prof.prof_id)}>
+                                            <Card title={prof.name} header={() => header(prof)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(prof)}>
                                                 <p></p>
                                                 <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
                                             </Card>

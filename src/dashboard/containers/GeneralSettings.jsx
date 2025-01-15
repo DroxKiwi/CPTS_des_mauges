@@ -95,52 +95,54 @@ function GeneralSettings () {
     return (
         <div>
             <Toast ref={toast} />
-            <div className="grid place-items-center grid-cols-3">
-                <h2>Informations générales</h2>
-                <Button severity='success' label='Sauvegarder' onClick={handleUpdate} ></Button>
-                <div>
-                    <p>Numéro de téléphone</p>
-                    <InputText value={tel} onChange={(e) => handleSetTel(e.target.value)} />
-                </div>
-                <div>
-                    <p>Adresse mail</p>
-                    <InputText value={mail} onChange={(e) => setMail(e.target.value)} />
-                </div>
-                <div>
-                    <p>Adresse</p>
-                    <InputText value={adr} onChange={(e) => setAdr(e.target.value)} />
-                </div>
-                <div>
-                    <p>Code postal</p>
-                    <InputText value={postalcode} onChange={(e) => handleSetPostalCode(e.target.value)} />
-                </div>
-                <div>
-                    <p>Lien facebook</p>
-                    <InputText value={facebook} onChange={(e) => setFacebook(e.target.value)} />
-                </div>
-                <div>
-                    <p>Lien linkedin</p>
-                    <InputText value={linkedin} onChange={(e) => setLinkedIn(e.target.value)} />
-                </div>
-                <div>
-                    <p>Nombre de professionnel de santé</p>
-                    <InputNumber value={chiffrepsl} onValueChange={(e) => setChiffrepsl(e.value)} useGrouping={false} />
-                </div>
-                <div>
-                    <p>Nombre de communes</p>
-                    <InputNumber value={chiffrecom} onValueChange={(e) => setChiffrecom(e.value)} useGrouping={false} />
-                </div>
-                <div>
-                    <p>Nombre d'habitants</p>
-                    <InputNumber value={chiffrehab} onValueChange={(e) => setChiffrehab(e.value)} useGrouping={false} />
-                </div>
-                <div>
-                    <p>Texte de la page d'accueil</p>
-                    <InputTextarea value={hommepageprjstext} onChange={(e) => setHommepageprjstext(e.target.value)} rows={10} cols={60} />
-                </div>
-                <div>
-                    <p>Texte de la page "qui sommes nous"</p>
-                    <InputTextarea value={quisommesnousmaintext} onChange={(e) => setQuisommesnousmaintext(e.target.value)} rows={10} cols={60} />
+            <div className="grid place-items-center grid-cols-4">
+            <Button severity='success' label='Sauvegarder' onClick={handleUpdate} ></Button>
+                <div className='grid grid-cols-3 col-start-1 col-end-5'>
+                    <h2>Informations générales</h2>
+                    <div>
+                        <p>Numéro de téléphone</p>
+                        <InputText value={tel} onChange={(e) => handleSetTel(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Adresse mail</p>
+                        <InputText value={mail} onChange={(e) => setMail(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Adresse</p>
+                        <InputText value={adr} onChange={(e) => setAdr(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Code postal</p>
+                        <InputText value={postalcode} onChange={(e) => handleSetPostalCode(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Lien facebook</p>
+                        <InputText value={facebook} onChange={(e) => setFacebook(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Lien linkedin</p>
+                        <InputText value={linkedin} onChange={(e) => setLinkedIn(e.target.value)} />
+                    </div>
+                    <div>
+                        <p>Nombre de professionnel de santé</p>
+                        <InputNumber value={chiffrepsl} onValueChange={(e) => setChiffrepsl(e.value)} useGrouping={false} />
+                    </div>
+                    <div>
+                        <p>Nombre de communes</p>
+                        <InputNumber value={chiffrecom} onValueChange={(e) => setChiffrecom(e.value)} useGrouping={false} />
+                    </div>
+                    <div>
+                        <p>Nombre d'habitants</p>
+                        <InputNumber value={chiffrehab} onValueChange={(e) => setChiffrehab(e.value)} useGrouping={false} />
+                    </div>
+                    <div>
+                        <p>Texte de la page d'accueil</p>
+                        <InputTextarea value={hommepageprjstext} onChange={(e) => setHommepageprjstext(e.target.value)} rows={10} cols={40} />
+                    </div>
+                    <div>
+                        <p>Texte de la page "qui sommes nous"</p>
+                        <InputTextarea value={quisommesnousmaintext} onChange={(e) => setQuisommesnousmaintext(e.target.value)} rows={10} cols={40} />
+                    </div>
                 </div>
             </div>
         </div>
