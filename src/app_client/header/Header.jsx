@@ -32,7 +32,6 @@ function Header (props) {
 
     function handleRedirect(wh){
         try{
-            console.log(globalData)
             if (wh === 'fb'){
                 window.open(globalData[0].facebook);
             }
@@ -51,7 +50,6 @@ function Header (props) {
     }, [window.innerHeight]);
 
     function handleClickOngle(e){
-        console.log(e.target.nodeName);
         var tbh = document.getElementById('tbh');
         for (let i = 0; i < tbh.childNodes.length; i++){
             tbh.childNodes[i].classList.remove('activeh');
@@ -86,9 +84,9 @@ function Header (props) {
             return (
                 <div>
                     {/*Version < sm */}
-                    <div>
+                    <div className='relative z-10'>
                         <Sidebar className='w-full' visible={visible} onHide={() => setVisible(false)}>
-                            <h2>Menus</h2>
+                            <h2 className='z-50 relative'>Menus</h2>
                             <div id="tbh" className='header grid'>
                                 <img src={logo} height="100dvh" width="100dvw" className='cursor-pointer ml-10' onClick={(e) => {handleAnimationPlay(e, '/')}}/>
                                 <Button id='presentation' className='headerButton my-10' text label='Qui sommes nous ?' onClick={(e) => {handleAnimationPlay(e, '/presentation')}}></Button>

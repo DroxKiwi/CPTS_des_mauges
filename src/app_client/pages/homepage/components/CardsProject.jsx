@@ -33,7 +33,7 @@ function CardProject(props) {
         window.location.replace(process.env.REACT_APP_BASE_APP_URI + '/projetdesante');
     }
 
-    if (props.mobile){
+    if (window.innerWidth < 768){
         return (
             <div className='grid grid-cols-1 place-items-center'>
                 <div className="cardprj1mobile cardprj grid place-items-center" onClick={() => redirectWithAnchor('1')}>

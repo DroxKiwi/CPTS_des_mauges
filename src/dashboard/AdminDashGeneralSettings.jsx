@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import GeneralSettings from './containers/GeneralSettings';
 import { ls, ss } from '../utils/store';
 import './root.css';
+import ErrorPage from '../utils/error-page';
 
 import SideMenu from './components/SIdeMenu';
 
@@ -20,15 +21,21 @@ function AdminDashGeneralSettings () {
         ss.set("editmode", true);
     }, []);
 
-    return (
-        <div className="overflow-x-hidden wrapper">
-            <div className="h-full w-full overflow-y-hidden">
-                <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
-                    <GeneralSettings />
-                </SideMenu>
+    try {
+        return (
+            <div className="overflow-x-hidden wrapper">
+                <div className="h-full w-full overflow-y-hidden">
+                    <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
+                        <GeneralSettings />
+                    </SideMenu>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    catch(error){
+        return <ErrorPage error={error} />;
+    }
+
 }
 
 export default AdminDashGeneralSettings;

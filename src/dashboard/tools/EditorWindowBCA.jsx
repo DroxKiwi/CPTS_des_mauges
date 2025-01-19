@@ -2,9 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
-import { API_eventsDash } from '../services/api/events/eventsServicesDash';
-import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
+
 
 import ErrorComponent from './ErrorComponent';
 import { API_orgasDash } from '../services/api/orgas/orgasServicesDash';

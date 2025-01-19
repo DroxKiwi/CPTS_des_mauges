@@ -21,6 +21,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
 
 import Footer from '../../footer/Footer';
+import Footer2 from '../../footer/Footer2';
+
+import { dateConverterToFrench } from '../../../utils/dateConverterToFrench';
 
 function Agenda (props) {
 
@@ -232,6 +235,25 @@ function Agenda (props) {
         }
     };
 
+    const RenderDateEvent = (props) => {
+        try {
+            if (props.d.startdate === props.d.enddate){
+                return (
+                    <p>Le {dateConverterToFrench.dateConverter(props.d.startdate.split("T")[0])}</p>
+                )
+            }
+            else {
+                return (
+                    <p>Du {dateConverterToFrench.dateConverter(props.d.startdate.split("T")[0])} au {dateConverterToFrench.dateConverter(props.d.enddate.split("T")[0])}</p>
+                )
+            }
+        }
+        catch(error){
+            console.error(error);
+            return <ErrorPage error={error} />
+        }
+    }
+
     try {
         return (
             <div className='container-root'>
@@ -244,11 +266,11 @@ function Agenda (props) {
                         <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                         <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
                         </svg>
-                        <h2 className='titlepage relative'>
+                        <h2 className='titlepage md:text-7xl text-3xl relative'>
                             L'agenda de la CPTS
                         </h2>
-                        <div className='grid grid-cols-3 gap-4 place-items-center relative'>
-                            <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                        <div className='grid md:grid-cols-3 gap-4 place-items-center relative'>
+                            <InputText placeholder='Recherche par mots clés' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
                             <Dropdown value={selectedTagSearch} onChange={(e) => setSelectedTagSearch(e.value)} options={allTags} optionLabel="name" 
                                 placeholder="Rechercher par tags" checkmark={true} highlightOnSelect={false} />
                             <span className=''>Filtrer votre recherche</span>
@@ -259,7 +281,7 @@ function Agenda (props) {
                         { 
                             data !== null ? (
                                 <div className='z-10'>
-                                    <div className='grid grid-cols-4'>
+                                    <div className='grid md:grid-cols-4'>
                                         {
                                             data.map((d) => (
                                                 <>
@@ -278,8 +300,8 @@ function Agenda (props) {
                                                                                                     <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
                                                                                                         <div>
                                                                                                             <RenderTag tagid={d.tagid}/>
-                                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                                            <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                            <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                            <RenderDateEvent d={d} />
                                                                                                         </div>
                                                                                                     </Card>
                                                                                                 </div>
@@ -288,8 +310,8 @@ function Agenda (props) {
                                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
                                                                                                     <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
                                                                                                         <RenderTag tagid={d.tagid}/>
-                                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                                        <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                                        <RenderDateEvent d={d} />
                                                                                                     </Card>
                                                                                                 </div>
                                                                                             )
@@ -309,8 +331,8 @@ function Agenda (props) {
                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
                                                                                     <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardagenda">
                                                                                         <RenderTag tagid={d.tagid}/>
-                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                        <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <RenderDateEvent d={d} />
                                                                                     </Card>
                                                                                 </div>
                                                                             ) :
@@ -318,8 +340,8 @@ function Agenda (props) {
                                                                                 <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
                                                                                     <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 bg-gray-400 cardagenda">
                                                                                         <RenderTag tagid={d.tagid}/>
-                                                                                        <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
-                                                                                        <p>Du {d.startdate.split("T")[0]} au {d.enddate.split("T")[0]}</p>
+                                                                                        <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                        <RenderDateEvent d={d} />
                                                                                     </Card>
                                                                                 </div>
                                                                             )
@@ -344,12 +366,12 @@ function Agenda (props) {
                             )
                         }
                     </div>
-                    <Dialog className='h-[80dvh] w-[60dvw]' visible={detailEventVisible} onHide={() => setDetailEventVisible(false)}>
+                    <Dialog className='md:h-[80dvh] md:w-[60dvw]' visible={detailEventVisible} onHide={() => setDetailEventVisible(false)}>
                         {
                             selectedDetail !== null ? (
                                 <Card title={selectedDetail.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedDetail.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={headerDetail} className="md:w-25rem">
                                     <p>
-                                        {selectedDetail.startdate.split('T')[0]} au {selectedDetail.enddate.split('T')[0]}
+                                        <RenderDateEvent d={selectedDetail} />
                                     </p>
                                     <div>
                                         {
@@ -372,7 +394,7 @@ function Agenda (props) {
                         }
                     </Dialog>
                 </EditorWindowEvent>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

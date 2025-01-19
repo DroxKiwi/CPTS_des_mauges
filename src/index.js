@@ -22,6 +22,8 @@ import JeSuisPatient from './app_client/pages/jesuispatient/JeSuisPatient';
 import JeSuisProfessionnel from './app_client/pages/jesuispro/JeSuisProfessionnel';
 import CommentAdherer from './app_client/pages/commentadherer/CommentAdherer';
 import Contact from './app_client/pages/contact/Contact';
+import PrivacyPolicy from './app_client/services/PrivacyPolicy';
+import TermsOfService from './app_client/services/TermsOfService';
 
 import DashboardGeneralSettings from './routes/dashboardGeneralSettings';
 import DashboardViewer from './routes/dashboardViewer';
@@ -30,7 +32,8 @@ import DashboardAddArticle from './routes/dashboardAddArticle';
 import ErrorPage from "./utils/error-page";
 
 import logo from './app_client/assets/Images/logoDetoure.png';
-
+import CookieBanner from './app_client/services/CookieBanner';
+import './app_client/services/cookiebanner.css';
 
 import {
   createBrowserRouter,
@@ -114,6 +117,16 @@ const router = createBrowserRouter([
     element: <DashboardAddArticle />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/politique-de-confidentialite",
+    element: <PrivacyPolicy />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/terms-of-service",
+    element: <TermsOfService />,
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -122,6 +135,7 @@ root.render(
         <div id="container-animation" className='container-animation grid place-items-center'>
           <img src={logo} width='500px' />
         </div>
+        <CookieBanner />
         <RouterProvider router={router}/>
     </PrimeReactProvider>
 );

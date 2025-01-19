@@ -1,13 +1,12 @@
 {
   "files": {
-    "main.css": "/static/css/main.d7e3cefc.css",
-    "main.js": "/static/js/main.cd427d8e.js",
+    "main.css": "/static/css/main.3733535e.css",
+    "main.js": "/static/js/main.26bfa266.js",
     "static/js/453.6f861318.chunk.js": "/static/js/453.6f861318.chunk.js",
     "static/js/692.d59f9463.chunk.js": "/static/js/692.d59f9463.chunk.js",
     "static/js/239.318b7108.chunk.js": "/static/js/239.318b7108.chunk.js",
     "static/js/213.2135fe8d.chunk.js": "/static/js/213.2135fe8d.chunk.js",
     "static/js/455.4d7fac12.chunk.js": "/static/js/455.4d7fac12.chunk.js",
-    "static/media/ldl.pdf": "/static/media/ldl.0b00b6a961cc41d6ef27.pdf",
     "static/media/CarteSansFond.png": "/static/media/CarteSansFond.5b8d1286767bd889ba67.png",
     "static/media/primeicons.svg": "/static/media/primeicons.e1441b135b3ca9ad643c.svg",
     "static/media/logoDetoure.png": "/static/media/logoDetoure.7aa25b9567b1b78c8dc5.png",
@@ -16,14 +15,12 @@
     "static/media/primeicons.eot": "/static/media/primeicons.d44157bdfa026dc877af.eot",
     "static/media/primeicons.woff": "/static/media/primeicons.10d3152104f2208ac82a.woff",
     "static/media/primeicons.ttf": "/static/media/primeicons.ea5358601d0a3fd6670b.ttf",
-    "static/media/coassoc1.png": "/static/media/coassoc1.1880bb7ee4a0d09e1c24.png",
     "static/media/bg-1.png": "/static/media/bg-1.c28f239cae09de4fb879.png",
     "static/media/rollup1.png": "/static/media/rollup1.815805f5cb1d04136605.png",
     "static/media/rollup6.png": "/static/media/rollup6.7fc07dab30d4ed0f8c9a.png",
     "static/media/rollup5.png": "/static/media/rollup5.4a476e844d94a1cc0b4d.png",
     "static/media/accesauxsoins.png": "/static/media/accesauxsoins.1ab5e453ba5aa60ec679.png",
     "static/media/rollupimg1rounded.png": "/static/media/rollupimg1rounded.1ab5e453ba5aa60ec679.png",
-    "static/media/coassoc2.png": "/static/media/coassoc2.d62a3349e1cc3935bcd8.png",
     "static/media/cliquez-ici.png": "/static/media/cliquez-ici.18aeb8c2eb81eb4790c8.png",
     "static/media/rollup4.png": "/static/media/rollup4.bb96d0f2de6900e315ba.png",
     "static/media/rollup2.png": "/static/media/rollup2.38179fb48fcc49e32500.png",
@@ -36,19 +33,14 @@
     "static/media/rollupimg6rounded.png": "/static/media/rollupimg6rounded.3024adb345a6b88e7f3c.png",
     "static/media/parcours.png": "/static/media/parcours.57591a44b550cdf07fad.png",
     "static/media/rollupimg4rounded.png": "/static/media/rollupimg4rounded.57591a44b550cdf07fad.png",
-    "static/media/e-mail.png": "/static/media/e-mail.1536104a64a0db3bf973.png",
     "static/media/prevention.png": "/static/media/prevention.d2c96ee360c5b24baff9.png",
     "static/media/rollupimg3rounded.png": "/static/media/rollupimg3rounded.d2c96ee360c5b24baff9.png",
     "static/media/crisesanitaire.png": "/static/media/crisesanitaire.60b6c7bd1adce7a5b733.png",
     "static/media/rollupimg2rounded.png": "/static/media/rollupimg2rounded.60b6c7bd1adce7a5b733.png",
-    "static/media/coassoc5.png": "/static/media/coassoc5.6fd503a77408e84fb4e6.png",
     "static/media/cliquez-sur(1).png": "/static/media/cliquez-sur(1).453d16281a630319158c.png",
-    "static/media/telephone.png": "/static/media/telephone.097ef67f1a9a19cbff3b.png",
-    "static/media/robinet.png": "/static/media/robinet.c9c47173df067a4c2880.png",
-    "static/media/coassoc3.png": "/static/media/coassoc3.f8ae9f5dd1f75bcf7475.png",
     "index.html": "/index.html",
-    "main.d7e3cefc.css.map": "/static/css/main.d7e3cefc.css.map",
-    "main.cd427d8e.js.map": "/static/js/main.cd427d8e.js.map",
+    "main.3733535e.css.map": "/static/css/main.3733535e.css.map",
+    "main.26bfa266.js.map": "/static/js/main.26bfa266.js.map",
     "453.6f861318.chunk.js.map": "/static/js/453.6f861318.chunk.js.map",
     "692.d59f9463.chunk.js.map": "/static/js/692.d59f9463.chunk.js.map",
     "239.318b7108.chunk.js.map": "/static/js/239.318b7108.chunk.js.map",
@@ -56,7 +48,7 @@
     "455.4d7fac12.chunk.js.map": "/static/js/455.4d7fac12.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7e3cefc.css",
-    "static/js/main.cd427d8e.js"
+    "static/css/main.3733535e.css",
+    "static/js/main.26bfa266.js"
   ]
 }

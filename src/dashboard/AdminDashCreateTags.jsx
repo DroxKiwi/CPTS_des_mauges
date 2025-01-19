@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import ManageTags from './containers/ManageTags';
 import { ls, ss } from '../utils/store';
 import './root.css';
+import ErrorPage from '../utils/error-page';
 
 import SideMenu from './components/SIdeMenu';
 
@@ -20,15 +21,20 @@ function AdminDashCreateTags () {
         ss.set("editmode", true);
     }, []);
 
-    return (
-        <div className="overflow-x-hidden wrapper">
-            <div className="h-full w-full overflow-y-hidden">
-                <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
-                    <ManageTags />;
-                </SideMenu>
+    try {
+        return (
+            <div className="overflow-x-hidden wrapper">
+                <div className="h-full w-full overflow-y-hidden">
+                    <SideMenu panelmenuitems={panelmenuitems} menubaruser={menubaruser}>
+                        <ManageTags />;
+                    </SideMenu>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    catch (error) {
+        return <ErrorPage error={error} />;
+    }
 }
 
 export default AdminDashCreateTags;

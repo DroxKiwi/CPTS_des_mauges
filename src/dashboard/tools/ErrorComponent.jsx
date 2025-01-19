@@ -18,7 +18,7 @@ function ErrorComponent (props) {
         <div>
             <Toast ref={toast} />
             <p>Error : {props.error.message}</p>
-            <h1>Oops ! <span className='errorOops'>Une erreur s'est produite .. veuillez nous excusez.</span></h1>
+            <h1>Oops ! <span className='errorOops'>Une erreur s'est produite.</span></h1>
         </div>
     )
 }

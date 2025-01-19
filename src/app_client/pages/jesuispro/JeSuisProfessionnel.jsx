@@ -11,6 +11,7 @@ import Header from '../../header/Header';
 import './jesuisprofessionnel.css';
 import Footer from '../../footer/Footer';
 import ErrorPage from '../../../utils/error-page';
+import Footer2 from '../../footer/Footer2';
 
 
 import { ls, ss } from '../../../utils/store';
@@ -107,13 +108,13 @@ function JeSuisProfessionnel (props) {
                 <path d="M2043.5 250C2050.57 289.677 2159.61 523.723 2129.1 502.396C1783.29 260.583 129.382 401.883 -73.4998 199C-108 164.5 -201.194 -137 -40.5 76C275.988 495.505 2010 62.0003 2043.5 250Z" fill="#008CDD" fill-opacity="0.33"/>
                 </svg>
                     <div className='overflow-x-hidden jsp grid place-items-center card' style={{width: docWidth + 10, height: docHeight - props.headerHeight}}>
-                        <h2 className='titlepage'>
+                        <h2 className='titlepage relative md:text-7xl text-3xl'>
                             Les outils pour votre pratique
                         </h2>
     
                         { 
                             data !== null ? (
-                                <div className='grid grid-cols-5 z-10'>
+                                <div className='grid md:grid-cols-5 z-10'>
                                     {
                                         data.map((d) => (
                                             <EditorTagProd dataObject={d} id={d.prod_id} type="prod" setDetailProdVisible={setDetailProdVisible}>
@@ -131,8 +132,8 @@ function JeSuisProfessionnel (props) {
                             )
                         }
                     </div>
-                    <Dialog className='h-[90dvh] w-[80dvw]' visible={detailProdVisible} onHide={() => setDetailProdVisible(false)}>
-                        <div className='grid grid-cols-6 gap-10'>
+                    <Dialog className='md:h-[90dvh] md:w-[80dvw]' visible={detailProdVisible} onHide={() => setDetailProdVisible(false)}>
+                        <div className='grid md:grid-cols-6 gap-10'>
                             {
                                 profs.map((d) => (
                                     <Card onClick={() => handleVisibleProf(d)} title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={header(d)} className="md:w-25rem cursor-pointer">
@@ -143,7 +144,7 @@ function JeSuisProfessionnel (props) {
                         </div>
                     </Dialog>
     
-                    <Dialog className='h-[80dvh] w-[70dvw]' visible={visibleProf} onHide={() => setVisibleProf(false)}>
+                    <Dialog className='md:h-[80dvh] md:w-[70dvw]' visible={visibleProf} onHide={() => setVisibleProf(false)}>
                         {
                             selectedProf !== null ? (
                                 <Card title={selectedProf.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedProf.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(selectedProf)} className="m-10 h-[10%]">
@@ -168,7 +169,7 @@ function JeSuisProfessionnel (props) {
                         }
                     </Dialog>
                 </EditorWindowProd>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

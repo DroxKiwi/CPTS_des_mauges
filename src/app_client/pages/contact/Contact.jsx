@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import './contact.css';
 import Header from '../../header/Header';
 import ErrorPage from '../../../utils/error-page';
+import Footer2 from '../../footer/Footer2';
 
 import { API_global } from '../../services/api/globalServices';
 
@@ -43,7 +44,7 @@ function Contact (props) {
                     <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                     <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
                     </svg>
-                    <h2 className='titlepage grid place-items-center relative'>
+                    <h2 className='titlepage grid place-items-center relative md:text-7xl text-3xl'>
                         Où nous trouver ?
                     </h2>
                     <div className='card bg-transparent z-10 relative grid place-items-center'>
@@ -63,7 +64,7 @@ function Contact (props) {
                         }
                     </div>
                 </div>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

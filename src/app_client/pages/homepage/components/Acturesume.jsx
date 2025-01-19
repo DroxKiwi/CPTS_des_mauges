@@ -5,6 +5,7 @@ import { Card } from 'primereact/card';
 import { Carousel } from 'primereact/carousel';
 import { API_actualites } from '../../../services/api/actualitesServices';
 import { Tag } from 'primereact/tag';
+import ErrorPage from '../../../../utils/error-page';
 
 function Acturesume () {
 
@@ -57,12 +58,12 @@ function Acturesume () {
         try {
             if (d.img !== null && d.img !== undefined && d.img !== "null"){
                 return (
-                    <img alt="Card" src={d.img} />
+                    <img className='' alt="Card" src={d.img} />
                 )
             }
             else {
                 return (
-                    <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+                    <img className='w-[80%]' alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
                 )
             }
         }
@@ -88,36 +89,41 @@ function Acturesume () {
         },
         {
             breakpoint: '1100px',
-            numVisible: 2,
+            numVisible: 1,
             numScroll: 1
         },
         {
-            breakpoint: '575px',
+            breakpoint: '768px',
             numVisible: 1,
             numScroll: 1
         }
     ];
 
-    return (
-        <div className='grid place-items-center'>
-            {
-                data !== null ? (
-                    <>
-                        <div className='grid place-items-center' style={{marginTop: '200px'}}>
-                            <h2 className='title-acturesume'>A la une</h2>
+    try {
+        return (
+            <div className=''>
+                {
+                    data !== null ? (
+                        <div className=''>
+                            <div className='grid place-items-center' style={{marginTop: '200px'}}>
+                                <h2 className='title-acturesume'>A la une</h2>
+                            </div>
+                            <div className="">
+                                <Carousel value={data} numVisible={2} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+                                    autoplayInterval={10000} itemTemplate={actuTemplate} />
+                            </div>
                         </div>
-                        <div className="flex justify-content-center">
-                            <Carousel value={data} numVisible={2} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                                autoplayInterval={10000} itemTemplate={actuTemplate} />
-                        </div>
-                    </>
-                ) : (
-                    null
-                )
-            }
-
-        </div>
-    )
+                    ) : (
+                        null
+                    )
+                }
+    
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorPage error={error} />
+    }
 }
 
 export default Acturesume;

@@ -6,12 +6,12 @@ import { InputText } from 'primereact/inputtext';
 import { InputSwitch } from "primereact/inputswitch";
 import { Card } from 'primereact/card';
 import { FileUpload } from 'primereact/fileupload';
-import { Tag } from 'primereact/tag';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { PickList } from 'primereact/picklist';
 import defaultImg from '../assets/Images/defaultimg.png';
 import { imageConverter } from '../../utils/imageConverter';
+import ErrorComponent from './ErrorComponent';
 
 import { API_prodsDash } from '../services/api/prod/prodsServicesDash';
 
@@ -232,58 +232,63 @@ function EditorTagProd (props) {
         return regex.test(url);
     };
 
-    return (
-        <div>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div className='mx-5'>
-                        <p>{props.id}</p>
-                        <Button label='Supprimer le dossier' severity='danger' onClick={() => handleRemoveProd(props.id)}></Button>
-                        <div className='is-editable' onClick={() => handleSetVisible()}>
-                            {props.children}
-                        </div>
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children}
-                    </>
-                )
-            }
-
-            <Dialog maximizable header={header} visible={visible} onHide={() => setVisible(false)}>
+    try {
+        return (
+            <div>
                 {
-                    selected !== null ? (
-                        <div className='card'>
-                            <div className='card grid-cols-3'>
-                                <div>
-                                    <Card title={nameProdEdit} header={headerProdEdit} className="m-10 h-[10%] bg-sky-200">
-
-                                    </Card>
-                                </div>
-
-                                <div>
-                                    <Toast ref={toast}></Toast>
-                                    <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
-                                </div>
-
-                                <PickList className='mt-5' dataKey="prof_id" source={source} target={target} onChange={onChange} itemTemplate={itemTemplate} breakpoint="1280px"
-                                    sourceHeader="Disponible" targetHeader="Affilié" sourceStyle={{ height: '24rem' }} targetStyle={{ height: '24rem' }} />
-
-                                <p>Rendre le dossier actif ?</p>
-                                <InputSwitch checked={actifProd} onChange={(e) => setActifProd(e.value)} />
-
-                                <Button label='Modifier' severity='success' onClick={handleUpdateProd}></Button>
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div className='mx-5'>
+                            <p>{props.id}</p>
+                            <Button label='Supprimer le dossier' severity='danger' onClick={() => handleRemoveProd(props.id)}></Button>
+                            <div className='is-editable' onClick={() => handleSetVisible()}>
+                                {props.children}
                             </div>
                         </div>
-                    ) : 
+                    ) :
                     (
-                        null
+                        <>
+                            {props.children}
+                        </>
                     )
                 }
-            </Dialog>
-        </div>
-    )
+    
+                <Dialog maximizable header={header} visible={visible} onHide={() => setVisible(false)}>
+                    {
+                        selected !== null ? (
+                            <div className='card'>
+                                <div className='card grid-cols-3'>
+                                    <div>
+                                        <Card title={nameProdEdit} header={headerProdEdit} className="m-10 h-[10%] bg-sky-200">
+    
+                                        </Card>
+                                    </div>
+    
+                                    <div>
+                                        <Toast ref={toast}></Toast>
+                                        <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+                                    </div>
+    
+                                    <PickList className='mt-5' dataKey="prof_id" source={source} target={target} onChange={onChange} itemTemplate={itemTemplate} breakpoint="1280px"
+                                        sourceHeader="Disponible" targetHeader="Affilié" sourceStyle={{ height: '24rem' }} targetStyle={{ height: '24rem' }} />
+    
+                                    <p>Rendre le dossier actif ?</p>
+                                    <InputSwitch checked={actifProd} onChange={(e) => setActifProd(e.value)} />
+    
+                                    <Button label='Modifier' severity='success' onClick={handleUpdateProd}></Button>
+                                </div>
+                            </div>
+                        ) : 
+                        (
+                            null
+                        )
+                    }
+                </Dialog>
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorTagProd;

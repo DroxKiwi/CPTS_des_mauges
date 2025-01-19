@@ -8,6 +8,7 @@ import './editortag.css';
 import { Dialog } from 'primereact/dialog';
 import { FileUpload } from 'primereact/fileupload';
 import { imageConverter } from '../../utils/imageConverter';
+import ErrorComponent from './ErrorComponent';
 
 function EditorWindowAdh (props) {
 
@@ -230,50 +231,55 @@ function EditorWindowAdh (props) {
         item.scrollIntoView = () => {}; // Désactive scrollIntoView
     });    
 
-    return (
-        <div className=''>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div className='grid place-items-center'>
-                        <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddLivretpages} />
-                        <Button className='m-5' label='Enregistrer' severity='success' onClick={handleSave} />
-                        <Toast ref={toast}></Toast> 
-                        <div className="card" style={{ overflow: 'hidden' }}>
-                            <OrderList className="custom-orderlist" dragdrop dataKey="livret_pages_id" value={livretpages} onChange={(e) => setLivretpages(e.value)} itemTemplate={itemTemplate} header="Pages du livret" filterBy="number_pages"></OrderList>
-                        </div>
-                        <Button className='m-5' label='Supprimer TOUT' severity='danger' onClick={handleDeleteAll} />
-                        <Dialog visible={visible} onHide={() => setVisible(false)} >
-                            {
-                                selectedLivretpage !== null && selectedLivretpage !== undefined ? (
-                                    <>
-                                        {
-                                            imgLivretpage !== null ? (
-                                                <img src={imgLivretpage} />
-                                            ) : (
-                                                <img src={selectedLivretpage.img} />
-                                            )
-                                        }
-                                    </>
-                                ) : (
-                                    null
-                                )
-                            }
-                            <div>
-                                <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+    try {
+        return (
+            <div className=''>
+                {
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div className='grid place-items-center'>
+                            <Button className='m-5' label='Ajouter' severity='info' onClick={handleAddLivretpages} />
+                            <Button className='m-5' label='Enregistrer' severity='success' onClick={handleSave} />
+                            <Toast ref={toast}></Toast> 
+                            <div className="card" style={{ overflow: 'hidden' }}>
+                                <OrderList className="custom-orderlist" dragdrop dataKey="livret_pages_id" value={livretpages} onChange={(e) => setLivretpages(e.value)} itemTemplate={itemTemplate} header="Pages du livret" filterBy="number_pages"></OrderList>
                             </div>
-                            <img id="imgToDownload" className='hidden' src={imgLivretpage} />
-                            <Button label='Enregistrer' onClick={() => handleSaveNewImg()} />
-                        </Dialog>
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children} 
-                    </>
-                )
-            }
-        </div>
-    )
+                            <Button className='m-5' label='Supprimer TOUT' severity='danger' onClick={handleDeleteAll} />
+                            <Dialog visible={visible} onHide={() => setVisible(false)} >
+                                {
+                                    selectedLivretpage !== null && selectedLivretpage !== undefined ? (
+                                        <>
+                                            {
+                                                imgLivretpage !== null ? (
+                                                    <img src={imgLivretpage} />
+                                                ) : (
+                                                    <img src={selectedLivretpage.img} />
+                                                )
+                                            }
+                                        </>
+                                    ) : (
+                                        null
+                                    )
+                                }
+                                <div>
+                                    <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+                                </div>
+                                <img id="imgToDownload" className='hidden' src={imgLivretpage} />
+                                <Button label='Enregistrer' onClick={() => handleSaveNewImg()} />
+                            </Dialog>
+                        </div>
+                    ) :
+                    (
+                        <>
+                            {props.children} 
+                        </>
+                    )
+                }
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorWindowAdh;

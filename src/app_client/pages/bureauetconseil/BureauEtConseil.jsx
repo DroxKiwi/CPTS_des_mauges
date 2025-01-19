@@ -12,8 +12,10 @@ import Footer from "../../footer/Footer";
 import ErrorPage from "../../../utils/error-page";
 import { API_bureauetca } from "../../services/api/bureauetcaServices";
 import EditorWindowBCA from "../../../dashboard/tools/EditorWindowBCA";
+import Footer2 from "../../footer/Footer2";
 
 import FullScreenCircularLayout from "./FullScreenCirularLayout";
+import { Card } from "primereact/card";
 
 function BureauEtConseil(props) {
   
@@ -48,6 +50,19 @@ function BureauEtConseil(props) {
         setDocHeight(window.innerHeight);
         setDocWidth(window.innerWidth - 10);
     }, [window.innerHeight]);
+
+    const headerMobile = (item) => {
+        return (
+            <div className="grid grid-cols-2 place-items-start">
+                <img alt="Card" src={item.img} className="w-[50dvw]" />
+                <div>
+                    <p>{item.name}</p>
+                    <p>{item.role}</p>
+                    <p>{item.description}</p>
+                </div>
+            </div>
+        )
+    };
     
     try {
         return (
@@ -62,47 +77,60 @@ function BureauEtConseil(props) {
                         <path d="M1999.5 173.5C2186.5 83.4994 2363 250.501 1969.5 280C1589.71 308.471 -90.0001 475.501 -173.5 201C-197.262 122.885 -264.541 -74.1996 -43 30C547 307.5 1812.5 263.501 1999.5 173.5Z" fill="#F2EE2C" fill-opacity="0.33"/>
                         </svg>
                         <div className='grid place-items-center card bg-transparent'>
-                            <h2 className='titlepage relative'>
+                            <h2 className='md:text-7xl text-3xl titlepage relative'>
                                 Organigramme de la CPTS
                             </h2>
                         </div>
-                        <div className="overflow-hidden h-screen grid grid-cols-1 place-items-center"
-                        style={{marginTop: '200px', marginBottom: '200px'}}>
-                            <FullScreenCircularLayout
-                                items={items}
-                                radius={320} // Radius of the circle
-                                hoverScale={2.7} // Element size multiplier on hover
-                                renderItem={(key, value) => (
-                                <div
-                                    style={{
-                                    paddingTop: '200px',
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                    textAlign: "center",
-                                    }}
-                                >
-                                    <img
-                                    src={value.img} // "img" used here
-                                    className="object-cover"
-                                    style={{
-                                        width: "50px",
-                                        height: "50px",
-                                        borderRadius: "50%",
-                                        marginBottom: "5px",
-                                    }}
-                                    />
-                                    <small style={{ fontSize: "12px", color: "gray" }}>{value.role.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
-                                    <strong>{value.name.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</strong>
-                                    <small style={{ fontSize: "12px", color: "gray" }}>{value.description.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                        {
+                            window.innerWidth < 768 ? (
+                                <div>
+                                    {
+                                        items.map((item) => (
+                                            <div className="w-[90dvw] my-5 relative drop-shadow-2xl">
+                                                <Card header={() => headerMobile(item)} />
+                                            </div>
+                                        ))
+                                    }
                                 </div>
-                                )}
-                            />
-                        </div>
+                            ) :
+                            (
+                                <FullScreenCircularLayout
+                                    items={items}
+                                    radius={400} // Radius of the circle
+                                    hoverScale={2.7} // Element size multiplier on hover
+                                    renderItem={(key, value) => (
+                                        <div
+                                            style={{
+                                            height: '100%',
+                                            width: '100%',
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            textAlign: "center",
+                                            }}
+                                        >
+                                            <img
+                                            src={value.img} // "img" used here
+                                            className="object-cover"
+                                            style={{
+                                                width: "50px",
+                                                height: "50px",
+                                                borderRadius: "50%",
+                                                marginBottom: "5px",
+                                            }}
+                                            />
+                                            <small style={{ fontSize: "12px", color: "gray" }}>{value.role.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                                            <strong>{value.name.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</strong>
+                                            <small style={{ fontSize: "12px", color: "gray" }}>{value.description.replaceAll('_GD_', '"').replaceAll('_GS_', "'")}</small>
+                                        </div>
+                                    )}
+                                />
+                            )
+                        }
                     </div>
                 </EditorWindowBCA>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

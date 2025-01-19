@@ -1,7 +1,6 @@
 
 
 
-
 .contentmobile{
     font-size: 12px;
     padding-left: 25px;
@@ -67,10 +66,6 @@ a {
     border-radius: 20px;
 }
 
-.test{
-    background-color: #128b96;
-}
-
 .rollup-lvl-0{
     cursor: pointer;
     z-index: 0;
@@ -80,13 +75,24 @@ a {
     z-index: 20;
 }
 
-.rollup-lvl-0:not(:hover){
+#first{
+    cursor: pointer;
+    transition: 500ms;
     .rollup-lvl-0-1 > *{
-        visibility: hidden;
+        visibility: visible;
+    }
+    .rollup-lvl-0-1-item{
+        width: 90vw;
+        .accru-lvl-0{
+            opacity: 100;
+        }
+    }
+    .rollup-lvl-0-0-image{
+        transform: rotate(360deg);
     }
 }
 
-.rollup-lvl-0:hover{
+.active:hover{
     cursor: pointer;
     transition: 500ms;
     .rollup-lvl-0-1 > *{
@@ -222,3 +228,6 @@ a {
         line-height: normal;
     }
 }
+
+
+

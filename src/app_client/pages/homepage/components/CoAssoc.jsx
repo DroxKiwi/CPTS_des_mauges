@@ -1,78 +1,83 @@
 
 import { useState, useEffect, useRef } from 'react';
 import './coassoc.css';
-import c1 from '../../../assets/Images/coassoc1.png';
-import c2 from '../../../assets/Images/coassoc2.png';
-import c3 from '../../../assets/Images/coassoc3.png';
-import c4 from '../../../assets/Images/coassoc4.png';
-import c5 from '../../../assets/Images/coassoc5.png';
 import { Carousel } from 'primereact/carousel';
-
+import ErrorPage from '../../../../utils/error-page';
+import { API_coassos } from '../../../services/api/coassosServices';
 
 function CoAssoc (props) {
 
     const [coassoc, setCoassoc] = useState([]);
+    const [tabImgCoassos, setTabImgCoassos] = useState([]);
 
     useEffect(() => {
-        var totalCoAssocTemp = [];
-        totalCoAssocTemp.push(c1);
-        totalCoAssocTemp.push(c2);
-        totalCoAssocTemp.push(c3);
-        totalCoAssocTemp.push(c4);
-        totalCoAssocTemp.push(c5);
-        setCoassoc(totalCoAssocTemp);
+        try{
+            const getData = async () => {
+                setCoassoc(await API_coassos.get_all());
+            };
+            getData();
+        }
+        catch(error){
+            console.error(error);
+        }
     }, []);
+
+    useEffect(() => {
+        var tabTemp = [];
+        for (let i = 0; i < coassoc.length; i++) {
+            tabTemp.push(coassoc[i].img);
+        }
+        setTabImgCoassos(tabTemp);
+    }, [coassoc])
 
     const responsiveOptions = [
         {
             breakpoint: '1400px',
-            numVisible: 2,
+            numVisible: 1,
             numScroll: 1
         },
         {
             breakpoint: '1199px',
-            numVisible: 3,
+            numVisible: 1,
             numScroll: 1
         },
         {
             breakpoint: '767px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '575px',
             numVisible: 1,
             numScroll: 1
-        }
+        },
     ];
 
     
     const coassocTemplate = (coassoc) => {
         return (
             <div className='grid place-items-center imgcoassos'>
-                <img src={coassoc} style={{height: "150px"}} />
+                <img src={coassoc}/>
             </div>
         );
     };
 
-    if (props.mobile){
+    try {
         return (
-            <div className='grid place-items-center'>
-                <div className="coassocmobile grid place-items-center">
-                    <Carousel value={coassoc} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={coassocTemplate} />
-                </div>
+            <div className='z-10 relative'>
+                {
+                    tabImgCoassos !== null ? (
+                        <div>
+                            <h2 className='title-coassoc grid place-items-center'>Nos partenaires</h2>
+                            <div className="">
+                                <Carousel circular autoplayInterval={5000} value={tabImgCoassos} numVisible={1} numScroll={1} 
+                                    responsiveOptions={responsiveOptions} itemTemplate={coassocTemplate} />
+                            </div>
+                        </div>
+                    ) : (
+                        null
+                    )
+                }
             </div>
         )
     }
-    else {
-        return (
-            <div className='grid place-items-center z-10'>
-                <h2 className='title-coassoc'>Nos partenaires de santé</h2>
-                <div className="">
-                    <Carousel value={coassoc} numVisible={3} numScroll={3} responsiveOptions={responsiveOptions} itemTemplate={coassocTemplate} />
-                </div>
-            </div>
-        )
+    catch(error){
+        return <ErrorPage error={error} />
     }
 }
 

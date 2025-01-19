@@ -19,6 +19,9 @@ import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 
 import Footer from '../../footer/Footer';
+import Footer2 from '../../footer/Footer2';
+
+import { dateConverterToFrench } from '../../../utils/dateConverterToFrench';
 
 function NosActualite (props) {
 
@@ -190,11 +193,11 @@ function NosActualite (props) {
                     <svg className='absolute w-[100%] h-[100%] z-0' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                     <path d="M1999.5 28.4999C2286 321.5 2324.39 307.534 1969.5 135C1590 -49.5 -63.9998 515 -147.5 240.5C-171.262 162.385 -254.5 -15.4999 -62.5 87.0001C512.671 394.058 1854.41 -119.884 1999.5 28.4999Z" fill="#8DC943" fill-opacity="0.33"/>
                     </svg>
-                    <h2 className='titlepage relative'>
+                    <h2 className='titlepage relative md:text-7xl text-3xl'>
                         L'actualité de la CPTS
                     </h2>
-                    <div className='grid grid-cols-3 gap-4 place-items-center z-10'>
-                        <InputText value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                    <div className='grid md:grid-cols-3 gap-4 place-items-center z-10'>
+                        <InputText placeholder='Recherche par mots clés' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
                         <Dropdown value={selectedTagSearch} onChange={(e) => setSelectedTagSearch(e.value)} options={allTags} optionLabel="name" 
                             placeholder="Rechercher par tags" checkmark={true} highlightOnSelect={false} />
                         <span className=''>Filtrer votre recherche</span>
@@ -205,7 +208,7 @@ function NosActualite (props) {
                     { 
                         data !== null ? (
                             <div className='z-10'>
-                                <div className='grid grid-cols-4'>
+                                <div className='grid md:grid-cols-4'>
                                     {
                                         data.map((d) => (
                                             <>
@@ -221,7 +224,7 @@ function NosActualite (props) {
                                                                                     <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
                                                                                         <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardactu">
                                                                                             <RenderTag tagid={d.tagid}/>
-                                                                                            <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                            <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
                                                                                         </Card>
                                                                                     </div>
                                                                                 </EditorTagArticle>
@@ -237,7 +240,7 @@ function NosActualite (props) {
                                                                         <div className='cursor-pointer' onClick={() => handleOpenArticle(d)}>
                                                                             <Card title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(d)} className="m-10 cardactu">
                                                                                 <RenderTag tagid={d.tagid}/>
-                                                                                <p>Publié : {d.tectimeinsert.split("T")[0]} à {d.tectimeinsert.split("T")[1]}</p>
+                                                                                <p>Publié : {dateConverterToFrench.dateConverter(d.tectimeinsert.split("T")[0])} à {d.tectimeinsert.split("T")[1]}</p>
                                                                             </Card>
                                                                         </div>
                                                                     </EditorTagArticle>
@@ -260,7 +263,7 @@ function NosActualite (props) {
                         )
                     }
                 </div>
-                <Dialog className='h-[80dvh] w-[60dvw]' visible={detailArticleVisible} onHide={() => setDetailArticleVisible(false)}>
+                <Dialog className='md:h-[80dvh] md:w-[60dvw]' visible={detailArticleVisible} onHide={() => setDetailArticleVisible(false)}>
                     {
                         selectedDetail !== null ? (
                             <Card title={selectedDetail.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedDetail.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={headerDetail} className="md:w-25rem">
@@ -285,7 +288,7 @@ function NosActualite (props) {
                     }
                 </Dialog>
                 </EditorWindowArticle>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

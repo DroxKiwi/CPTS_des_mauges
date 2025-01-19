@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { API_actualitesDash } from '../services/api/articles/actualitesServicesDash';
 import { API_tagsDash } from '../services/api/tags/tagsServicesDash';
+import ErrorComponent from './ErrorComponent';
 
 function EditorWindowArticle (props) {
 
@@ -53,24 +54,29 @@ function EditorWindowArticle (props) {
         return regex.test(url);
     };
     
-    return (
-        <div>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div>
-                        <Button className='m-5 z-10' label='Ajouter' severity='info' onClick={handleAddArticle} />
-                        <Toast ref={toast}></Toast> 
-                        {props.children}
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children}
-                    </>
-                )
-            }
-        </div>
-    )
+    try {
+        return (
+            <div>
+                {
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div>
+                            <Button className='m-5 z-10' label='Ajouter' severity='info' onClick={handleAddArticle} />
+                            <Toast ref={toast}></Toast> 
+                            {props.children}
+                        </div>
+                    ) :
+                    (
+                        <>
+                            {props.children}
+                        </>
+                    )
+                }
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorWindowArticle;

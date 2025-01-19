@@ -8,6 +8,7 @@ import NumberBand from '../homepage/components/NumberBand';
 import Footer from '../../footer/Footer';
 import { API_global } from '../../services/api/globalServices';
 import ErrorPage from '../../../utils/error-page';
+import Footer2 from '../../footer/Footer2';
 
 import { ls, ss } from '../../../utils/store';
 
@@ -36,29 +37,29 @@ function Presentation (props) {
                 <svg className='absolute w-[100%] h-[100%]' xmlns="http://www.w3.org/2000/svg" width="1920" height="357" viewBox="0 0 1920 357" fill="none">
                 <path d="M2006 24.5001C2108.97 129.168 2248.83 416.111 1956.5 245C1499.5 -22.5 -159.629 596.5 -239.468 232C-259.52 140.453 -444.877 80.6212 -239.467 213.832C172.5 481 1860.46 -123.444 2006 24.5001Z" fill="#F74924" fill-opacity="0.33"/>
                 </svg>
-                <h2 className='titlepage relative grid place-items-center'>
+                <h2 className='md:text-7xl text-3xl titlepage relative grid place-items-center'>
                     Qu’est-ce qu’une CPTS ?                    
                 </h2>
                 <div className='grid place-items-center z-10'>
-                    <img src={carteCouleur} width='800px' />
-                    <NumberBand />
+                    <img src={carteCouleur} className='relative md:w-[1000px] w-[100%]' />
                 </div>
+                <NumberBand />
                 <div className='my-10 px-5 grid place-items-center z-10   '>
                     {
                         globalData !== null ? (
-                            <p className='textpresentation card bg-transparent'>{globalData[0].quisommesnousmaintext.replaceAll('_GD_', '"').replaceAll("_GS_", "'")}</p>
+                            <p className='md:text-5xl text-2xl textpresentation card bg-transparent'>{globalData[0].quisommesnousmaintext.replaceAll('_GD_', '"').replaceAll("_GS_", "'")}</p>
                         ) :
                         (
                             null
                         )
                     }
                 </div>
-                <div className="infoband infoband2 grid place-items-center mb-10" onClick={() => handleClick("/adherer")}>
+                <div className="infoband infoband2 md:w-[50dvw] md:h-[8dvh] w-[95dvw] h-[15dvh] grid place-items-center mb-10" onClick={() => handleClick("/adherer")}>
                     <p className='infobandtext'>
                         Vous souhaitez adhérer ?
                     </p>
                 </div>
-                <Footer />
+                <Footer2 />
             </div>
         )   
     }

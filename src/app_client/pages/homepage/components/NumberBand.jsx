@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import numbanddata from '../../../services/numberband.json';
-import { ls, ss } from '../../../../utils/store';
 import { API_global } from '../../../services/api/globalServices';
 
 import './numberband.css';
@@ -14,7 +12,6 @@ function NumberBand(props) {
     const [maxNumber2, setMaxNumber2] = useState(0);
     const [number3, setNumber3] = useState(0);
     const [maxNumber3, setMaxNumber3] = useState(0);
-    const [isSaw, setIsSaw] = useState(false);
 
     useEffect(() => {
         const getData = async () => {
@@ -121,10 +118,10 @@ function NumberBand(props) {
     try {
         return (
             <div className='grid place-items-center relative' ref={elementRef}>
-                <div className="numberband grid grid-cols-3 numberbandborder">
+                <div className="w-[90%] numberband grid grid-cols-1 numberbandborder md:grid-cols-3">
                     <div className='col-span-1 grid place-items-center'>
                         <h2 id="numbersanimated" className='numbers'>{number1}</h2>
-                        <h3 className='numberstitle'>Professionnels de santé libéraux</h3>
+                        <h3 className='numberstitle'>Professionnels</h3>
                     </div>
                     <div className='col-span-1 grid place-items-center'>
                         <h2 className='numbers'>{number2}</h2>

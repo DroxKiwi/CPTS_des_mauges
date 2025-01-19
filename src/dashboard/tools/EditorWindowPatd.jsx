@@ -12,6 +12,7 @@ import { InputText } from 'primereact/inputtext';
 import defaultImg from '../assets/Images/defaultimg.png';
 import { InputSwitch } from 'primereact/inputswitch';
 import { imageConverter } from '../../utils/imageConverter';
+import ErrorComponent from './ErrorComponent';
 
 function EditorWindowPatd (props) {
 
@@ -193,71 +194,76 @@ function EditorWindowPatd (props) {
         return regex.test(url);
     };
     
-    return (
-        <div>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div>
-                        <Button className='m-5 z-10' label='Créer un dossier' severity='info' onClick={handleAddPatd} />
-                        <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>
-                        {props.children}
-                        <Divider />
-                        <Button className='m-5 z-10' label='Créer un document' severity='secondary' onClick={handleAddPatf} />
-                        <h2 className='text-green-700 ml-2'>Documents existants</h2>
-                        <div className='grid grid-cols-5 gap-5 mx-5'>
-                            {
-                                allPatfs.map((patf) => (
-                                    <div key={patf.patf_id}>
-                                        <p>{patf.patf_id}</p>
-                                        <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeletePatf(patf.patf_id)}></Button>
-                                        <div className='is-editable mx-5 py-5'>
-                                            <Card title={patf.name} header={() => header(patf)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(patf)}>
-                                                <p></p>
-                                                <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
-                                            </Card>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                        <Dialog visible={visiblePatfEdit} onHide={() => setVisiblePatfEdit(false)}>
-                            <Card title={namePatfEdit} header={headerPatfEdit} className="m-10 h-[10%]">
-                                <InputText className='w-full card mt-5' value={subtitlePatf} onChange={(e) => setSubtitlePatf(e.target.value)} placeholder="Sous-titre de l'patf" />
-                                {/*
-                                <InputTextarea className='w-full card mt-5' value={descriptionPatf} onChange={(e) => setDescriptionPatf(e.target.value)} rows={10} placeholder="Description de l'patf" />
-                                */}
+    try {
+        return (
+            <div>
+                {
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div>
+                            <Button className='m-5 z-10' label='Créer un dossier' severity='info' onClick={handleAddPatd} />
+                            <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>
+                            {props.children}
+                            <Divider />
+                            <Button className='m-5 z-10' label='Créer un document' severity='secondary' onClick={handleAddPatf} />
+                            <h2 className='text-green-700 ml-2'>Documents existants</h2>
+                            <div className='grid grid-cols-5 gap-5 mx-5'>
                                 {
-                                    descriptionPatf !== null ? (
-                                        <div>
-                                            <Editor value={descriptionPatf.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionPatf(e.htmlValue)} style={{ height: '320px' }} />
+                                    allPatfs.map((patf) => (
+                                        <div key={patf.patf_id}>
+                                            <p>{patf.patf_id}</p>
+                                            <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeletePatf(patf.patf_id)}></Button>
+                                            <div className='is-editable mx-5 py-5'>
+                                                <Card title={patf.name} header={() => header(patf)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(patf)}>
+                                                    <p></p>
+                                                    <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
+                                                </Card>
+                                            </div>
                                         </div>
-                                    ) :
-                                    (
-                                        <div>
-                                            <Editor value={descriptionPatf} onTextChange={(e) => setDescriptionPatf(e.htmlValue)} style={{ height: '320px' }} /> 
-                                        </div>
-                                    )
+                                    ))
                                 }
-                            </Card>
-
-                            <div>
-                                <Toast ref={toast}></Toast>
-                                <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
                             </div>
-                            <p>Rendre le document actif ?</p>
-                            <InputSwitch checked={actifPatf} onChange={(e) => setActifPatf(e.value)} />
-                            <Button label='Modifier' severity='success' onClick={handleUpdatePatf}></Button>
-                        </Dialog>
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children}
-                    </>
-                )
-            }
-        </div>
-    )
+                            <Dialog visible={visiblePatfEdit} onHide={() => setVisiblePatfEdit(false)}>
+                                <Card title={namePatfEdit} header={headerPatfEdit} className="m-10 h-[10%]">
+                                    <InputText className='w-full card mt-5' value={subtitlePatf} onChange={(e) => setSubtitlePatf(e.target.value)} placeholder="Sous-titre de l'patf" />
+                                    {/*
+                                    <InputTextarea className='w-full card mt-5' value={descriptionPatf} onChange={(e) => setDescriptionPatf(e.target.value)} rows={10} placeholder="Description de l'patf" />
+                                    */}
+                                    {
+                                        descriptionPatf !== null ? (
+                                            <div>
+                                                <Editor value={descriptionPatf.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionPatf(e.htmlValue)} style={{ height: '320px' }} />
+                                            </div>
+                                        ) :
+                                        (
+                                            <div>
+                                                <Editor value={descriptionPatf} onTextChange={(e) => setDescriptionPatf(e.htmlValue)} style={{ height: '320px' }} /> 
+                                            </div>
+                                        )
+                                    }
+                                </Card>
+    
+                                <div>
+                                    <Toast ref={toast}></Toast>
+                                    <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+                                </div>
+                                <p>Rendre le document actif ?</p>
+                                <InputSwitch checked={actifPatf} onChange={(e) => setActifPatf(e.value)} />
+                                <Button label='Modifier' severity='success' onClick={handleUpdatePatf}></Button>
+                            </Dialog>
+                        </div>
+                    ) :
+                    (
+                        <>
+                            {props.children}
+                        </>
+                    )
+                }
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorWindowPatd;

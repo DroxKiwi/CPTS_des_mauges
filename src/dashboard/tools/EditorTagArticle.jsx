@@ -13,9 +13,9 @@ import { Dropdown } from 'primereact/dropdown';
 import { Editor } from "primereact/editor";
 import defaultImg from '../assets/Images/defaultimg.png';
 import { imageConverter } from '../../utils/imageConverter';
-
 import { API_tagsDash } from '../services/api/tags/tagsServicesDash';
 import { API_actualitesDash } from '../services/api/articles/actualitesServicesDash';
+import ErrorComponent from './ErrorComponent';
 
 function EditorTagArticle (props) {
 
@@ -114,7 +114,7 @@ function EditorTagArticle (props) {
         catch(error){
             console.error(error);
         }
-    }
+    };
 
     const headerArticleEdit = () => {
         try {
@@ -211,70 +211,75 @@ function EditorTagArticle (props) {
 
     // Gestion article ------------------------------------------------------------------------------------------
 
-    return (
-        <div>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div>
-                        <p className='id-editable'>{props.id}</p>
-                        <Button label='Supprimer' severity='danger' onClick={() => handleRemoveArticle(props.id)}></Button>
-                        <div className='is-editable' onClick={() => handleSetVisible()}>
-                            {props.children}
-                        </div>
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children}
-                    </>
-                )
-            }
-
-            <Dialog maximizable header={header} visible={visible} onHide={() => setVisible(false)}>
+    try {
+        return (
+            <div>
                 {
-                    selected !== null ? (
-                        <div className='card'>
-                            <div className='card grid-cols-3'>
-                                <div>
-                                    <Card title={nameArticleEdit} header={headerArticleEdit} className="m-10 h-[10%]">
-                                        <Dropdown value={tagArticle} onChange={(e) => setTagArticle(e.value)} options={tags} optionLabel="name" 
-                                            placeholder="Choisir un Tag" className="w-full md:w-14rem" itemTemplate={templateTag} valueTemplate={templateTag} />
-                                        <InputText className='w-full card mt-5' value={subtitleArticle} onChange={(e) => setSubtitleArticle(e.target.value)} placeholder="Sous-titre de l'article" />
-                                        {/*
-                                        <InputTextarea className='w-full card mt-5' value={descriptionArticle} onChange={(e) => setDescriptionArticle(e.target.value)} rows={10} placeholder="Description de l'article" />
-                                        */}
-                                        {
-                                            descriptionArticle !== null ? (
-                                                <div>
-                                                    <Editor value={descriptionArticle.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionArticle(e.htmlValue)} style={{ height: '320px' }} />
-                                                </div>
-                                            ) :
-                                            (
-                                                <div>
-                                                    <Editor value={descriptionArticle} onTextChange={(e) => setDescriptionArticle(e.htmlValue)} style={{ height: '320px' }} /> 
-                                                </div>
-                                            )
-                                        }
-                                    </Card>
-                                </div>
-
-                                <div>
-                                    <Toast ref={toast}></Toast>
-                                    <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
-                                </div>
-                                <p>Rendre l'article actif ?</p>
-                                <InputSwitch checked={actifArticle} onChange={(e) => setActifArticle(e.value)} />
-                                <Button label='Modifier' severity='success' onClick={handleUpdateArticle}></Button>
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div>
+                            <p className='id-editable'>{props.id}</p>
+                            <Button label='Supprimer' severity='danger' onClick={() => handleRemoveArticle(props.id)}></Button>
+                            <div className='is-editable' onClick={() => handleSetVisible()}>
+                                {props.children}
                             </div>
                         </div>
-                    ) : 
+                    ) :
                     (
-                        null
+                        <>
+                            {props.children}
+                        </>
                     )
                 }
-            </Dialog>
-        </div>
-    )
+    
+                <Dialog maximizable header={header} visible={visible} onHide={() => setVisible(false)}>
+                    {
+                        selected !== null ? (
+                            <div className='card'>
+                                <div className='card grid-cols-3'>
+                                    <div>
+                                        <Card title={nameArticleEdit} header={headerArticleEdit} className="m-10 h-[10%]">
+                                            <Dropdown value={tagArticle} onChange={(e) => setTagArticle(e.value)} options={tags} optionLabel="name" 
+                                                placeholder="Choisir un Tag" className="w-full md:w-14rem" itemTemplate={templateTag} valueTemplate={templateTag} />
+                                            <InputText className='w-full card mt-5' value={subtitleArticle} onChange={(e) => setSubtitleArticle(e.target.value)} placeholder="Sous-titre de l'article" />
+                                            {/*
+                                            <InputTextarea className='w-full card mt-5' value={descriptionArticle} onChange={(e) => setDescriptionArticle(e.target.value)} rows={10} placeholder="Description de l'article" />
+                                            */}
+                                            {
+                                                descriptionArticle !== null ? (
+                                                    <div>
+                                                        <Editor value={descriptionArticle.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionArticle(e.htmlValue)} style={{ height: '320px' }} />
+                                                    </div>
+                                                ) :
+                                                (
+                                                    <div>
+                                                        <Editor value={descriptionArticle} onTextChange={(e) => setDescriptionArticle(e.htmlValue)} style={{ height: '320px' }} /> 
+                                                    </div>
+                                                )
+                                            }
+                                        </Card>
+                                    </div>
+    
+                                    <div>
+                                        <Toast ref={toast}></Toast>
+                                        <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+                                    </div>
+                                    <p>Rendre l'article actif ?</p>
+                                    <InputSwitch checked={actifArticle} onChange={(e) => setActifArticle(e.value)} />
+                                    <Button label='Modifier' severity='success' onClick={handleUpdateArticle}></Button>
+                                </div>
+                            </div>
+                        ) : 
+                        (
+                            null
+                        )
+                    }
+                </Dialog>
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorTagArticle;

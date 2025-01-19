@@ -12,6 +12,7 @@ import { InputText } from 'primereact/inputtext';
 import defaultImg from '../assets/Images/defaultimg.png';
 import { InputSwitch } from 'primereact/inputswitch';
 import { imageConverter } from '../../utils/imageConverter';
+import ErrorComponent from './ErrorComponent';
 
 function EditorWindowProd (props) {
 
@@ -192,71 +193,76 @@ function EditorWindowProd (props) {
         return regex.test(url);
     };
     
-    return (
-        <div>
-            {
-                isDashboardViewerUrl(window.top.location.href) ? (
-                    <div className='relative'>
-                        <Button className='m-5 z-10' label='Créer un dossier' severity='info' onClick={handleAddProd} />
-                        <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>
-                        {props.children}
-                        <Divider />
-                        <Button className='m-5 z-10' label='Créer un document' severity='secondary' onClick={handleAddProf} />
-                        <h2 className='text-green-700 ml-2'>Documents existants</h2>
-                        <div className='grid grid-cols-5 gap-5 mx-5 relative'>
-                            {
-                                allProfs.map((prof) => (
-                                    <div key={prof.prof_id}>
-                                        <p>{prof.prof_id}</p>
-                                        <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeleteProf(prof.prof_id)}></Button>
-                                        <div className='is-editable mx-5 py-5'>
-                                            <Card title={prof.name} header={() => header(prof)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(prof)}>
-                                                <p></p>
-                                                <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
-                                            </Card>
-                                        </div>
-                                    </div>
-                                ))
-                            }
-                        </div>
-                        <Dialog visible={visibleProfEdit} onHide={() => setVisibleProfEdit(false)}>
-                            <Card title={nameProfEdit} header={headerProfEdit} className="m-10 h-[10%]">
-                                <InputText className='w-full card mt-5' value={subtitleProf} onChange={(e) => setSubtitleProf(e.target.value)} placeholder="Sous-titre de l'Prof" />
-                                {/*
-                                <InputTextarea className='w-full card mt-5' value={descriptionProf} onChange={(e) => setDescriptionProf(e.target.value)} rows={10} placeholder="Description de l'Prof" />
-                                */}
+    try {
+        return (
+            <div>
+                {
+                    isDashboardViewerUrl(window.top.location.href) ? (
+                        <div className='relative'>
+                            <Button className='m-5 z-10' label='Créer un dossier' severity='info' onClick={handleAddProd} />
+                            <h2 className='text-sky-700 ml-2'>Dossiers existants</h2>
+                            {props.children}
+                            <Divider />
+                            <Button className='m-5 z-10' label='Créer un document' severity='secondary' onClick={handleAddProf} />
+                            <h2 className='text-green-700 ml-2'>Documents existants</h2>
+                            <div className='grid grid-cols-5 gap-5 mx-5 relative'>
                                 {
-                                    descriptionProf !== null ? (
-                                        <div>
-                                            <Editor value={descriptionProf.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionProf(e.htmlValue)} style={{ height: '320px' }} />
+                                    allProfs.map((prof) => (
+                                        <div key={prof.prof_id}>
+                                            <p>{prof.prof_id}</p>
+                                            <Button className='mb-5' severity='danger' label='Supprimer le document' onClick={() => handleDeleteProf(prof.prof_id)}></Button>
+                                            <div className='is-editable mx-5 py-5'>
+                                                <Card title={prof.name} header={() => header(prof)} className='cursor-pointer mx-10' onClick={() => handleSetVisible(prof)}>
+                                                    <p></p>
+                                                    <i className="pi pi-file" style={{ color: 'slateblue' }}></i>
+                                                </Card>
+                                            </div>
                                         </div>
-                                    ) :
-                                    (
-                                        <div>
-                                            <Editor value={descriptionProf} onTextChange={(e) => setDescriptionProf(e.htmlValue)} style={{ height: '320px' }} /> 
-                                        </div>
-                                    )
+                                    ))
                                 }
-                            </Card>
-
-                            <div>
-                                <Toast ref={toast}></Toast>
-                                <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
                             </div>
-                            <p>Rendre le document actif ?</p>
-                            <InputSwitch checked={actifProf} onChange={(e) => setActifProf(e.value)} />
-                            <Button label='Modifier' severity='success' onClick={handleUpdateProf}></Button>
-                        </Dialog>
-                    </div>
-                ) :
-                (
-                    <>
-                        {props.children}
-                    </>
-                )
-            }
-        </div>
-    )
+                            <Dialog visible={visibleProfEdit} onHide={() => setVisibleProfEdit(false)}>
+                                <Card title={nameProfEdit} header={headerProfEdit} className="m-10 h-[10%]">
+                                    <InputText className='w-full card mt-5' value={subtitleProf} onChange={(e) => setSubtitleProf(e.target.value)} placeholder="Sous-titre de l'Prof" />
+                                    {/*
+                                    <InputTextarea className='w-full card mt-5' value={descriptionProf} onChange={(e) => setDescriptionProf(e.target.value)} rows={10} placeholder="Description de l'Prof" />
+                                    */}
+                                    {
+                                        descriptionProf !== null ? (
+                                            <div>
+                                                <Editor value={descriptionProf.replaceAll('_GD_', '"').replaceAll('_GS_', "'")} onTextChange={(e) => setDescriptionProf(e.htmlValue)} style={{ height: '320px' }} />
+                                            </div>
+                                        ) :
+                                        (
+                                            <div>
+                                                <Editor value={descriptionProf} onTextChange={(e) => setDescriptionProf(e.htmlValue)} style={{ height: '320px' }} /> 
+                                            </div>
+                                        )
+                                    }
+                                </Card>
+    
+                                <div>
+                                    <Toast ref={toast}></Toast>
+                                    <FileUpload mode="basic" accept="image/*" maxFileSize={1000000} emptyTemplate={emptyTemplate} onSelect={onTemplateSelect} />
+                                </div>
+                                <p>Rendre le document actif ?</p>
+                                <InputSwitch checked={actifProf} onChange={(e) => setActifProf(e.value)} />
+                                <Button label='Modifier' severity='success' onClick={handleUpdateProf}></Button>
+                            </Dialog>
+                        </div>
+                    ) :
+                    (
+                        <>
+                            {props.children}
+                        </>
+                    )
+                }
+            </div>
+        )
+    }
+    catch(error){
+        return <ErrorComponent error={error} />
+    }
 }
 
 export default EditorWindowProd;

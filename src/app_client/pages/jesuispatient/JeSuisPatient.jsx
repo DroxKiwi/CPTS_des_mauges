@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from 'react';
 import "../jesuispatient/jesuispatient.css";
 import { Dialog } from 'primereact/dialog';
-import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { API_patds } from '../../services/api/patdsServices';
 import EditorTagPatd from '../../../dashboard/tools/EditorTagPatd';
@@ -11,6 +10,7 @@ import Header from '../../header/Header';
 import './jesuispatient.css';
 import Footer from '../../footer/Footer';
 import ErrorPage from '../../../utils/error-page';
+import Footer2 from '../../footer/Footer2';
 
 
 import { ls, ss } from '../../../utils/store';
@@ -107,7 +107,7 @@ function JeSuisProfessionnel (props) {
                 <path d="M1999.5 28.4999C2286 321.5 2324.39 307.534 1969.5 135C1590 -49.5 -63.9998 515 -147.5 240.5C-171.262 162.385 -254.5 -15.4999 -62.5 87.0001C512.671 394.058 1854.41 -119.884 1999.5 28.4999Z" fill="#8DC943" fill-opacity="0.33"/>
                 </svg>
                 <div className='grid place-items-center card bg-transparent'>
-                    <h2 className='titlepage'>
+                    <h2 className='titlepage relative md:text-7xl text-3xl'>
                         Informez vous à l'aide de nos documents
                     </h2>
                     <div className='grid place-items-center'>
@@ -116,7 +116,7 @@ function JeSuisProfessionnel (props) {
                         { 
                             data !== null ? (
                                 <div className='z-10'>
-                                    <div className='grid grid-cols-5'>
+                                    <div className='grid md:grid-cols-5'>
                                         {
                                             data.map((d) => (
                                                 <EditorTagPatd dataObject={d} id={d.patd_id} type="prod" setDetailPatdVisible={setDetailPatdVisible}>
@@ -136,8 +136,8 @@ function JeSuisProfessionnel (props) {
                         }
                     </div>
                 </div>
-                <Dialog className='h-[90dvh] w-[80dvw]' visible={detailPatdVisible} onHide={() => setDetailPatdVisible(false)}>
-                    <div className='grid grid-cols-6 gap-10'>
+                <Dialog className='md:h-[90dvh] md:after:w-[80dvw]' visible={detailPatdVisible} onHide={() => setDetailPatdVisible(false)}>
+                    <div className='grid md:grid-cols-6 gap-10'>
                         {
                             patfs.map((d) => (
                                 <Card onClick={() => handlevisiblePatf(d)} title={d.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={header(d)} className="md:w-25rem cursor-pointer">
@@ -148,7 +148,7 @@ function JeSuisProfessionnel (props) {
                     </div>
                 </Dialog>
     
-                <Dialog className='h-[80dvh] w-[70dvw]' visible={visiblePatf} onHide={() => setVisiblePatf(false)}>
+                <Dialog className='md:h-[80dvh] md:w-[70dvw]' visible={visiblePatf} onHide={() => setVisiblePatf(false)}>
                     {
                         selectedPatf !== null ? (
                             <Card title={selectedPatf.name.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} subTitle={selectedPatf.subtitle.replaceAll('_GD_', '"').replaceAll("_GS_", "'")} header={() => header(selectedPatf)} className="m-10 h-[10%]">
@@ -173,7 +173,7 @@ function JeSuisProfessionnel (props) {
                     }
                 </Dialog>
                 </EditorWindowPatd>
-                <Footer />
+                <Footer2 />
             </div>
         )
     }

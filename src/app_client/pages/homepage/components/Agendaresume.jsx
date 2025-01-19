@@ -5,6 +5,7 @@ import { Card } from 'primereact/card';
 import { Carousel } from 'primereact/carousel';
 import { API_events } from '../../../services/api/eventsServices';
 import { Tag } from 'primereact/tag';
+import ErrorPage from '../../../../utils/error-page';
 
 function Agendaresume () {
 
@@ -89,25 +90,39 @@ function Agendaresume () {
         },
         {
             breakpoint: '1100px',
-            numVisible: 4,
+            numVisible: 2,
             numScroll: 1
         },
         {
-            breakpoint: '575px',
-            numVisible: 4,
+            breakpoint: '768px',
+            numVisible: 1,
             numScroll: 1
         }
     ];
 
-    return (
-        <div className=''>
-            <div className='grid place-items-center'>
-                <h2 className='title-acturesume'>Nos évenements du moments</h2>
+    try {
+        return (
+            <div className=''>
+                {
+                    data !== null ? (
+                        <div>
+                            <div className='grid place-items-center'>
+                                <h2 className='title-acturesume'>Nos évenements</h2>
+                            </div>
+                            <Carousel value={data} numVisible={4} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
+                                autoplayInterval={3000} itemTemplate={actuTemplate} />
+                        </div>
+                    ) :
+                    (
+                        null
+                    )
+                }
             </div>
-            <Carousel value={data} numVisible={4} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                autoplayInterval={3000} itemTemplate={actuTemplate} />
-        </div>
-    )
+        )
+    }
+    catch(error){
+        return <ErrorPage error={error} />
+    }
 }
 
 export default Agendaresume;

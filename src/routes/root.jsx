@@ -24,6 +24,15 @@ function Root () {
         }
     }, []);
 
+    useEffect(() => {
+        const consent = localStorage.getItem("cookieConsent");
+        if (consent === "true") {
+            // Initialisation de Google Analytics ou autres services
+            console.log("Cookies acceptés, chargement des scripts...");
+        }
+    }, []);
+      
+
     return (
         <div>
             <HomePage />

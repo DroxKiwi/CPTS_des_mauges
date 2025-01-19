@@ -11,8 +11,6 @@ html, body{
 .container .book {
   position: relative;
   display: block;
-  width: 400px;
-  height: 550px;
   margin: 5% auto;
   border-radius: 2px 4px 4px 2px;
   background: linear-gradient(45deg,  #DAD5DC 0%, #f2ebf4 100%);
@@ -60,14 +58,12 @@ box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
 }
 
 .container .front > div {
-  width: 400px;
-  height: 550px;
+
 }
 
 .container .left-side{
   width: 40px;
   left: -20px;
-  height: 550px;
   background-color: rgba(232,229,234);
   -webkit-transform: rotate3d(0,1,0,-90deg);
   -moz-transform: rotate3d(0,1,0,-90deg);
@@ -139,7 +135,6 @@ box-shadow: 13px 13px 8px 0px rgba(151, 146, 153,0.6);
 
 
 .container h2 {
-  width: 500px;
   height: 40px;
   color: #2b2b2b;
   font-size: 15px;
